@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'devise'
 gem 'simple_form'
+gem 'faker'
+gem 'rails-i18n'
 
 
 # Use ActiveModel has_secure_password

@@ -4,8 +4,10 @@
 <% end %>
 
 <% if user_signed_in? %>
-<h1>こんにちは、<%= current_user.username %>さん</h1>
+<h1>こんにちは、<%= current_user.name %>さん</h1>
 <p>ユーザー用ページです。</p>
+<%= link_to "ユーザー一覧", users_path %>
+
 <%= link_to "投稿する", new_micropost_path %><br />
 <% @microposts.each do |mic| %>
  <%= mic.id %>
