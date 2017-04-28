@@ -1,0 +1,1 @@
+$('#likes_ajax_<%= @micropost.id %>').html('<%= escape_javascript(render("likes/like_links", micropost: @micropost)) %>');

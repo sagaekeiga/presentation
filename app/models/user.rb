@@ -15,7 +15,10 @@ class User < ApplicationRecord
   
   has_many :following, through: :active_relationships, source: :followed #フォローしている人を表示できるメソッドを関連づける
   has_many :followers, through: :passive_relationships, source: :follower #フォローされている人を表示できるメソッドを関連付ける
-
+  
+  ##いいね！
+  has_many :likes, dependent: :destroy
+  has_many :like_microposts, through: :likes, source: :micropost
 
 
 
