@@ -6,7 +6,7 @@ set :repo_url, "https://github.com/sagaekeiga/presentation.git"
 
 
 
-set :deploy_to, '/home/anime/presentaion/'
+set :deploy_to, '/home/anime/presentation/'
 
 set :keep_releases, 5
 set :ssh_options, :port => "61203"

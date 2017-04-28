@@ -1,2 +1,9 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<% if !user_signed_in? %>
+<h1>ようこそ</h1>
+<p>トップページです。</p>
+<% end %>
+
+<% if user_signed_in? %>
+<h1>こんにちは、<%= current_user.username %>さん</h1>
+<p>ユーザー用ページです。</p>
+<% end %>
