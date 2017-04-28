@@ -1,0 +1,6 @@
+<%= simple_form_for(@micropost, html: { multipart: true }) do |f| %>
+
+    <%= f.text_area :content, placeholder: "内容", style: :"resize: none;" %>
+    <%= f.submit "投稿する", class: "btn btn-primary" %>
+
+<% end %>
