@@ -1,1 +1,19 @@
 <%= user_like(@micropost.user, @micropost) %></div>
+
+<%= form_for(@comment, html: { multipart: true }) do |f| %>
+    <%= f.text_area :body, placeholder: "コメントを書いてください。", style: :"resize: none;", class: :"comment-form"%>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :micropost_id, :value => @micropost.id %>
+    <%= f.submit "コメントする", class: "btn btn-primary btn-xs" %>
+<% end %>
+
+
+
+<h1>コメント一覧</h1>
+<% @comments. each do |comment| %>
+    <% if user_signed_in? && comment.user == current_user %>
+    <%= comment.id %>
+    <%= comment.body %><br />
+    <%= link_to '削除', comment_path(comment), method: :delete %><br />
+    <% end %>
+<% end %>
