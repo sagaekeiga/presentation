@@ -21,7 +21,9 @@ class User < ApplicationRecord
   #---------------------------コメント
   has_many :comments
 
-
+  #---------------------------クリップ！
+  has_many :clips, dependent: :destroy
+  has_many :clip_microposts, through: :clips, source: :micropost
 
   #------------ユーザーをフォローする
   def follow(other_user)
