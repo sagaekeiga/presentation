@@ -18,7 +18,6 @@ environment ENV.fetch("RAILS_ENV") { "production" }
 environment 'production'
 port 8080
 daemonize true
-pidfile '/var/run/unicorn/unicorn_presentation.pid'
 threads 0,16
 workers 2
 
