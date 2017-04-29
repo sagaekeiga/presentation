@@ -11,7 +11,7 @@ Rails.application.configure do
   # just for the purpose of running a single test. If you are using a tool that
   # preloads Rails for running tests, you may have to set it to true.
   config.eager_load = false
-  config.action_cable.allowed_request_origins = [ /https?:\/\/.*/ ]
+  config.action_cable.allowed_request_origins = [ 'http://candii.tk/' ]
   ActionCable.server.config.disable_request_forgery_protection = true
 
 
