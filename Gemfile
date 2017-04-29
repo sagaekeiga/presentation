@@ -28,6 +28,7 @@ gem 'simple_form'
 gem 'faker'
 gem 'rails-i18n'
 gem 'puma'
+gem 'redis'
 
 
 # Use ActiveModel has_secure_password
