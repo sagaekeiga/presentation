@@ -21,7 +21,7 @@ daemonize true
 threads 0,16
 workers 2
 
-bind 'unix:/var/run/puma.sock'
+bind 'unix:/var/run/unicorn/unicorn_presentation.sock'
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
