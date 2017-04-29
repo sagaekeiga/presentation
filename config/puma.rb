@@ -13,7 +13,15 @@ port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "development" }
+environment ENV.fetch("RAILS_ENV") { "production" }
+
+environment 'production'
+port 8080
+daemonize true
+state_path 'tmp/pids/puma.state'
+pidfile '/var/run/unicorn/unicorn_presentation.pid'
+threads 0,16
+workers 2
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
