@@ -27,6 +27,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'faker'
 gem 'rails-i18n'
+gem 'puma'
 
 
 # Use ActiveModel has_secure_password
@@ -53,6 +54,5 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'capistrano-rails'
-  gem 'puma'
 end
 

@@ -26,5 +26,4 @@ Rails.application.routes.draw do
   
   #コメント
   resources :comments, only:[:create, :destroy]
-  mount ActionCable.server => '/cable'
 end
