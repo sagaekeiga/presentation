@@ -8,6 +8,8 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
+  config.action_cable.allowed_request_origins = [ 'presentation-sagae.c9users.io' ]
+  ActionCable.server.config.disable_request_forgery_protection = true
 
   # Show full error reports.
   config.consider_all_requests_local = true

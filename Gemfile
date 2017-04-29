@@ -53,6 +53,6 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'capistrano-rails'
-  gem 'capistrano-npm'
+  gem 'puma'
 end
 

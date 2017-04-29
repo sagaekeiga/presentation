@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
+
+  get 'chat/show'
+
   devise_for :users
   root 'pages#index'
   
@@ -22,4 +26,5 @@ Rails.application.routes.draw do
   
   #コメント
   resources :comments, only:[:create, :destroy]
+  mount ActionCable.server => '/cable'
 end
