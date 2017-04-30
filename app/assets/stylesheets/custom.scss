@@ -1,0 +1,36 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+//----------------------footer
+
+.footer {
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+ 
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+//------------------------pages/index, mic/new, users/show, mic/show
+.top_content {
+    background-color: red;
+    width: 1000px;
+    min-height: 1500px;
+    height: auto !important;
+    height: 50px;
+}
+
+.t_a_c {
+  text-align: center;
+}

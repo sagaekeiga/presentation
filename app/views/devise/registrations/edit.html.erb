@@ -7,6 +7,26 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+  
+  <div class="field">
+    <%= f.label :job %><br />
+    <%= f.text_field :job, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :prefecture %><br />
+    <%= f.text_field :prefecture, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :profile %><br />
+    <%= f.text_field :profile, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :blog %><br />
+    <%= f.text_field :blog, autofocus: true %>
+  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -26,10 +46,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <% if false %>
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Update" %>

@@ -47,11 +47,14 @@ ActiveRecord::Schema.define(version: 20170428152310) do
   end
 
   create_table "microposts", force: :cascade do |t|
+    t.text     "title"
     t.text     "content"
+    t.integer  "rank",       default: 0, null: false
+    t.integer  "purpose",    default: 1, null: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["user_id", "created_at", "rank"], name: "index_microposts_on_user_id_and_created_at_and_rank"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
@@ -68,6 +71,10 @@ ActiveRecord::Schema.define(version: 20170428152310) do
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false
     t.string   "email",                  default: "", null: false
+    t.string   "job",                    default: "", null: false
+    t.string   "prefecture",             default: "", null: false
+    t.string   "profile",                default: "", null: false
+    t.string   "blog",                   default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

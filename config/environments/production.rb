@@ -84,6 +84,8 @@ Rails.application.configure do
   	enable_starttls_auto:  true
   }
   
+  ENV["REDIS"] = "localhost:6379"
+
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')

@@ -11,17 +11,37 @@ User.create!(name:  "寒河江",
 2.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
+  job = "起業家"
+  prefecture = "1"
+  profile = "初めまして。初心者です。
+　世界にない新しいサービスを発明したいと思います。若輩ものですが
+　ご鞭撻のほどよろしくお願いします。特に好きな分野スクレイピングです。
+　これまで速報サイトや株価チャートなどを製作してきました。これからは
+　この技術を生かし、ビッグデータの収集を行いたいです。それからデータ
+　を機械学習へと生かす事も考えてます。"
+　blog = "https://teratail.com/users/s.k"
   password = "password"
   User.create!(name:  name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               job: job,
+               prefecture: prefecture,
+               profile: profile)
 end
 
 users = User.order(:created_at).take(6)
-2.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
+20.times do
+  title = "もうすぐ完成するよ！もうすぐ完成するよ！"
+  content = Faker::Lorem.sentence(10)
+  purpose = 1
+  users.each { |user| user.microposts.create!(title: title, content: content, purpose: purpose) }
+end
+20.times do
+  title = "もうすぐ完成するよ！もうすぐ完成するよ！"
+  content = Faker::Lorem.sentence(10)
+  purpose = 2
+  users.each { |user| user.microposts.create!(title: title, content: content, purpose: purpose) }
 end
 
 # リレーションシップ

@@ -28,6 +28,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  ENV["REDIS"] = "localhost:6379"
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 

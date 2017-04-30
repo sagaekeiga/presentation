@@ -1,8 +1,16 @@
-<%= user_like(@micropost.user, @micropost) %></div>
-<%= user_clip(@micropost.user, @micropost) %></div>
+<div class="top_content center-block">
+<h1>内容</h1>
+<%= @micropost.title %><br />
+<%= @micropost.content %><br />
+<%= @micropost.rank %>
+
+<%= user_like(@micropost.user, @micropost) %>
+<%= user_clip(@micropost.user, @micropost) %>
 
 <%= form_for(@comment, html: { multipart: true }) do |f| %>
-    <%= f.text_area :body, placeholder: "コメントを書いてください。", style: :"resize: none;", class: :"comment-form"%>
+<div class="form-group">
+    <%= f.text_area :body, placeholder: "コメントを書いてください。", style: :"resize: none;", class: :"comment-form center-block form-control"%>
+</div>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :micropost_id, :value => @micropost.id %>
     <%= f.submit "コメントする", class: "btn btn-primary btn-xs" %>
@@ -18,3 +26,4 @@
     <%= link_to '削除', comment_path(comment), method: :delete %><br />
     <% end %>
 <% end %>
+</div>

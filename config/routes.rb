@@ -3,9 +3,14 @@ Rails.application.routes.draw do
 
   get 'chat/show'
 
-  devise_for :users
   root 'pages#index'
-  
+  devise_for :users, controllers: {
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations',
+  confirmations: 'users/confirmations'
+} 
+
  resources :users do
     member do
       get :following, :followers
@@ -27,4 +32,5 @@ Rails.application.routes.draw do
   #コメント
   resources :comments, only:[:create, :destroy]
   mount ActionCable.server => '/cable'
+
 end

@@ -2,7 +2,11 @@ class Micropost < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
+  validates :title, presence: true, length: { maximum: 30 }
+  validates :purpose, presence: true
   default_scope -> { order(created_at: :desc) }
+  paginates_per 20
+
   
   #--------------------いいね！
   has_many :likes, dependent: :destroy

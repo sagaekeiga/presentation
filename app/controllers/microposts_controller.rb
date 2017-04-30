@@ -8,6 +8,7 @@ class MicropostsController < ApplicationController
     
     def create
           @micropost = current_user.microposts.build(micropost_params)
+          @micropost.purpose = params[:micropost][:purpose]
 
         if @micropost.save
             redirect_to root_url
@@ -20,11 +21,14 @@ class MicropostsController < ApplicationController
         @micropost = Micropost.find(params[:id])
         @comment = Comment.new
         @comments = @micropost.comments.includes(:user).all
+        @rank = REDIS.zincrby "microposts/all/#{Date.today.to_s}", 1, @micropost.id
+        @micropost.rank = @rank
+        @micropost.save!
     end
     
     private
     
      def micropost_params
-         params.require(:micropost).permit(:content)
+         params.require(:micropost).permit(:content, :title, :rank, :purpose)
      end
 end

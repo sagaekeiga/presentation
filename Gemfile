@@ -22,13 +22,18 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'unicorn'
 gem 'devise'
 gem 'simple_form'
 gem 'faker'
 gem 'rails-i18n'
 gem 'puma'
 gem 'redis'
+gem 'bootstrap-sass'
+
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
+gem "gravatar-ultimate"
 
 
 # Use ActiveModel has_secure_password

@@ -1,6 +1,12 @@
-<%= simple_form_for(@micropost, html: { multipart: true }) do |f| %>
 
-    <%= f.text_area :content, placeholder: "内容", style: :"resize: none;" %>
-    <%= f.submit "投稿する", class: "btn btn-primary" %>
+<div class="top_content center-block">
 
-<% end %>
+    <%= simple_form_for(@micropost, html: { multipart: true }) do |f| %>
+        <div class="form-group">
+        <%= f.select :purpose, {"プロトタイプ" => 1, "プレゼンテーション" => 2}, class: :"form-control"%>
+        <%= f.text_area :title, placeholder: "タイトル", style: :"resize: none;", class: :"center-block form-control"%>
+        <%= f.text_area :content, placeholder: "内容", style: :"resize: none;", class: :"center-block form-control m_new_cont"%>
+        </div>
+        <%= f.submit "投稿する", class: "btn btn-primary center-block" %>
+    <% end %>
+</div>
