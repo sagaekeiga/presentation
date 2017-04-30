@@ -5,6 +5,16 @@
 
 
 
+<%= search_form_for @q do |f| %>
+
+  <%# or で複数の値をorで検索（and 複数の値をand条件で検索） %>
+  <%= f.search_field :title_or_content_cont, placeholder: "検索", class: :"form-control"%>
+  <br />
+
+  <%# 検索ボタン %>
+  <%= f.submit "検索", class: "btn btn-primary center-block"%>
+<% end %>
+
 
 <!--          ログイントップページ          -->
 <% if user_signed_in? %>
@@ -63,7 +73,7 @@
    </div>
    
    <div class="tab-pane fade" id="sets2">
-    <% @rank_mics.each do |mic| %>
+    <% @rank_mics.first(20).each do |mic| %>
      <%= mic.id %>
      <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
      <%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
@@ -71,7 +81,6 @@
      <%= date_format(mic.created_at) %><br />
      いいね数<%= mic.likes.count %><br />
     <% end %>
-    <div class="t_a_c"><%= paginate @microposts %></div>
    </div>
    
    <div class="tab-pane fade" id="sets3">

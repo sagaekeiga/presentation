@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end  
 
-  resources :microposts, only:[:create, :destroy, :show, :edit, :update, :new] do
+  resources :microposts, only:[:create, :destroy, :show, :edit, :update, :new, :index] do
     member do
        get :like_users
        get :clip_users

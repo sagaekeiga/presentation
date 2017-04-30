@@ -34,6 +34,7 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 
 gem "gravatar-ultimate"
+gem "ransack"
 
 
 # Use ActiveModel has_secure_password

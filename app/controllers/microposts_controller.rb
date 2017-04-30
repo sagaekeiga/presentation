@@ -26,6 +26,12 @@ class MicropostsController < ApplicationController
         @micropost.save!
     end
     
+    def index
+      @q = Micropost.search(params[:q])
+      @q_mics = @q.result(distinct: true).page(params[:page])
+      @all_q_mics = @q.result(distinct: true)
+    end
+    
     private
     
      def micropost_params

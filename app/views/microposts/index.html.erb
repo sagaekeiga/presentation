@@ -1,0 +1,13 @@
+<div class="top_content center-block">
+<h1>検索結果</h1>
+<%= @all_q_mics.count %>件<br />
+<% @q_mics.each do |mic| %>
+<%= mic.id %>
+<%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
+<%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
+<%= mic.content.truncate(20) %><br />
+<%= date_format(mic.created_at) %><br />
+いいね数<%= mic.likes.count %><br />
+<% end %>
+    <div class="t_a_c"><%= paginate @q_mics %></div>
+</div>
