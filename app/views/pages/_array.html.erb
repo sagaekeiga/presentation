@@ -5,4 +5,7 @@
  <%= mic.content.truncate(20) %><br />
  <%= date_format(mic.created_at) %><br />
  いいね数<%= mic.likes.count %><br />
+ <% mic.skill_list.each do |tag| %>
+   <span class="label label-primary"><%= tag %></span>
+ <% end %><br />
 <% end %>

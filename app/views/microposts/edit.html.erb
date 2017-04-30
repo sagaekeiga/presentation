@@ -1,10 +1,11 @@
+
 <div class="top_content center-block">
 
     <%= simple_form_for(@micropost, html: { multipart: true }) do |f| %>
         <div class="form-group">
         <%= f.select :purpose, {"プロトタイプ" => 1, "プレゼンテーション" => 2}, class: :"form-control"%>
         <%= f.label :skill_list, "スキル・特技（カンマ区切り）" %><br>
-        <%= text_field_tag 'micropost[skill_list]', @micropost.skill_list.join(','), :id => "article-tags"%>
+        <div><%= text_field_tag 'micropost[skill_list]', @micropost.skill_list.join(','), :id => "article-tags"%></div>
         <%= f.text_area :title, placeholder: "タイトル", style: :"resize: none;", class: :"center-block form-control"%>
         <%= f.text_area :content, placeholder: "内容", style: :"resize: none;", class: :"center-block form-control m_new_cont"%>
         </div>

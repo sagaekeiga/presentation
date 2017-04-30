@@ -1,9 +1,10 @@
 class MicropostsController < ApplicationController
     before_action :user_signed_in?, only: [:create, :destroy, :new]
-
+    before_action :set_available_tags_to_gon, only: [:new, :edit, :create, :update]
     
     def new
         @micropost = Micropost.new
+        @contact = Contact.new
     end
     
     def create
@@ -19,6 +20,7 @@ class MicropostsController < ApplicationController
     
     def show
         @micropost = Micropost.find(params[:id])
+        @contact = Contact.new
         @comment = Comment.new
         @comments = @micropost.comments.includes(:user).all
         @rank = REDIS.zincrby "microposts/all/#{Date.today.to_s}", 1, @micropost.id
@@ -26,15 +28,33 @@ class MicropostsController < ApplicationController
         @micropost.save!
     end
     
+    def edit
+        @micropost = Micropost.find(params[:id])
+        @contact = Contact.new
+    end
+    
+    def update
+      @micropost = Micropost.find(params[:id])
+      if @micropost.update(micropost_params)
+        redirect_to edit_micropost_path
+      else
+        render 'edit'
+      end
+    end
+    
     def index
       @q = Micropost.search(params[:q])
       @q_mics = @q.result(distinct: true).page(params[:page])
       @all_q_mics = @q.result(distinct: true)
     end
+
+    def set_available_tags_to_gon
+      gon.available_tags = Micropost.tags_on(:tags).pluck(:name)
+    end
     
     private
     
      def micropost_params
-         params.require(:micropost).permit(:content, :title, :rank, :purpose)
+         params.require(:micropost).permit(:content, :title, :rank, :purpose, :skill_list)
      end
 end

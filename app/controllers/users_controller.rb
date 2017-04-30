@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
     def index
       @users = User.all
+      @contact = Contact.new
     end
     
     def show
       @user = User.find(params[:id])
+      @contact = Contact.new
     end
     
     def update

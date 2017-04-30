@@ -7,7 +7,8 @@ class Micropost < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   paginates_per 20
 
-  
+  acts_as_taggable_on :skills # post.label_list が追加される
+
   #--------------------いいね！
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user 
