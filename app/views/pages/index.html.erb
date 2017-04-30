@@ -1,9 +1,26 @@
 <% if !user_signed_in? %>
+<%= search_form_for @q do |f| %>
+
+  <%# or で複数の値をorで検索（and 複数の値をand条件で検索） %>
+  <%= f.search_field :title_or_content_cont, placeholder: "検索", class: :"form-control"%>
+  <br />
+
+  <%# 検索ボタン %>
+  <%= f.submit "検索", class: "btn btn-primary center-block"%>
+<% end %>
+<div class="top_content center-block">
+
 <h1>ようこそ</h1>
 <p>トップページです。</p>
+</div>
 <% end %>
 
 
+
+
+
+<!--          ログイントップページ          -->
+<% if user_signed_in? %>
 
 <%= search_form_for @q do |f| %>
 
@@ -14,10 +31,6 @@
   <%# 検索ボタン %>
   <%= f.submit "検索", class: "btn btn-primary center-block"%>
 <% end %>
-
-
-<!--          ログイントップページ          -->
-<% if user_signed_in? %>
 
 <div class="top_content center-block">
  
@@ -31,70 +44,33 @@
   
  <div class="tab-content">
    <div class="tab-pane fade in active" id="home2">
-    <% @microposts.each do |mic| %>
-     <%= mic.id %>
-     <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
-     <%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
-     <%= mic.content.truncate(20) %><br />
-     <%= date_format(mic.created_at) %><br />
-     いいね数<%= mic.likes.count %><br />
-    <% end %>
+      <%= render 'pages/array', microposts: @microposts %><!--      新着      -->
     <div class="t_a_c"><%= paginate @microposts %></div>
    </div>
    
    <div class="tab-pane fade" id="prof2">
-    <% @microposts.each do |mic| %>
-     <% if mic.purpose == 1 %>
-      <%= mic.purpose %>
-      <%= mic.id %>
-      <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
-      <%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
-      <%= mic.content.truncate(20) %><br />
-      <%= date_format(mic.created_at) %><br />
-      いいね数<%= mic.likes.count %><br />
-     <% end %>
-    <% end %>
-    <div class="t_a_c"><%= paginate @microposts %></div>
+      <%= render 'pages/if_array', microposts: @pro_mics, type: 1 %><!--      プロトタイプ      -->
+     <div class="t_a_c"><%= paginate @pro_mics %></div>
    </div>
    
    <div class="tab-pane fade" id="msgs2">
-    <% @microposts.each do |mic| %>
-     <% if mic.purpose == 2 %>
-      <%= mic.purpose %>
-      <%= mic.id %>
-      <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
-      <%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
-      <%= mic.content.truncate(20) %><br />
-      <%= date_format(mic.created_at) %><br />
-      いいね数<%= mic.likes.count %><br />
-     <% end %>
-    <% end %>
-    <div class="t_a_c"><%= paginate @microposts %></div>
+      <%= render 'pages/if_array', microposts: @pre_mics, type: 2 %><!--      プレゼンテーション      -->
    </div>
    
    <div class="tab-pane fade" id="sets2">
-    <% @rank_mics.first(20).each do |mic| %>
-     <%= mic.id %>
-     <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
-     <%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
-     <%= mic.content.truncate(20) %><br />
-     <%= date_format(mic.created_at) %><br />
-     いいね数<%= mic.likes.count %><br />
-    <% end %>
+      <%= render 'pages/array', microposts: @rank_mics %><!--      注目      -->
    </div>
    
    <div class="tab-pane fade" id="sets3">
-    <% @clip_mics.each do |mic| %>
-     <%= mic.id %>
-     <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
-     <%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
-     <%= mic.content.truncate(20) %><br />
-     <%= date_format(mic.created_at) %><br />
-     いいね数<%= mic.likes.count %><br />
-    <% end %>
-    <div class="t_a_c"><%= paginate @microposts %></div>
+<% @clip_mics.each do |mic| %>
+ <%= mic.id %>
+ <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
+ <%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
+ <%= mic.content.truncate(20) %><br />
+ <%= date_format(mic.created_at) %><br />
+ いいね数<%= mic.likes.count %><br />
+<% end %>
    </div>
  </div><!-- tab-content -->
-
-</div>
+ </div>
 <% end %>

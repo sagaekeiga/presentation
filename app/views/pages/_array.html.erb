@@ -1,0 +1,8 @@
+<% microposts.each do |mic| %>
+ <%= mic.id %>
+ <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
+ <%= link_to "#{mic.title}", mic %><%= mic.rank %><br />
+ <%= mic.content.truncate(20) %><br />
+ <%= date_format(mic.created_at) %><br />
+ いいね数<%= mic.likes.count %><br />
+<% end %>

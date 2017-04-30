@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'rooms/show'
+  get 'pages/agreement'
 
-  get 'chat/show'
 
   root 'pages#index'
   devise_for :users, controllers: {

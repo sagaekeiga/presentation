@@ -5,3 +5,27 @@
 
 
 //----------------------------------index.html.erb
+
+//----------------------------------サイドバー
+
+.sidebar {
+    width: 300px;
+    background-color: blue;
+    min-height: 1500px;
+    height: auto !important;
+    height: 50px;
+    float: right;
+}
+
+.main_menu {
+    width: 600px;
+    background-color: yellow;
+    min-height: 1500px;
+    height: auto !important;
+    height: 50px;
+    float: left;
+}
+
+.in_content {
+    
+}
