@@ -13,6 +13,8 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <%= yield %>
+  <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' %>
     <%= render 'layouts/footer' %>
+  <% end %>
 </body>
 </html>
