@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
+    @contact = Contact.new
     if user_signed_in?
       @microposts = Micropost.page(params[:page])
       @pro_mics = Micropost.where(purpose: 1).page(params[:page])
@@ -14,6 +15,16 @@ class PagesController < ApplicationController
   
   # ----------------- 利用規約
   def agreement
+    @contact = Contact.new
   end
   
+  # ----------------- プライバシー
+  def privacy
+    @contact = Contact.new
+  end
+  
+  # ----------------- ヘルプ
+  def help
+    @contact = Contact.new
+  end
 end

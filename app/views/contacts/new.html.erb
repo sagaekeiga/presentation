@@ -1,0 +1,9 @@
+<%= form_for @contact do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, :class => "form-control" %>
+    <%= f.label :message %>
+    <%= f.text_area :message, :class => "form-control" %>
+    <%= f.submit class: "btn", :class => "form-control btn-info" %>
+<% end %>

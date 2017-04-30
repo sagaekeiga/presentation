@@ -1,9 +1,15 @@
 <footer class="footer">
   <div class="container">
     <ul class="list-inline">
-      <li><%= link_to "利用規約", %>リスト1</li>
-      <li>リスト2</li>
-      <li>リスト3</li>
+      <li><%= link_to "利用規約", pages_agreement_path %></li>
+      <li><%= link_to "プライバシー", pages_privacy_path %></li>
+      <li><%= link_to "ヘルプ", pages_help_path %></li>
+      <li><%= link_to "お問い合わせ", new_contacts_path %></li>
     </ul>
+      <%= form_for @contact do |f| %>
+          <%= f.label :message %>
+          <%= f.text_area :message, placeholder: "ご意見をお聞かせください", :class => "form-control" %>
+          <%= f.submit "送信する", class: "btn", :class => "form-control btn-info" %>
+      <% end %>
   </div>
 </footer>

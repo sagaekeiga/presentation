@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
   get 'rooms/show'
   get 'pages/agreement'
+  get 'pages/privacy'
+  get 'pages/help'
+
+  resource :contacts, only: [:new, :create]
 
 
   root 'pages#index'
