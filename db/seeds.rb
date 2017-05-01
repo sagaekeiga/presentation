@@ -51,3 +51,4 @@ following = users[0..1]
 followers = users[1..2]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+AdminUser.create!(email: 'sagae5.28rujeae@gmail.com', password: 's19930528', password_confirmation: 's19930528')

@@ -5,6 +5,7 @@
 <%= @micropost.rank %>
 <%= qiita_markdown(@micropost.content) %><br />
 
+
 <%= user_like(@micropost.user, @micropost) %>
 <%= user_clip(@micropost.user, @micropost) %>
 
