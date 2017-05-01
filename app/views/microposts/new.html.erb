@@ -10,4 +10,32 @@
         </div>
         <%= f.submit "投稿する", class: "btn btn-primary center-block" %>
     <% end %>
+    
+
+  <%= form_for @micropost, :url => {:action => :create} do |f| %>
+    <div class="form-group">
+      <%= f.text_field :title , class: 'form-control', placeholder: 'タイトルを入力してください'%>
+    </div>
+    <div class="form-group">
+      <div id='editor'>
+        <textarea name="micropost[content]" class="form-control" rows="20" v-model='input' debounce='50'></textarea>
+        <div v-html='input | marked'></div>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+
+<script type="text/javascript">
+  window.onload = function() {
+    new Vue({
+      el: '#editor',
+      data: {
+        input: '<%== j @micropost.content %>',
+      },
+      filters: {
+        marked: marked,
+      },
+    });
+  };
+</script>

@@ -2,8 +2,8 @@
 <%= link_to "編集", edit_micropost_path %>
 <h1>内容</h1>
 <%= @micropost.title %><br />
-<%= @micropost.content %><br />
 <%= @micropost.rank %>
+<%= qiita_markdown(@micropost.content) %><br />
 
 <%= user_like(@micropost.user, @micropost) %>
 <%= user_clip(@micropost.user, @micropost) %>
