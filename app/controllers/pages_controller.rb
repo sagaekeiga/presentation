@@ -8,6 +8,7 @@ class PagesController < ApplicationController
       @clip_mics = current_user.clip_microposts
       @rank_mics = Micropost.all.sort_by{|ms|ms.rank}.reverse.first(20)
       @q = Micropost.search(params[:q])
+      @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
     end
       @q = Micropost.search(params[:q])
   end

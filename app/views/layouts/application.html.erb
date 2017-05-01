@@ -9,7 +9,9 @@
 </head>
 <body>
     <header>
-        <%= render 'layouts/header' %>
+    <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' %>
+          <%= render 'layouts/header' %>
+    <% end %>
     </header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>

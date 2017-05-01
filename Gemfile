@@ -41,6 +41,9 @@ gem "ransack"
 gem 'acts-as-taggable-on'
 gem 'gon'
 
+gem 'redis-objects'
+gem 'public_activity'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

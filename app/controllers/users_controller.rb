@@ -2,11 +2,13 @@ class UsersController < ApplicationController
     def index
       @users = User.all
       @contact = Contact.new
+      @activities = PublicActivity::Activity.all
     end
     
     def show
       @user = User.find(params[:id])
       @contact = Contact.new
+      @activities = PublicActivity::Activity.all
     end
     
     def update

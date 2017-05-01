@@ -15,6 +15,7 @@
   </a>
 </div>
 <%= render 'follow_form' %>
+<%= image_tag(gravatar_for(@user), alt: @user.email, class:"gravatar") %>
 <%= @user.name %>
 <%= @user.job %>
 <%= @user.prefecture %>

@@ -5,6 +5,7 @@ class MicropostsController < ApplicationController
     def new
         @micropost = Micropost.new
         @contact = Contact.new
+        @activities = PublicActivity::Activity.all
     end
     
     def create
@@ -26,11 +27,13 @@ class MicropostsController < ApplicationController
         @rank = REDIS.zincrby "microposts/all/#{Date.today.to_s}", 1, @micropost.id
         @micropost.rank = @rank
         @micropost.save!
+        @activities = PublicActivity::Activity.all
     end
     
     def edit
         @micropost = Micropost.find(params[:id])
         @contact = Contact.new
+        @activities = PublicActivity::Activity.all
     end
     
     def update
@@ -46,6 +49,7 @@ class MicropostsController < ApplicationController
       @q = Micropost.search(params[:q])
       @q_mics = @q.result(distinct: true).page(params[:page])
       @all_q_mics = @q.result(distinct: true)
+      @activities = PublicActivity::Activity.all
     end
 
     def set_available_tags_to_gon

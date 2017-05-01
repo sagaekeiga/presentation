@@ -15,11 +15,31 @@
         <li class="active"><%= link_to "ホーム", root_path %></li>
         <li><%= link_to "投稿する", new_micropost_path %></li>
         <li><%= link_to "チャットルーム", rooms_show_path %></li>
+        <li><%= link_to "#{current_user.name}", current_user %></li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">お知らせ<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <% if user_signed_in? %>
+              <% @activities.each do |activity| %>
+                <div>
+                <%= date_format(activity.trackable.created_at) %><br />
+                <%= link_to "#{activity.owner.name}", activity.owner if activity.owner -%>さんが
+                <%= link_to Micropost.find(activity.trackable.micropost_id).title, Micropost.find(activity.trackable.micropost_id) -%>に
+                いいね！しました
+                </div>
+              <% end %>
+            <% else %>
+            <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </li>
+        
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">設定<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if user_signed_in? %>
-            <li><%= link_to 'マイページ', current_user %></li>
             <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             <li><%= link_to "ユーザー一覧", users_path %></li>

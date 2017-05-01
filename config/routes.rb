@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'pages/help'
 
   resource :contacts, only: [:new, :create]
-
+  
 
   root 'pages#index'
   devise_for :users, controllers: {
