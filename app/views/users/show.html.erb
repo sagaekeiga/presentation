@@ -1,24 +1,114 @@
-<% @user ||= current_user %>
-<div class="top_content center-block">
-<div class="stats">
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
-      <%= @user.following.count %>
-    </strong>
-    following
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
-      <%= @user.followers.count %>
-    </strong>
-    followers
-  </a>
+
+<div class="us_sh_top center-block">
+  <div class="di_inline_t">
+    <div class="us_sh_left"><!--   左サイド   -->
+        <div id="container">
+          <div id="main">左カラム（メインコンテンツ）</div>
+            <div id="sidebar"><!-- サイドバー -->
+              <div id="nav">
+                <div class="b_10"></div>
+                <div class="us_sh_image center-block"><!-- ログインユーザーアイコン -->
+                  <%= image_tag(gravatar_for(@user), alt: @user.email, class:"gravatar center-block") %>
+                </div>
+                <div class="user_name center-block"><%= @user.name %></div><!-- ログインユーザー名 -->
+                <div class="user_created center-block"><%= date_format(@user.created_at) %></div><!-- ログインユーザー登録日 -->
+                <div class="user_option center-block">オプション</div><!-- ログインユーザー登録日 -->
+                <div class="user_edit center-block"><%= link_to "プロフィールを編集する", edit_user_registration_path %></div><!-- ログインユーザー登録日 -->
+              </div>
+            </div>
+        </div>
+      <a href="<%= following_user_path(@user) %>">
+        <strong id="following" class="stat">
+          <%= @user.following.count %>
+        </strong>
+        following
+      </a>
+      <a href="<%= followers_user_path(@user) %>">
+        <strong id="followers" class="stat">
+          <%= @user.followers.count %>
+        </strong>
+        followers
+      </a>
+    <%= render 'follow_form' %>
+    <%= @user.name %>
+    <%= @user.job %>
+    <%= @user.prefecture %>
+    <%= @user.profile %>
+    <%= @user.blog %>
+    </div>
+  </div>
+
+<div class="di_inline_t">
+  <div class="us_sh_right"><!--   右サイド   -->
+   <div class="us_sh_right_top center-block"><!--   右サイド上部   -->
+     <ul class="nav nav-tabs">
+       <li><a href="#home2" data-toggle="tab">プロフィール</a></li>
+       <li><a href="#prof2" data-toggle="tab">グラフ</a></li>
+       <li><a href="#msgs2" data-toggle="tab">予備</a></li>
+     </ul><!-- nav-tabs -->
+      
+     <div class="tab-content">
+       <div class="tab-pane fade in active" id="home2"><!--      プロフィール      -->
+        <%= @user.name %>
+        <%= @user.job %>
+        <%= @user.prefecture %>
+        <%= @user.profile %>
+        <%= @user.blog %>
+       </div>
+       
+       <div class="tab-pane fade" id="prof2"><!--      グラフ      -->
+       </div>
+       
+       <div class="tab-pane fade" id="msgs2"><!--      予備      -->
+          予備
+       </div>
+     </div><!-- tab-content -->
+   </div>
+   
+   <div class="us_sh_right_middle center-block"><!--   右サイド中部   -->
+   </div>
+   
+   <div class="us_sh_right_bottom center-block"><!--   右サイド下部   -->
+     <ul class="nav nav-tabs"><!--   複数タブ下部   -->
+       <li><a href="#home3" data-toggle="tab">プロフィール</a></li>
+       <li><a href="#prof3" data-toggle="tab">グラフ</a></li>
+       <li><a href="#msgs3" data-toggle="tab">予備</a></li>
+     </ul><!-- nav-tabs -->
+      
+     <div class="tab-content">
+       <div class="tab-pane fade in active" id="home3"><!--      プロフィール      -->
+        <%= @user.name %>
+        <%= @user.job %>
+        <%= @user.prefecture %>
+        <%= @user.profile %>
+        <%= @user.blog %>
+       </div>
+       
+       <div class="tab-pane fade" id="prof3"><!--      グラフ      -->
+       </div>
+       
+       <div class="tab-pane fade" id="msgs3"><!--      予備      -->
+          予備
+       </div>
+     </div><!-- tab-content -->
+   </div>
+  </div>
 </div>
-<%= render 'follow_form' %>
-<%= image_tag(gravatar_for(@user), alt: @user.email, class:"gravatar") %>
-<%= @user.name %>
-<%= @user.job %>
-<%= @user.prefecture %>
-<%= @user.profile %>
-<%= @user.blog %>
+
 </div>
+
+<div class="b_100"></div>
+
+
+<script>
+var nav    = $('#nav'),
+    offset = nav.offset();
+
+$(window).scroll(function () {
+  if($(window).scrollTop() > offset.top - 20) {
+    nav.addClass('fixed');
+  } else {
+    nav.removeClass('fixed');
+  }
+});
+</script>

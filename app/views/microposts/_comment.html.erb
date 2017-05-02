@@ -1,0 +1,30 @@
+<% comments. each do |comment| %>
+    <% if user_signed_in? %>
+      <div class="co_sh_per">
+        <div class="di_inline_t">
+            <%= image_tag(gravatar_for(comment.user), alt: comment.user.email, class:"gravatar") %><!--　コメントのアイコン   -->
+        </div>
+        <div class="di_inline_t">
+            <%= comment.body %><!--　コメントの文   -->
+        </div>
+        <div class="co_sh_per_del"><%= link_to '削除', comment_path(comment), method: :delete if current_user == comment.user %></div><!--　コメントの削除ボタン   -->
+      </div>
+    <% end %>
+<% end %>
+
+
+
+<div class="di_inline_t">
+    <%= image_tag(gravatar_for(current_user), alt: current_user.email, class:"gravatar") %><!--　コメントのアイコン   -->
+</div>
+
+<div class="di_inline_t"><!--　コメントフォーム   -->
+    <%= form_for(@comment, html: { multipart: true }) do |f| %>
+        <div class="form-group">
+            <%= f.text_area :body, placeholder: "コメントを書いてください。", style: :"resize: none; width: 650px;", class: :"comment-form center-block form-control"%>
+        </div>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :micropost_id, :value => @micropost.id %>
+        <%= f.submit "コメントする", class: "btn btn-primary btn-xs", style: :"margin-top: -20px;" %>
+    <% end %>
+</div>

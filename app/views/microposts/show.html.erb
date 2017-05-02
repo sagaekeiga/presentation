@@ -1,31 +1,70 @@
-<div class="top_content center-block">
-<%= link_to "編集", edit_micropost_path %>
-<h1>内容</h1>
-<%= @micropost.title %><br />
-<%= @micropost.rank %>
-<%= qiita_markdown(@micropost.content) %><br />
 
-
-<%= user_like(@micropost.user, @micropost) %>
-<%= user_clip(@micropost.user, @micropost) %>
-
-<%= form_for(@comment, html: { multipart: true }) do |f| %>
-<div class="form-group">
-    <%= f.text_area :body, placeholder: "コメントを書いてください。", style: :"resize: none;", class: :"comment-form center-block form-control"%>
+<!--   ヘッダー   -->
+<div class="sh_h_mic">
+        <div class="sh_h_mic_co_top"><!--   ヘッダー上部   -->
+            <div class="sh_h_mic_co_top_top center-block"><!--   ヘッダー上部の内容   -->
+                
+            </div>
+        </div>
+    <div class="sh_h_mic_co center-block"><!--   ヘッダー下部    -->
+            <div class="sh_h_mic_co_bottom center-block"><!--   ヘッダー下部の内容   -->
+                <div class="di_inline_t">
+                    <div class="sh_h_mic_co_bottom_left left-block"><!--   ヘッダー下部の左サイド   -->
+                        <%= image_tag(gravatar_for(@micropost.user), alt: @micropost.user.email, class:"gravatar") %>
+                        <%= link_to "編集", edit_micropost_path if @micropost.user == current_user %>
+                    </div>
+                </div>
+                <div class="di_inline_t">
+                    <div class="sh_h_mic_co_bottom_right right-block"><!--   ヘッダー下部の右サイド   -->
+                    </div>
+                </div>
+            </div>
+    </div>
 </div>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :micropost_id, :value => @micropost.id %>
-    <%= f.submit "コメントする", class: "btn btn-primary btn-xs" %>
-<% end %>
 
 
+<!--   コンテンツ  -->
+<div class="sh_co">
+    <div class="di_inline_t">
+        <div class="left_co_mic_sh"><!--   コンテンツ左サイド   -->
+           <div class="mic_co_sh_post"><!--  投稿文  -->
+                <%= @micropost.title %><br />
+                <%= @micropost.rank %>
+                <%= qiita_markdown(@micropost.content) %><br />
+           </div>
+           <div class="mic_co_sh_op"><!--  投稿文のオプション  -->
+                <%= user_like(@micropost.user, @micropost) %>
+                <%= user_clip(@micropost.user, @micropost) %>           
+           </div>
+           <div class="mic_com_sh"><!--   コメント一覧   -->
+            <%= render 'microposts/comment', comments: @comments %>
+           </div>
+        </div>
+    </div>
 
-<h1>コメント一覧</h1>
-<% @comments. each do |comment| %>
-    <% if user_signed_in? && comment.user == current_user %>
-    <%= comment.id %>
-    <%= comment.body %><br />
-    <%= link_to '削除', comment_path(comment), method: :delete %><br />
-    <% end %>
-<% end %>
+ <div class="di_inline_t">
+    <div class="right_co_mic_sh">
+        <div id="container">
+          <div id="main">左カラム（メインコンテンツ）</div>
+          <div id="sidebar"><!-- サイドバー -->
+            <div id="nav">ここを固定する</div>
+          </div>
+        </div>
+    </div>
 </div>
+</div>
+<div class="b_100"></div>
+
+
+<script>
+var nav    = $('#nav'),
+    offset = nav.offset();
+
+$(window).scroll(function () {
+  if($(window).scrollTop() > offset.top - 20) {
+    nav.addClass('fixed');
+  } else {
+    nav.removeClass('fixed');
+  }
+});
+</script>

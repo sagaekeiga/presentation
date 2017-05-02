@@ -29,3 +29,58 @@
 .in_content {
     
 }
+
+//---------------------------タイムライン
+.mic_array {
+	padding: .5em;
+	border-bottom: 1px solid #ccc;
+	height: 125px;
+	width: 700px;
+}
+
+
+//---------------------------投稿のタイトル
+.mic-title {
+ font-size: 20px;
+ height: 30px;
+ width: 400px;
+}
+
+//---------------------------投稿の内容
+.mic-content {
+ height: 40px;
+ width: 400px;
+}
+
+//---------------------------投稿の内容
+.mic_tag {
+ height: 15px;
+}
+
+//---------------------------投稿の内容
+.mic_li_pv {
+ height: 15px;
+ width: 200px;
+ padding: 1px;
+}
+
+//---------------------------投稿の内容
+.mic_date {
+ height: 15px;
+ width: 100px;
+ float: right;
+ text-align: right;
+}
+
+.mic_tag_date {
+    height: 20px;
+    padding-top: 5px;
+    width: 400px;
+}
+
+.pg_tt {
+  font-size: 20px;
+}
+.op_op {
+	padding: .5em;
+}

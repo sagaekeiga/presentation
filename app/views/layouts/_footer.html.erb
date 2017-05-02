@@ -1,15 +1,16 @@
-<footer class="footer">
-  <div class="container">
+<footer class="footer" style="background-color: #110f2c; color: white;">
+  <div class="container center-block">
+    <div class="foo_all">
     <ul class="list-inline">
-      <li><%= link_to "利用規約", pages_agreement_path %></li>
-      <li><%= link_to "プライバシー", pages_privacy_path %></li>
-      <li><%= link_to "ヘルプ", pages_help_path %></li>
-      <li><%= link_to "お問い合わせ", new_contacts_path %></li>
+      <li><%= link_to "利用規約", pages_agreement_path, :style=>"color:white;" %></li>
+      <li><%= link_to "プライバシー", pages_privacy_path, :style=>"color:white;" %></li>
+      <li><%= link_to "ヘルプ", pages_help_path, :style=>"color:white;" %></li>
+      <li><%= link_to "お問い合わせ", new_contacts_path, :style=>"color:white;" %></li>
     </ul>
       <%= form_for @contact do |f| %>
-          <%= f.label :message %>
-          <%= f.text_area :message, placeholder: "ご意見をお聞かせください", :class => "form-control" %>
-          <%= f.submit "送信する", class: "btn", :class => "form-control btn-info" %>
+          <%= f.text_area :message, placeholder: "ご意見をお聞かせください", :class => "form-control" , :style => "height: 180px; width: 400px; resize: none;" %>
+          <%= f.submit "送信する", class: "btn", :class => "form-control btn-info", :style => "width: 400px; margin-top: 10px" %>
       <% end %>
+    </div>
   </div>
 </footer>

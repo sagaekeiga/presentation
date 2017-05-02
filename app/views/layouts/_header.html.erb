@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top " style="background-color: #110f2c; color: white;">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -12,13 +12,13 @@
     
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "ホーム", root_path %></li>
-        <li><%= link_to "投稿する", new_micropost_path %></li>
-        <li><%= link_to "チャットルーム", rooms_show_path %></li>
-        <li><%= link_to "#{current_user.name}", current_user if user_signed_in? %></li>
+        <li><%= link_to "ホーム", root_path, :style=>"color:white;" %></li>
+        <li><%= link_to "投稿する", new_micropost_path, :style=>"color:white;" %></li>
+        <li><%= link_to "チャットルーム", rooms_show_path, :style=>"color:white;" %></li>
+        <li><%= link_to "#{current_user.name}", current_user, :style=>"color:white;" if user_signed_in?%></li>
         
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">お知らせ<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white;">お知らせ<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if user_signed_in? %>
               <% @activities.each do |activity| %>
@@ -37,7 +37,7 @@
         </li>
         
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">設定<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white;">設定<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if user_signed_in? %>
             <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
@@ -50,6 +50,16 @@
           </ul>
         </li>
       </ul>
+      <div style="margin-top: 10px">
+          <%= search_form_for @q, html: {class: 't_b_c'} do |f|%>
+          
+            <%# or で複数の値をorで検索（and 複数の値をand条件で検索） %>
+            <%= f.search_field :title_or_content_cont, placeholder: "検索", class: :"form-control di_inline", style: :"width:150px;"%>
+
+            <%# 検索ボタン %>
+            <%= f.submit "検索", class: "btn btn-primary center-block di_inline"%>
+          <% end %>
+      </div>
     </div><!--/.nav-collapse -->
   </div>
 </nav>

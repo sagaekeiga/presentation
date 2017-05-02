@@ -21,20 +21,55 @@ body > .container {
   padding-left: 15px;
 }
 
+
+.foo_all {
+  width: 1000px;
+  height: 250px;
+  padding: 10px;
+}
 //------------------------pages/index, mic/new, users/show, mic/show
 .top_content {
-    background-color: red;
     width: 700px;
     min-height: 1500px;
     height: auto !important;
     height: 50px;
+    box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    padding: 5px;
 }
 
 .t_a_c {
   text-align: center;
 }
 
+.t_b_c {
+	display: table-cell;
+	vertical-align: middle;
+}
 .di_inline {
   display: inline-block;
+  vertical-align: middle;
+}
+
+.b_bottom {
+	padding: .5em;
+	border-bottom: 1px solid #ccc;
+}
+
+.padding {
+  padding: .5em;
+}
+
+.b_100 {
+  height: 100px;
+}
+
+.di_inline_t {
+  display: inline-block;
   vertical-align: top;
+}
+
+.b_10 {
+  height: 10px;
 }

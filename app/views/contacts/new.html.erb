@@ -1,9 +1,14 @@
-<%= form_for @contact do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, :class => "form-control" %>
-    <%= f.label :email %>
-    <%= f.email_field :email, :class => "form-control" %>
-    <%= f.label :message %>
-    <%= f.text_area :message, :class => "form-control" %>
-    <%= f.submit class: "btn", :class => "form-control btn-info" %>
-<% end %>
+<div class="top_content_contact center-block padding">
+    <div class="contact_tt">お問い合わせフォーム</div>
+    <div class="contact_co">
+        <%= form_for @contact do |f| %>
+            <%= f.label :お名前 %>
+            <%= f.text_field :name, :class => "form-control left-block", :style => "resize: none; width: 200px;"%>
+            <%= f.label :メールアドレス %>
+            <%= f.email_field :email, :class => "form-control left-block", :style => "resize: none; width: 300px;" %>
+            <%= f.label :内容 %>
+            <%= f.text_area :message, :class => "form-control left-block", :style => "resize: none; width: 500px; height: 200px;"%><br/>
+            <%= f.submit "送信する", :style => "resize: none; width: 90px;", :class => "btn form-control btn-info left-block" %>
+        <% end %>
+    </div>
+</div>

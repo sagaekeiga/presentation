@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
     end
     
     def update

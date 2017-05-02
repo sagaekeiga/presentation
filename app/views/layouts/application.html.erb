@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Prototype</title>
+  <title>Bubble</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= include_gon(:init => true) %>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js'></script>
@@ -11,14 +11,14 @@
 </head>
 <body>
     <header>
-    <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' %>
+    <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts'%>
           <%= render 'layouts/header' %>
     <% end %>
     </header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <%= yield %>
-  <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' %>
+  <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts'%>
     <%= render 'layouts/footer' %>
   <% end %>
 </body>

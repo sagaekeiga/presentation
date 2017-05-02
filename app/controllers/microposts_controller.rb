@@ -5,6 +5,7 @@ class MicropostsController < ApplicationController
     def new
         @micropost = Micropost.new
         @contact = Contact.new
+        @q = Micropost.search(params[:q])
         @activities = PublicActivity::Activity.all
     end
     
@@ -20,10 +21,11 @@ class MicropostsController < ApplicationController
     end
     
     def show
+        @q = Micropost.search(params[:q])
         @micropost = Micropost.find(params[:id])
         @contact = Contact.new
         @comment = Comment.new
-        @comments = @micropost.comments.includes(:user).all
+        @comments = @micropost.comments.includes(:user).all.sort_by{|ms|ms.created_at}
         @rank = REDIS.zincrby "microposts/all/#{Date.today.to_s}", 1, @micropost.id
         @micropost.rank = @rank
         @micropost.save!
@@ -31,6 +33,7 @@ class MicropostsController < ApplicationController
     end
     
     def edit
+        @q = Micropost.search(params[:q])
         @micropost = Micropost.find(params[:id])
         @contact = Contact.new
         @activities = PublicActivity::Activity.all
@@ -46,6 +49,7 @@ class MicropostsController < ApplicationController
     end
     
     def index
+      @contact = Contact.new
       @q = Micropost.search(params[:q])
       @q_mics = @q.result(distinct: true).page(params[:page])
       @all_q_mics = @q.result(distinct: true)

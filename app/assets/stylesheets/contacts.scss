@@ -1,3 +1,22 @@
 // Place all the styles related to the contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top_content_contact {
+    width: 700px;
+    height: 500px;
+    box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}
+
+.contact_tt {
+    padding: 20px;
+}
+
+
+.contact_co {
+    width: 600px;
+    padding: 20px;
+}

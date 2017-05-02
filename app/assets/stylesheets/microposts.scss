@@ -93,3 +93,210 @@
     .il { color: #009999 } /* Literal.Number.Integer.Long */
   }
 }
+
+
+//--------------------show----------------------
+
+
+//--------------------showページのヘッダー
+.sh_h_mic {
+  height: 300px;
+  background-color: #f2f2f2;
+  margin-top: -10px;
+}
+
+//--------------------showページのヘッダー
+.sh_h_mic_co {
+  height: 260px;
+  padding: 20px;
+  background-color: red;
+}
+
+
+//--------------------showページのボディ
+.sh_co {
+    min-height: 1500px;
+    height: auto !important;
+    height: 50px;
+    background-color: blue;
+    padding: 5px;
+}
+
+//--------------------showページのボディの中の左サイド
+.left_co_mic_sh {
+  margin-left: 140px;
+  background-color: yellow;
+  width: 747px;
+  min-height: 1500px;
+  height: auto !important;
+  height: 50px;
+}
+
+//--------------------showページのボディの中の右サイド
+.right_co_mic_sh {
+  background-color: orange;
+  width: 400px;
+  min-height: 1500px;
+  height: auto !important;
+  height: 50px;
+}
+
+
+//---------------------スクロール固定ナビ
+
+#sidebar {
+  position: relative;
+  float: left;
+  width: 300px;
+}
+
+#nav {
+  width: 300px;
+  height: 350px;    /* デモ用 */
+  background: #f88; /* 同上 */
+}
+
+.fixed {
+  position: fixed;
+  top: 60px;
+}
+
+
+
+//--------------------showページのヘッダーの上部
+.sh_h_mic_co_top {
+  height: 30px;
+  width: 100%;
+  padding: 20px;
+  background-color: #f2f2f2;
+  margin-top: -10px;
+	border-bottom: 1px solid #8e8e8e;
+}
+
+
+//--------------------showページのヘッダーの上部
+.sh_h_mic_co_top_top {
+  width: 1152px;
+  height: 40px;
+  background-color: blue;
+  margin-top: -20px;
+  padding: 5px;
+}
+
+
+
+//--------------------showページのヘッダーの下部の内容
+.sh_h_mic_co_bottom {
+  width: 1152px;
+  height: 260px;
+  background-color: purple;
+  margin-top: -20px;
+  padding: 5px;
+}
+
+
+//--------------------showページのヘッダーの下部の左サイド
+.sh_h_mic_co_bottom_left {
+  width: 748px;
+  height: 259px;
+  background-color: white;
+  padding: 5px;
+  margin-left: -5px;
+  margin-top: -5px;
+}
+
+
+//--------------------showページのヘッダーの下部の右サイド
+.sh_h_mic_co_bottom_right {
+  width: 400px;
+  height: 259px;
+  background-color: black;
+  padding: 5px;
+  margin-right: -90px;
+  margin-top: -5px;
+}
+
+
+//--------------------showページのコンテンツの投稿文
+.mic_co_sh_post {
+  background-color: black;
+  padding: 5px;
+  min-height: 100px;
+  height: auto !important;
+  height: 50px;
+}
+
+
+//--------------------showページのコンテンツの投稿文のオプション
+.mic_co_sh_op {
+  background-color: white;
+  padding: 5px;
+  height: 100px;
+	border-bottom: 1px solid #8e8e8e;
+}
+
+
+//--------------------showページのコンテンツのコメント
+.mic_com_sh {
+  background-color: red;
+  padding: 5px;
+  min-height: 100px;
+  height: auto !important;
+  height: 50px;
+  border-bottom: 1px solid #8e8e8e;
+}
+
+
+//--------------------showページの個別のコメント
+.co_sh_per {
+  background-color: black;
+  padding: 5px;
+  min-height: 100px;
+  height: auto !important;
+  height: 50px;
+  border-bottom: 1px solid #8e8e8e;
+}
+
+
+//--------------------showページの個別のコメントの削除ボタン
+.co_sh_per_del {
+  background-color: gray;
+  padding: 5px;
+  min-height: 20px;
+  height: auto !important;
+  height: 50px;
+}
+
+
+//--------------------new----------------------
+
+
+//--------------------個別のボックス
+.mic_new_top {
+    width: 1400px;
+    height: 620px;
+    background-color: #e0e0e0;
+    box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    padding: 5px;
+}
+
+
+
+//--------------------プレビュー
+.preview {
+    width: 695px;
+    height: 413px;
+    overflow: auto;
+    box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    padding: 5px;
+}
+
+//--------------------投稿ボタン
+.m_new_btn {
+    width: 100%;
+    margin-top: -10px;
+}
