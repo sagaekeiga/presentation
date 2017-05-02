@@ -7,7 +7,7 @@
         <div class="di_inline_t">
             <%= comment.body %><!--　コメントの文   -->
         </div>
-        <div class="co_sh_per_del"><%= link_to '削除', comment_path(comment), method: :delete if current_user == comment.user %></div><!--　コメントの削除ボタン   -->
+        <div class="co_sh_per_del"><%= link_to '削除', comment_path(comment), method: :delete, data: { confirm: "本当に投稿を削除していいですか？" }, :class => "sh_mi_lik" if current_user == comment.user %></div><!--　コメントの削除ボタン   -->
       </div>
     <% end %>
 <% end %>
@@ -20,6 +20,7 @@
 
 <div class="di_inline_t"><!--　コメントフォーム   -->
     <%= form_for(@comment, html: { multipart: true }) do |f| %>
+          
         <div class="form-group">
             <%= f.text_area :body, placeholder: "コメントを書いてください。", style: :"resize: none; width: 650px;", class: :"comment-form center-block form-control"%>
         </div>

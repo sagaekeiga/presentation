@@ -1,0 +1,21 @@
+<div class="no_in_all center-block"><!--   ログアウト画面大枠    -->
+  <div class="di_inline">
+    <div class="no_in_left"><!--   ログアウト画面大枠の左サイド   -->
+        <div class="no_in_m_tt"><b>Bubble</b></div><!--   メインタイトル   -->
+        <div class="no_in_con_tt"><b>あなたの価値を測る</b></div><!--   メインタイトル   -->
+        <div class="no_in_dis_tt">
+            <b>
+                Bubbleには精鋭のエンジニアが製作した社会的価値のあるモノが集まっています。
+                あなたも自分のお宝を発信しましょう。
+            </b>
+        </div><!--   メインコンセプト   -->
+    </div>
+  </div>
+
+  <div class="di_inline">
+    <div class="no_in_right"><!--   ログアウト画面大枠の右サイド   -->
+     <div class="no_in_sign_up"><%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn-primary no_in_btn" %></div>
+     <div class="no_in_sign_in"><%= button_to "Sign in", new_user_session_path, method: :get, :class => "btn-success no_in_btn" %></div>
+    </div>
+  </div>
+</div>

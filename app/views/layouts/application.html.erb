@@ -11,15 +11,22 @@
 </head>
 <body>
     <header>
-    <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts'%>
-          <%= render 'layouts/header' %>
+    <% if user_signed_in? %>
+      <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts'%>
+            <%= render 'layouts/header' %>
+      <% end %>
     <% end %>
     </header>
+    
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <%= yield %>
-  <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts'%>
-    <%= render 'layouts/footer' %>
-  <% end %>
+
+    <% if user_signed_in? %>
+      <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts'%>
+        <%= render 'layouts/footer' %>
+      <% end %>
+    <% end %>
+
 </body>
 </html>

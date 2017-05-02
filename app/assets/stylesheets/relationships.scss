@@ -1,3 +1,17 @@
 // Place all the styles related to the Relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.sh_mi_lik {
+  background-color: #e5e5e5;
+  display:block;
+  width:120px;
+  height: 40px;
+  line-height: 40px;
+  text-align:center;
+  border:1px solid #EEE;
+  box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}

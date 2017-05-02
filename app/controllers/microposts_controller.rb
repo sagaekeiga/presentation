@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
     before_action :user_signed_in?, only: [:create, :destroy, :new]
     before_action :set_available_tags_to_gon, only: [:new, :edit, :create, :update]
-    
+
     def new
         @micropost = Micropost.new
         @contact = Contact.new
@@ -12,18 +12,21 @@ class MicropostsController < ApplicationController
     def create
           @micropost = current_user.microposts.build(micropost_params)
           @micropost.purpose = params[:micropost][:purpose]
-
+          @activities = PublicActivity::Activity.all
+          @q = Micropost.search(params[:q])
+          @contact = Contact.new
         if @micropost.save
             redirect_to root_url
         else
-            redirect_to new_micropost_path
+            render 'microposts/new'
         end
     end
     
     def show
+        @comment = params[:object]
         @q = Micropost.search(params[:q])
         @micropost = Micropost.find(params[:id])
-        @contact = Contact.new
+        @contact = Contact.new if @comment.nil?
         @comment = Comment.new
         @comments = @micropost.comments.includes(:user).all.sort_by{|ms|ms.created_at}
         @rank = REDIS.zincrby "microposts/all/#{Date.today.to_s}", 1, @micropost.id
@@ -42,7 +45,7 @@ class MicropostsController < ApplicationController
     def update
       @micropost = Micropost.find(params[:id])
       if @micropost.update(micropost_params)
-        redirect_to edit_micropost_path
+        redirect_to @micropost
       else
         render 'edit'
       end
@@ -59,6 +62,7 @@ class MicropostsController < ApplicationController
     def set_available_tags_to_gon
       gon.available_tags = Micropost.tags_on(:tags).pluck(:name)
     end
+    
     
     private
     

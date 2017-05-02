@@ -1,16 +1,27 @@
-<h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+
+
+
+<h2 style="text-align: center;">パスワード変更用のメールを送ります。</h2>
+
+<div class="dev_sign_all center-block"><!--    大枠    -->
+  <div class="dev_sign_per center-block"><!--    中枠    -->
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <div class="field">
+        <%= f.label :Eメール %><br />
+        <%= f.email_field :email, :class => "form-control", autofocus: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "メールを送る", :class => "btn-primary btn_sign" %>
+      </div>
+    <% end %>
+    
+    <div class="dev_sign_bottom center-block"><!--   リンク  -->
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

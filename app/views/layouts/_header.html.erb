@@ -21,14 +21,14 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white;">お知らせ<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if user_signed_in? %>
-              <% @activities.each do |activity| %>
-                <div>
-                <%= date_format(activity.trackable.created_at) %><br />
-                <%= link_to "#{activity.owner.name}", activity.owner if activity.owner -%>さんが
-                <%= link_to Micropost.find(activity.trackable.micropost_id).title, Micropost.find(activity.trackable.micropost_id) -%>に
-                いいね！しました
-                </div>
-              <% end %>
+                <% @activities.each do |activity| %>
+                  <div>
+                  <%= date_format(activity.trackable.created_at) if activity.trackable %><br />
+                  <%= link_to "#{activity.owner.name}", activity.owner if activity.owner if activity.trackable -%>さんが
+                  <%= link_to Micropost.find(activity.trackable.micropost_id).title, Micropost.find(activity.trackable.micropost_id) if activity.trackable -%>に
+                  いいね！しました
+                  </div>
+                <% end %>
             <% else %>
             <li><%= link_to 'サインアップ', new_user_registration_path %></li>
             <li><%= link_to 'ログイン', new_user_session_path %></li>

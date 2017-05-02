@@ -3,6 +3,7 @@ class UsersController < ApplicationController
       @users = User.all
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
     end
     
     def show
@@ -10,6 +11,16 @@ class UsersController < ApplicationController
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
       @q = Micropost.search(params[:q])
+      @microposts = @user.microposts.all
+      @clip_mics = @user.clip_microposts
+      @like_mics = @user.like_microposts
+      
+      @following_users = @user.following
+      @followers_users = @user.followers
+
+    end
+    
+    def f_index
     end
     
     def update

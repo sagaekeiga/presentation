@@ -1,0 +1,24 @@
+<% users.each do |user| %>
+<div class="mic_array">
+ <div class="di_inline">
+  <%= image_tag(gravatar_for(user), alt: user.email, class:"gravatar") %>
+ </div>
+ <div class="di_inline">
+  <div class="mic-title"><%= link_to "#{user.name}", user %></div>
+
+   <div class="mic_li_pv">
+    <div class="di_inline">
+    </div>
+   </div>
+
+  <div class="mic_tag_date">
+   <div class="di_inline mic_date">
+    <%= date_format(user.created_at) %>
+   </div>
+   
+   <div class="mic_tag di_inline">
+   </div>
+  </div>
+ </div>
+</div>
+<% end %>

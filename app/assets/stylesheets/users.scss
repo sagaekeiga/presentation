@@ -9,7 +9,6 @@
 //------------------------マイページ大枠
 .us_sh_top {
   width: 1000px;
-  background-color: red;
   min-height: 1000px;
   height: auto !important;
   height: 50px;
@@ -18,7 +17,6 @@
 //------------------------マイページ個別の左サイド
 .us_sh_left {
   width: 300px;
-  background-color: blue;
   min-height: 900px;
   height: auto !important;
   height: 50px;
@@ -27,7 +25,6 @@
 //------------------------マイページ個別の右サイド
 .us_sh_right {
   width: 690px;
-  background-color: yellow;
   min-height: 900px;
   height: auto !important;
   height: 50px;
@@ -36,14 +33,12 @@
 //------------------------ログインユーザーアイコン
 .us_sh_image {
   width: 90%;
-  background-color: green;
   height: 80px;
 }
 
 //------------------------ログインユーザー名
 .user_name {
   width: 90%;
-  background-color: white;
   height: 40px;
   text-align: center;
   font-size: 20px;
@@ -53,7 +48,6 @@
 //------------------------ログインユーザー登録日
 .user_created {
   width: 90%;
-  background-color: purple;
   height: 30px;
   text-align: center;
   font-size: 10px;
@@ -65,7 +59,6 @@
 //------------------------ログインユーザーオプション
 .user_option {
   width: 90%;
-  background-color: black;
   height: 120px;
   text-align: center;
   font-size: 10px;
@@ -76,7 +69,6 @@
 
 .user_edit {
   width: 90%;
-  background-color: gray;
   height: 30px;
   text-align: center;
   font-size: 10px;
@@ -88,7 +80,6 @@
 
 .us_sh_right_top {
   width: 95%;
-  background-color: white;
   height: 300px;
   font-size: 10px;
   color: #c6c6c6;
@@ -99,7 +90,6 @@
 
 .us_sh_right_middle {
   width: 95%;
-  background-color: gray;
   height: 100px;
   font-size: 10px;
   color: #c6c6c6;
@@ -109,10 +99,63 @@
 
 .us_sh_right_bottom {
   width: 95%;
-  background-color: white;
-  font-size: 10px;
-  color: #c6c6c6;
   min-height: 500px;
   height: auto !important;
   height: 50px;
 }
+
+
+//------------------------左サイド下部
+
+.us_sh_left_bottom {
+  width: 100%;
+  height: 300px;
+  padding: 5px;
+  margin-top: 350px;
+}
+
+
+
+//------------------------左サイド下部のタイトル1
+
+.us_sh_left_bottom_title1 {
+  width: 95%;
+  height: 20px;
+  line-height: 20px;
+  font-size: 15px;
+  color: gray;
+}
+
+//------------------------左サイド下部のコンテンツ1
+
+.us_sh_left_bottom_con1 {
+  width: 95%;
+  line-height: 20px;
+  font-size: 15px;
+  color: gray;
+  min-height: 30px;
+  height: auto !important;
+  height: 30px;
+}
+
+
+//------------------------左サイド下部の線
+
+.us_sh_left_bottom_line {
+  width: 95%;
+  height: 1px;
+  border: none;
+  border-top: 1px #000000 solid;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+//------------------------左サイドフォローボタン
+
+.us_sh_left_bottom_follow_bu {
+  width: 95%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+

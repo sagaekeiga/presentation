@@ -1,21 +1,52 @@
 
-<!--   ヘッダー   -->
-<div class="sh_h_mic">
+
+<div class="sh_h_mic"><!--   ヘッダー   -->
+    
         <div class="sh_h_mic_co_top"><!--   ヘッダー上部   -->
             <div class="sh_h_mic_co_top_top center-block"><!--   ヘッダー上部の内容   -->
-                
+             <div class="sh_h_mic_co_top_top_con">
+                 <%= link_to "トップ", root_path %>
+                 　＞　
+                 <% @micropost.skill_list.first(1).each do |tag| %>
+                  <%= link_to "#{tag}に関する投稿", "#" %>
+                 <% end %>　
+                 <% @micropost.skill_list.each do |tag| %>
+                  <span class="label label-primary"><%= tag %></span>
+                 <% end %>
+             </div>
             </div>
         </div>
+        
     <div class="sh_h_mic_co center-block"><!--   ヘッダー下部    -->
             <div class="sh_h_mic_co_bottom center-block"><!--   ヘッダー下部の内容   -->
                 <div class="di_inline_t">
                     <div class="sh_h_mic_co_bottom_left left-block"><!--   ヘッダー下部の左サイド   -->
-                        <%= image_tag(gravatar_for(@micropost.user), alt: @micropost.user.email, class:"gravatar") %>
-                        <%= link_to "編集", edit_micropost_path if @micropost.user == current_user %>
+                      <div class="sh_h_mic_co_bottom_left_title left-block"><!--   ヘッダー下部の左サイドのタイトル   -->
+                            <div class="sh_h_mic_co_bottom_left_title_box"><b><%= @micropost.title %></b></div>
+                            <div class="sh_h_mic_co_bottom_left_tag_box">
+                             <% @micropost.skill_list.each do |tag| %>
+                              <span class="label label-primary"><%= tag %></span>
+                             <% end %>
+                            </div>
+                            <div class="sh_h_mic_co_bottom_left_tag_box">
+                                投稿　<%= @micropost.created_at.to_s(:published_on) %>
+                                編集　<%= @micropost.updated_at.to_s(:published_on) %>
+                            </div>
+                        <%= button_to "編集", edit_micropost_path, method: :get, :class => "btn-primary" if @micropost.user == current_user %>
+                      </div>
                     </div>
                 </div>
                 <div class="di_inline_t">
                     <div class="sh_h_mic_co_bottom_right right-block"><!--   ヘッダー下部の右サイド   -->
+                    　<div class="sh_h_mic_co_bottom_right_option center-block">
+                    　  <div class="di_inline_t sh_h_right_option"><b>評価　<%= @micropost.likes.count %></b></div>  
+                    　  <div class="di_inline_t sh_h_right_option"><b>クリップ　<%= @micropost.clips.count %></b></div>
+                    　  <div class="di_inline_t sh_h_right_option"><b>VIEW　<%= @micropost.rank %></b></div>  
+                    　</div>
+                    　<div class="sh_h_mic_co_bottom_right_image center-block">
+                         <%= image_tag(gravatar_for(@micropost.user), alt: @micropost.user.email, class:"gravatar", :size => '50x50') %>
+                         　<b><%= @micropost.user.name %></b>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -28,13 +59,11 @@
     <div class="di_inline_t">
         <div class="left_co_mic_sh"><!--   コンテンツ左サイド   -->
            <div class="mic_co_sh_post"><!--  投稿文  -->
-                <%= @micropost.title %><br />
-                <%= @micropost.rank %>
                 <%= qiita_markdown(@micropost.content) %><br />
            </div>
            <div class="mic_co_sh_op"><!--  投稿文のオプション  -->
-                <%= user_like(@micropost.user, @micropost) %>
-                <%= user_clip(@micropost.user, @micropost) %>           
+                 <div class="di_inline_t"><%= user_like(@micropost.user, @micropost) %></div>
+                 <div class="di_inline_t"><%= user_clip(@micropost.user, @micropost) %> </div>
            </div>
            <div class="mic_com_sh"><!--   コメント一覧   -->
             <%= render 'microposts/comment', comments: @comments %>
@@ -45,9 +74,32 @@
  <div class="di_inline_t">
     <div class="right_co_mic_sh">
         <div id="container">
-          <div id="main">左カラム（メインコンテンツ）</div>
+          <div id="main">　</div>
           <div id="sidebar"><!-- サイドバー -->
             <div id="nav">ここを固定する</div>
+            <div class="sh_mic_like">
+                d
+                <div class="sh_mic_like_title">
+                 <b>評価している人　<%= @micropost.likes.count %></b>
+                </div>
+                
+                <div class="sh_mic_like_icon">
+                    <% @micropost.like_users.first(16).each do |user| %>
+                     <%= image_tag(gravatar_for(user), alt: user.email, class:"gravatar", :size => '30x30') %>
+                    <% end %>
+                </div>
+                
+                <div class="sh_mic_like_title">
+                 <b>人気の投稿</b>
+                </div>
+                
+                <div class="sh_mic_pop">
+                    <% @micropost.like_users.first(16).each do |user| %>
+                     <%= image_tag(gravatar_for(user), alt: user.email, class:"gravatar", :size => '30x30') %>
+                    <% end %>
+                </div>
+                
+            </div>
           </div>
         </div>
     </div>

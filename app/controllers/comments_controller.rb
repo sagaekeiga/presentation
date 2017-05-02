@@ -3,13 +3,12 @@ class CommentsController < ApplicationController
     
     def create
       @comment = current_user.comments.build(comment_params)
-
+      @user = User.find_by(id: params[:comment][:user_id])
       if @comment.save
         flash[:success] = "コメントを投稿しました。"
-        redirect_to request.referrer || root_url
+        redirect_to request.referrer
       else
-        @feed_items = []
-        redirect_to root_url
+        redirect_to request.referrer
       end
     end
     

@@ -109,7 +109,6 @@
 .sh_h_mic_co {
   height: 260px;
   padding: 20px;
-  background-color: red;
 }
 
 
@@ -118,14 +117,12 @@
     min-height: 1500px;
     height: auto !important;
     height: 50px;
-    background-color: blue;
     padding: 5px;
 }
 
 //--------------------showページのボディの中の左サイド
 .left_co_mic_sh {
   margin-left: 140px;
-  background-color: yellow;
   width: 747px;
   min-height: 1500px;
   height: auto !important;
@@ -134,7 +131,6 @@
 
 //--------------------showページのボディの中の右サイド
 .right_co_mic_sh {
-  background-color: orange;
   width: 400px;
   min-height: 1500px;
   height: auto !important;
@@ -153,7 +149,7 @@
 #nav {
   width: 300px;
   height: 350px;    /* デモ用 */
-  background: #f88; /* 同上 */
+  background:rgba(255,255,255,0.5); /* 同上 */
 }
 
 .fixed {
@@ -178,10 +174,20 @@
 .sh_h_mic_co_top_top {
   width: 1152px;
   height: 40px;
-  background-color: blue;
   margin-top: -20px;
   padding: 5px;
 }
+
+
+//--------------------showページのヘッダーの上部の内容
+.sh_h_mic_co_top_top_con {
+  width: 90%;
+  height: 90%;
+  padding: 6px;
+  text-align: left;
+  font-size: 10px;
+}
+
 
 
 
@@ -189,7 +195,6 @@
 .sh_h_mic_co_bottom {
   width: 1152px;
   height: 260px;
-  background-color: purple;
   margin-top: -20px;
   padding: 5px;
 }
@@ -199,12 +204,37 @@
 .sh_h_mic_co_bottom_left {
   width: 748px;
   height: 259px;
-  background-color: white;
   padding: 5px;
   margin-left: -5px;
   margin-top: -5px;
 }
 
+//--------------------showページのヘッダーの下部の左サイドのタイトル
+.sh_h_mic_co_bottom_left_title {
+  width: 90%;
+  height: 90%;
+  padding: 5px;
+  word-break : break-all;
+}
+
+//--------------------showページのヘッダーの下部の左サイドタイトルのボックス
+.sh_h_mic_co_bottom_left_title_box {
+  width: 650px;
+  height: 100px;
+  padding: 5px;
+  text-align: left;
+  font-size: 30px;
+  margin-left: -10px;
+}
+
+//--------------------showページのヘッダーの下部の左サイドタグのボックス
+.sh_h_mic_co_bottom_left_tag_box {
+  width: 650px;
+  height: 25px;
+  padding: 5px;
+  text-align: left;
+  font-size: 10px;
+}
 
 //--------------------showページのヘッダーの下部の右サイド
 .sh_h_mic_co_bottom_right {
@@ -216,6 +246,35 @@
   margin-top: -5px;
 }
 
+//--------------------showページのヘッダーの下部の右サイドのオプションの枠
+.sh_h_mic_co_bottom_right_option {
+  width: 370px;
+  height: 50px;
+  background-color: red;
+}
+
+//--------------------showページのヘッダーの下部の右サイドの画像
+.sh_h_mic_co_bottom_right_image {
+  width: 350px;
+  height: 60px;
+  background-color: white;
+  padding: 5px;
+  margin-left: 30px;
+}
+
+
+//--------------------showページのヘッダーの下部の右サイドのオプション
+.sh_h_right_option {
+  width: 100px;
+  height: 30px;
+  background-color: white;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 5px;
+}
+
 
 //--------------------showページのコンテンツの投稿文
 .mic_co_sh_post {
@@ -224,6 +283,7 @@
   min-height: 100px;
   height: auto !important;
   height: 50px;
+  word-break : break-all;
 }
 
 
@@ -231,7 +291,7 @@
 .mic_co_sh_op {
   background-color: white;
   padding: 5px;
-  height: 100px;
+  height: 60px;
 	border-bottom: 1px solid #8e8e8e;
 }
 
@@ -244,6 +304,7 @@
   height: auto !important;
   height: 50px;
   border-bottom: 1px solid #8e8e8e;
+  margin-top: 10px;
 }
 
 
@@ -255,6 +316,7 @@
   height: auto !important;
   height: 50px;
   border-bottom: 1px solid #8e8e8e;
+  margin-left: -6px;
 }
 
 
@@ -262,7 +324,7 @@
 .co_sh_per_del {
   background-color: gray;
   padding: 5px;
-  min-height: 20px;
+  min-height: 50px;
   height: auto !important;
   height: 50px;
 }
@@ -300,3 +362,44 @@
     width: 100%;
     margin-top: -10px;
 }
+
+
+//--------------------エラーメッセージ
+.error {
+    width: 300px;
+}
+
+//---------------------評価している人一覧
+.sh_mic_like {
+  width: 400px;
+  height: 700px;
+  background-color: red;
+}
+
+
+//---------------------評価している人一覧タイトル
+.sh_mic_like_title {
+  width: 400px;
+  height: 20px;
+  background-color: blue;
+  color: #cccccc;
+}
+
+//---------------------評価している人一覧画像
+.sh_mic_like_icon {
+  width: 400px;
+  background-color: blue;
+  color: #cccccc;
+  min-height: 0px;
+  height: auto !important;
+  height: 50px;
+}
+
+//---------------------人気の投稿
+.sh_mic_pop {
+  width: 400px;
+  height: 400px;
+  background-color: purple;
+  color: #cccccc;
+}
+

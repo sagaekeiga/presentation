@@ -3,7 +3,7 @@
   <div class="di_inline_t">
     <div class="us_sh_left"><!--   左サイド   -->
         <div id="container">
-          <div id="main">左カラム（メインコンテンツ）</div>
+          <div id="main">　</div>
             <div id="sidebar"><!-- サイドバー -->
               <div id="nav">
                 <div class="b_10"></div>
@@ -17,24 +17,37 @@
               </div>
             </div>
         </div>
-      <a href="<%= following_user_path(@user) %>">
-        <strong id="following" class="stat">
-          <%= @user.following.count %>
-        </strong>
-        following
-      </a>
-      <a href="<%= followers_user_path(@user) %>">
-        <strong id="followers" class="stat">
-          <%= @user.followers.count %>
-        </strong>
-        followers
-      </a>
-    <%= render 'follow_form' %>
-    <%= @user.name %>
-    <%= @user.job %>
-    <%= @user.prefecture %>
-    <%= @user.profile %>
-    <%= @user.blog %>
+        
+        <div class="us_sh_left_bottom center-block"><!-- 左サイド下部  -->
+        
+          <div class="us_sh_left_bottom_title1 center-block">
+              <strong id="following" class="stat">
+                フォロー　<%= @user.following.count %>
+              </strong>
+          </div>
+          
+          <div class="us_sh_left_bottom_con1 center-block"><!-- フォローアイコン  -->
+            <% @following_users.first(16).each do |user| %>
+             <%= image_tag(gravatar_for(user), alt: user.email, class:"gravatar", :size => '30x30') %>
+            <% end %>
+          </div>
+          
+          <div class="us_sh_left_bottom_line center-block"></div><!--  線   -->
+          
+          <div class="us_sh_left_bottom_title1 center-block">
+              <strong id="following" class="stat">
+                フォロワー　<%= @user.followers.count %>
+              </strong>
+          </div>
+          
+          <div class="us_sh_left_bottom_con1 center-block"><!-- フォロワーアイコン  -->
+            <% @followers_users.first(16).each do |user| %>
+             <%= image_tag(gravatar_for(user), alt: user.email, class:"gravatar", :size => '30x30') %>
+            <% end %>
+          </div>
+          <div class="us_sh_left_bottom_follow_bu center-block"><%= render 'follow_form' %></div>
+        </div>
+        
     </div>
   </div>
 
@@ -70,25 +83,32 @@
    
    <div class="us_sh_right_bottom center-block"><!--   右サイド下部   -->
      <ul class="nav nav-tabs"><!--   複数タブ下部   -->
-       <li><a href="#home3" data-toggle="tab">プロフィール</a></li>
-       <li><a href="#prof3" data-toggle="tab">グラフ</a></li>
-       <li><a href="#msgs3" data-toggle="tab">予備</a></li>
+       <li><a href="#home3" data-toggle="tab">投稿</a></li>
+       <li><a href="#prof3" data-toggle="tab">クリップ</a></li>
+       <li><a href="#msgs3" data-toggle="tab">評価</a></li>
+       <li><a href="#abc3" data-toggle="tab">フォロー</a></li>
+       <li><a href="#def3" data-toggle="tab">フォロワー</a></li>
      </ul><!-- nav-tabs -->
       
      <div class="tab-content">
-       <div class="tab-pane fade in active" id="home3"><!--      プロフィール      -->
-        <%= @user.name %>
-        <%= @user.job %>
-        <%= @user.prefecture %>
-        <%= @user.profile %>
-        <%= @user.blog %>
+       <div class="tab-pane fade in active" id="home3"><!--      投稿      -->
+         <%= render 'pages/array', microposts: @microposts %>
        </div>
        
-       <div class="tab-pane fade" id="prof3"><!--      グラフ      -->
+       <div class="tab-pane fade" id="prof3"><!--      クリップ      -->
+         <%= render 'pages/array', microposts: @clip_mics %>
        </div>
        
-       <div class="tab-pane fade" id="msgs3"><!--      予備      -->
-          予備
+       <div class="tab-pane fade" id="msgs3"><!--      評価      -->
+         <%= render 'pages/array', microposts: @like_mics %>
+       </div>
+       
+       <div class="tab-pane fade" id="abc3"><!--      フォロー      -->
+         <%= render 'relationships/following', users: @following_users %>
+       </div>
+       
+       <div class="tab-pane fade" id="def3"><!--      フォロワー      -->
+         <%= render 'relationships/followers', users: @followers_users %>
        </div>
      </div><!-- tab-content -->
    </div>

@@ -1,18 +1,5 @@
 <% if !user_signed_in? %>
-<%= search_form_for @q do |f| %>
-
-  <%# or で複数の値をorで検索（and 複数の値をand条件で検索） %>
-  <%= f.search_field :title_or_content_cont, placeholder: "検索", class: :"form-control"%>
-  <br />
-
-  <%# 検索ボタン %>
-  <%= f.submit "検索", class: "btn btn-primary center-block"%>
-<% end %>
-<div class="top_content center-block">
-
-<h1>ようこそ</h1>
-<p>トップページです。</p>
-</div>
+ <%= render 'pages/no_login' %>
 <% end %>
 
 
@@ -22,39 +9,54 @@
 <!--          ログイントップページ          -->
 <% if user_signed_in? %>
 
-<div class="top_content center-block">
+<div class="top_content_in center-block">
  
- <ul class="nav nav-tabs">
-   <li><a href="#home2" data-toggle="tab">新着</a></li>
-   <li><a href="#prof2" data-toggle="tab">プロトタイプ</a></li>
-   <li><a href="#msgs2" data-toggle="tab">プレゼンテーション</a></li>
-   <li><a href="#sets2" data-toggle="tab">注目</a></li>
-   <li><a href="#sets3" data-toggle="tab">クリップ</a></li>
- </ul><!-- nav-tabs -->
-  
- <div class="tab-content">
-   <div class="tab-pane fade in active" id="home2">
-      <%= render 'pages/array', microposts: @microposts %><!--      新着      -->
-    <div class="t_a_c"><%= paginate @microposts %></div>
-   </div>
-   
-   <div class="tab-pane fade" id="prof2">
-      <%= render 'pages/if_array', microposts: @pro_mics, type: 1 %><!--      プロトタイプ      -->
-     <div class="t_a_c"><%= paginate @pro_mics, :param_name => 'vip_page' %></div>
-   </div>
-   
-   <div class="tab-pane fade" id="msgs2">
-      <%= render 'pages/if_array', microposts: @pre_mics, type: 2 %><!--      プレゼンテーション      -->
-   </div>
-   
-   <div class="tab-pane fade" id="sets2">
-      <%= render 'pages/array', microposts: @rank_mics %><!--      注目      -->
-   </div>
-   
-   <div class="tab-pane fade" id="sets3">
-       <%= render 'pages/clip', microposts: @clip_mics %>
-   </div>
- </div><!-- tab-content -->
+    <div class="di_inline_t">
+     <div class="in_letf">
+         <ul class="nav nav-tabs"><!--          複数タブ          -->
+           <li><a href="#home2" data-toggle="tab">新着</a></li>
+           <li><a href="#prof2" data-toggle="tab">プロトタイプ</a></li>
+           <li><a href="#msgs2" data-toggle="tab">プレゼンテーション</a></li>
+           <li><a href="#sets2" data-toggle="tab">注目</a></li>
+           <li><a href="#sets3" data-toggle="tab">クリップ</a></li>
+         </ul><!-- nav-tabs -->
+          
+         <div class="tab-content width_400">
+           <div class="tab-pane fade in active" id="home2">
+              <%= render 'pages/array', microposts: @microposts %><!--      新着      -->
+            <div class="t_a_c"><%= paginate @microposts %></div>
+           </div>
+           
+           <div class="tab-pane fade" id="prof2">
+              <%= render 'pages/if_array', microposts: @pro_mics, type: 1 %><!--      プロトタイプ      -->
+             <div class="t_a_c"><%= paginate @pro_mics, :param_name => 'vip_page' %></div>
+           </div>
+           
+           <div class="tab-pane fade" id="msgs2">
+              <%= render 'pages/if_array', microposts: @pre_mics, type: 2 %><!--      プレゼンテーション      -->
+           </div>
+           
+           <div class="tab-pane fade" id="sets2">
+              <%= render 'pages/array', microposts: @rank_mics %><!--      注目      -->
+           </div>
+           
+           <div class="tab-pane fade" id="sets3">
+               <%= render 'pages/clip', microposts: @clip_mics %>
+           </div>
+         </div><!-- tab-content -->
+     </div>
+    </div>
+
+
+    <div class="di_inline_t">
+     <div class="in_right"><!--          右サイド          -->
+      <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
+      <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
+      <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
+      <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
+     </div>
+    </div>
+    
  </div>
 <% end %>
 

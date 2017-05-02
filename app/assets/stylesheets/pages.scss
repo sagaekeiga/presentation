@@ -6,36 +6,48 @@
 
 //----------------------------------index.html.erb
 
-//----------------------------------サイドバー
-
-.sidebar {
-    width: 300px;
-    background-color: blue;
+//----------------------------------大枠
+.top_content_in {
+    width: 1000px;
     min-height: 1500px;
     height: auto !important;
     height: 50px;
-    float: right;
+    padding: 5px;
+}
+//----------------------------------右サイド
+
+.in_right {
+   width: 270px;
+   background-color: blue;
+   min-height: 1500px;
+   height: auto !important;
+   height: 50px;
 }
 
-.main_menu {
-    width: 600px;
-    background-color: yellow;
-    min-height: 1500px;
-    height: auto !important;
-    height: 50px;
-    float: left;
+//----------------------------------右サイド
+
+.in_right_con1 {
+   width: 250px;
+   padding: 5px;
+   background-color: black;
+   height: 200px;
 }
 
-.in_content {
-    
-}
+//----------------------------------左サイド
 
+.in_left {
+   width: 100px;
+   background-color: red;
+   min-height: 1500px;
+   height: auto !important;
+   height: 50px;
+}
 //---------------------------タイムライン
 .mic_array {
 	padding: .5em;
 	border-bottom: 1px solid #ccc;
 	height: 125px;
-	width: 700px;
+	width: 657px;
 }
 
 
@@ -83,4 +95,91 @@
 }
 .op_op {
 	padding: .5em;
+}
+
+//------------------------------ログアウト画面
+
+
+//------------------------------全体
+.no_in_all {
+ background-color: gray;
+ width: 1000px;
+ height: 600px;
+}
+
+//------------------------------左サイド
+.no_in_left {
+ background-color: white;
+ width: 690px;
+ height: 590px;
+ padding: 5px;
+}
+
+//------------------------------右サイド
+.no_in_right {
+ width: 300px;
+ height: 590px;
+}
+
+//------------------------------右サイドメインタイトル
+.no_in_m_tt {
+ text-align: left;
+ vertical-align: middle;
+  position: relative;
+  top: 30%;
+  -webkit-transform: translateY(-50%); /* Safari用 */
+  transform: translateY(-50%);
+  font-size: 60px;
+}
+
+
+
+//------------------------------タイトル説明
+.no_in_dis_tt {
+ text-align: left;
+ vertical-align: left;
+ position: relative;
+ top: 40%;
+ -webkit-transform: translateY(-50%); /* Safari用 */
+ transform: translateY(-50%);
+ font-size: 20px;
+}
+
+//------------------------------タイトルコンセプト
+.no_in_con_tt {
+ text-align: left;
+ vertical-align: middle;
+ position: relative;
+ top: 35%;
+ -webkit-transform: translateY(-50%); /* Safari用 */
+ transform: translateY(-50%);
+ font-size: 30px;
+}
+
+//------------------------------サインアップ
+.no_in_sign_up {
+ text-align: center;
+ position: relative;
+ top: 35%;
+ -webkit-transform: translateY(-50%); /* Safari用 */
+ transform: translateY(-50%);
+ font-size: 30px;
+}
+
+//------------------------------ボタン
+.no_in_btn {
+ font-size: 30px;
+ width: 250px;
+ height: 50px;
+ line-height: 35px;
+}
+
+//------------------------------ログイン
+.no_in_sign_in {
+ text-align: center;
+ position: relative;
+ top: 40%;
+ -webkit-transform: translateY(-50%); /* Safari用 */
+ transform: translateY(-50%);
+ font-size: 30px;
 }

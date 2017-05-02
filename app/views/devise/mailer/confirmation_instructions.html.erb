@@ -1,5 +1,21 @@
 <p>Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>
+このたびはBubble会員に
+ご登録いただきありがとうございます。
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+このメールは記入したメールアドレスに間違いがないかの
+確認メールとなります。
+</p>
+
+まだ登録は完了していませんので、
+下記リンクより登録フォームへアクセスし、登録を完了させて下さい。
+
+＜本登録用リンク＞
+<p><%= link_to '本登録を完了する', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+※本登録まで時間が開くと認証に失敗し、再度、登録をし直して
+頂く場合がございますので、ご理解よろしくお願い申し上げます。
+
+
+Bubble

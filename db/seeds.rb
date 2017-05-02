@@ -1,14 +1,34 @@
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar")
-             
 User.create!(name:  "寒河江",
              email: "sagae5.28rujeae@gmail.com",
              password:              "s19930528",
              password_confirmation: "s19930528")
+
+User.create!(name:  "Example User",
+             email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar")
+
+User.create!(name:  "京我",
+             email: "zettainiakiramenaizo@gmail.com",
+             password:              "s19930528",
+             password_confirmation: "s19930528")
              
-2.times do |n|
+User.create!(name:  "田中",
+             email: "aaaaaa@gmail.com",
+             password:              "s19930528",
+             password_confirmation: "s19930528")
+
+User.create!(name:  "ttt",
+             email: "bbbbbbbb@gmail.com",
+             password:              "s19930528",
+             password_confirmation: "s19930528")
+             
+User.create!(name:  "kkk",
+             email: "kkkkk@gmail.com",
+             password:              "s19930528",
+             password_confirmation: "s19930528")
+             
+10.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   job = "起業家"
@@ -47,8 +67,8 @@ end
 # リレーションシップ
 users = User.all
 user  = users.first
-following = users[0..1]
-followers = users[1..2]
+following = users[0..14]
+followers = users[1..14]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 AdminUser.create!(email: 'sagae5.28rujeae@gmail.com', password: 's19930528', password_confirmation: 's19930528')
