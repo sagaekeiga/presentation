@@ -50,7 +50,11 @@
 
     <div class="di_inline_t">
      <div class="in_right"><!--          右サイド          -->
-      <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
+      <div class="in_right_con1 center-block">
+        <% ActsAsTaggableOn::Tag.most_used(3).each do |tag| %>
+              <span class="label label-primary"><%= tag %></span>
+        <% end %>
+      </div><br /><!--          コンテンツ1          -->
       <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
       <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
       <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->

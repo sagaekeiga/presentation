@@ -1,0 +1,9 @@
+<div class="b_10"></div>
+<% users.each do |user| %>
+ <div class="di_inline_t">
+  <div class="f_array center-block">
+   <%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3 center-block", :size => '50x50'), user %>
+   <div class="mi_u_nm center-block"><%= link_to "#{user.name}", user %></div>
+  </div>
+ </div>
+<% end %>

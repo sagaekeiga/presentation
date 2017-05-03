@@ -1,30 +1,26 @@
 <% microposts.each do |mic| %>
-<div class="mic_array">
- <div class="di_inline">
-  <%= image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar") %>
- </div>
- <div class="di_inline">
-  <div class="mic-title"><%= link_to "#{mic.title.truncate(20)}", mic %></div>
-  <div class="mic-content"><%= mic.content.truncate(100) %></div>
-  
-   <div class="mic_li_pv">
-    <div class="di_inline"><b>いいね数<%= mic.likes.count %></b>　　</div>
-    <div class="di_inline">
-      <b>PV <%= mic.rank %>　　</b>
-    </div>
+  <div class="mic_array">
+   <div class="di_inline_t">
+    <%= link_to image_tag(gravatar_for(mic.user), alt: mic.user.email, class:"gravatar bo_rad_3", :size => '50x50'), mic.user %>
+    <div class="mi_u_nm"><%= link_to"#{mic.user.name}", mic.user %></div>
    </div>
+   <div class="di_inline_t">
+    <div class="mic-title"><%= link_to "#{mic.title}", mic %></div>
+    <div class="mic-content"><%= mic.content.truncate(139) %></div>
+    
+     <div class="mic_li_pv">
+      <div class="di_inline page_pv"><b><%= mic.likes.count %> 評価</b></div>
+      <div class="di_inline page_pv"><b><%= mic.rank %> PV</b></div>
 
-  <div class="mic_tag_date">
-   <div class="di_inline mic_date">
-    <%= date_format(mic.created_at) %>
-   </div>
-   
-   <div class="mic_tag di_inline">
-    <% mic.skill_list.each do |tag| %>
-     <span class="label label-primary"><%= tag %></span>
-   <% end %>
-   </div>
+     <div class="mic_tag di_inline_t">
+       <% mic.skill_list.each do |tag| %>
+        <span class="label label-primary"><%= tag %></span>
+       <% end %>
+     </div>
+       <div class="di_inline mic_date">
+        <%= date_format(mic.created_at) %>
+       </div>
+       </div>
+    </div>
   </div>
- </div>
-</div>
 <% end %>

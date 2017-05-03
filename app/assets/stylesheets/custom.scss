@@ -74,6 +74,10 @@ body > .container {
   height: 10px;
 }
 
+.b_50 {
+  height: 50px;
+}
+
 .width_400 {
   width: 700px;
 }
@@ -84,4 +88,25 @@ body > .container {
 
 a {
 text-decoration: none;
+}
+
+.flo_right {
+  float: right;
+}
+
+.bo_rad_3 {
+  border-radius: 3px;
+}
+
+.b_50 {
+  height: 50px;
+}
+
+.pad_3 {
+  margin: 3px;
+}
+
+.o_border {
+	padding: .5em;
+	border: 3px double #ccc;
 }

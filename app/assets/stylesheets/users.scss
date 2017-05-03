@@ -93,6 +93,7 @@
   height: 100px;
   font-size: 10px;
   color: #c6c6c6;
+  background-color: blue;
 }
 
 //------------------------右サイド下部
@@ -159,3 +160,33 @@
   margin-bottom: 5px;
 }
 
+
+//------------------------複数タブのタグ
+
+.u_sh_tag {
+  width: 95%;
+  margin-top: 10px;
+  height: 250px;
+  background-color: red;
+}
+
+
+//------------------------複数タブのタグ
+
+.u_sh_tag_per {
+  margin: 5px;
+  height: 20px;
+  min-width: 10px;
+  width: auto !important;
+  width: 30px;
+}
+
+//------------------------一覧ページのタグ
+
+.u_sh_tag_index {
+  width: 95%;
+  margin-top: 10px;
+  min-height: 30px;
+  height: auto !important;
+  height: 30px;
+}

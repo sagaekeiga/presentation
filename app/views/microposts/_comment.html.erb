@@ -2,30 +2,37 @@
     <% if user_signed_in? %>
       <div class="co_sh_per">
         <div class="di_inline_t">
-            <%= image_tag(gravatar_for(comment.user), alt: comment.user.email, class:"gravatar") %><!--　コメントのアイコン   -->
+            <%= image_tag(gravatar_for(comment.user), alt: comment.user.email, class:"gravatar bo_rad_3", :size => '30x30') %><!--　コメントのアイコン   -->
         </div>
-        <div class="di_inline_t">
-            <%= comment.body %><!--　コメントの文   -->
+        <div class="di_inline_t sh_mi_co_n">
+            <b><%= link_to "#{comment.user.name}", comment.user %></b><br /><!--　コメントの文   -->
+            <span style="font-size: 9px;color: #bdbdbd;">投稿数 <%= comment.user.microposts.count %></span>
         </div>
-        <div class="co_sh_per_del"><%= link_to '削除', comment_path(comment), method: :delete, data: { confirm: "本当に投稿を削除していいですか？" }, :class => "sh_mi_lik" if current_user == comment.user %></div><!--　コメントの削除ボタン   -->
+        <div class="di_inline_t flo_right">
+          <%= link_to '削除', comment_path(comment), method: :delete, data: { confirm: "本当に投稿を削除していいですか？" }, :class => "sh_mi_del" if current_user == comment.user %><!--　コメントの削除ボタン   -->
+        </div>
+        <div class="sh_mi_co_body">
+            <%= qiita_markdown(comment.body) %><!--　コメントの文   -->
+        </div>
       </div>
     <% end %>
 <% end %>
 
 
-
-<div class="di_inline_t">
-    <%= image_tag(gravatar_for(current_user), alt: current_user.email, class:"gravatar") %><!--　コメントのアイコン   -->
-</div>
-
-<div class="di_inline_t"><!--　コメントフォーム   -->
-    <%= form_for(@comment, html: { multipart: true }) do |f| %>
-          
-        <div class="form-group">
-            <%= f.text_area :body, placeholder: "コメントを書いてください。", style: :"resize: none; width: 650px;", class: :"comment-form center-block form-control"%>
-        </div>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.hidden_field :micropost_id, :value => @micropost.id %>
-        <%= f.submit "コメントする", class: "btn btn-primary btn-xs", style: :"margin-top: -20px;" %>
-    <% end %>
+<div class="co_sh_form_box">
+  <div class="di_inline_t">
+      <%= image_tag(gravatar_for(current_user), alt: current_user.email, class:"gravatar bo_rad_3", :size => '50x50') %><!--　コメントのアイコン   -->
+  </div>
+  
+  <div class="di_inline_t"><!--　コメントフォーム   -->
+      <%= form_for(@comment, html: { multipart: true }) do |f| %>
+            
+          <div class="form-group">
+              <%= f.text_area :body, placeholder: "コメントを書いてください。", style: :"resize: none; width: 667px; height: 150px;", class: :"comment-form center-block form-control"%>
+          </div>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :micropost_id, :value => @micropost.id %>
+          <%= f.submit "コメントする", class: "btn btn-primary btn-xs flo_right", style: :"margin-top: -10px;" %>
+      <% end %>
+  </div>
 </div>

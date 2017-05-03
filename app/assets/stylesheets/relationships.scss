@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+//--------------------------following
+
 .sh_mi_lik {
   background-color: #e5e5e5;
   display:block;
@@ -14,4 +17,24 @@
   box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
   -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
   -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}
+
+//---------------------------一覧の大枠
+.f_array {
+  display:block;
+	padding: 10px 3px 3px 3px;
+	border: 1px solid #ccc;
+	height: 100px;
+	width: 100px;
+  background-color: #f2f2f2;
+}
+
+//---------------------------フォロワー名
+
+.mi_u_nm {
+	height: 40px;
+	width: 50px;
+ font-size: 10px;
+ text-align: center;
+ padding-top: 3px;
 }

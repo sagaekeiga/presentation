@@ -52,80 +52,15 @@
   </div>
 
 <div class="di_inline_t">
-  <div class="us_sh_right"><!--   右サイド   -->
-   <div class="us_sh_right_top center-block"><!--   右サイド上部   -->
-     <ul class="nav nav-tabs">
-       <li><a href="#home2" data-toggle="tab">プロフィール</a></li>
-       <li><a href="#prof2" data-toggle="tab">グラフ</a></li>
-       <li><a href="#msgs2" data-toggle="tab">タグ</a></li>
-     </ul><!-- nav-tabs -->
-      
-     <div class="tab-content">
-       <div class="tab-pane fade in active" id="home2"><!--      プロフィール      -->
-        <div class="u_sh_tag center-block">
-        <%= @user.name %>
-        <%= @user.job %>
-        <%= @user.prefecture %>
-        <%= @user.profile %>
-        <%= @user.blog %>
-        </div>
-       </div>
-       
-       <div class="tab-pane fade" id="prof2"><!--      グラフ      -->
-       </div>
-       
-       <div class="tab-pane fade" id="msgs2"><!--      タグ      -->
-        <div class="u_sh_tag center-block">
-          <% tag_num = 0 %>
-
+  <div class="us_sh_right"><!--   右サイド(タグ一覧)   -->
+      <h2 style="text-align: center;width: 95%;">タグ一覧</h2>
+        <div class="u_sh_tag_index center-block o_border bo_rad_3">
          <% @user.microposts.first(60).each do |micropost| %>
            <% micropost.skill_list.each do |tag| %>
               <div class="u_sh_tag_per di_inline_t"><span class="label label-primary"><%= tag %></span></div>
-              <% tag_num += 1 %>
            <% end %>
-         <% end %><br>
-          <% if tag_num > 60 %>
-           <%= link_to "もっとみる", tags_user_path %>
-          <% end %>
+         <% end %>
         </div>
-       </div>
-     </div><!-- tab-content -->
-   </div>
-   
-   <div class="us_sh_right_middle center-block"><!--   右サイド中部   -->
-   </div>
-   
-   <div class="us_sh_right_bottom center-block"><!--   右サイド下部   -->
-     <ul class="nav nav-tabs"><!--   複数タブ下部   -->
-       <li><a href="#home3" data-toggle="tab">投稿</a></li>
-       <li><a href="#prof3" data-toggle="tab">クリップ</a></li>
-       <li><a href="#msgs3" data-toggle="tab">評価</a></li>
-       <li><a href="#abc3" data-toggle="tab">フォロー</a></li>
-       <li><a href="#def3" data-toggle="tab">フォロワー</a></li>
-     </ul><!-- nav-tabs -->
-      
-     <div class="tab-content">
-       <div class="tab-pane fade in active" id="home3"><!--      投稿      -->
-         <%= render 'pages/array', microposts: @microposts %>
-       </div>
-       
-       <div class="tab-pane fade" id="prof3"><!--      クリップ      -->
-         <%= render 'pages/array', microposts: @clip_mics %>
-       </div>
-       
-       <div class="tab-pane fade" id="msgs3"><!--      評価      -->
-         <%= render 'pages/array', microposts: @like_mics %>
-       </div>
-       
-       <div class="tab-pane fade" id="abc3"><!--      フォロー      -->
-         <%= render 'relationships/follow', users: @following_users %>
-       </div>
-       
-       <div class="tab-pane fade" id="def3"><!--      フォロワー      -->
-         <%= render 'relationships/follow', users: @followers_users %>
-       </div>
-     </div><!-- tab-content -->
-   </div>
   </div>
 </div>
 

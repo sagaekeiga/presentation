@@ -23,6 +23,17 @@ class UsersController < ApplicationController
     def f_index
     end
     
+    def tags
+      @user = User.find(params[:id])
+      @contact = Contact.new
+      @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
+      @microposts = @user.microposts.all
+
+      @following_users = @user.following
+      @followers_users = @user.followers
+    end
+    
     def update
       p user_params
       respond_to do |format|
