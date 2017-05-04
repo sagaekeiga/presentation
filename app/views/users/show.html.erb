@@ -1,129 +1,31 @@
 
 <div class="us_sh_top center-block">
   <div class="di_inline_t">
-    <div class="us_sh_left"><!--   左サイド   -->
-        <div id="container">
-          <div id="main">　</div>
-            <div id="sidebar"><!-- サイドバー -->
-              <div id="nav">
-                <div class="b_10"></div>
-                <div class="us_sh_image center-block"><!-- ログインユーザーアイコン -->
-                  <%= image_tag(gravatar_for(@user), alt: @user.email, class:"gravatar center-block bo_rad_3") %>
-                </div>
-                <div class="user_name center-block"><%= @user.name %></div><!-- ログインユーザー名 -->
-                <div class="user_created center-block"><%= date_format(@user.created_at) %></div><!-- ログインユーザー登録日 -->
-                <div class="user_option center-block">オプション</div><!-- ログインユーザー登録日 -->
-                <div class="user_edit center-block"><%= link_to "プロフィールを編集する", edit_user_registration_path %></div><!-- ログインユーザー登録日 -->
-              </div>
-            </div>
-        </div>
-        
-        <div class="us_sh_left_bottom center-block"><!-- 左サイド下部  -->
-        
-          <div class="us_sh_left_bottom_title1 center-block">
-              <strong id="following" class="stat">
-                フォロー　<%= @user.following.count %>
-              </strong>
-          </div>
-          
-          <div class="us_sh_left_bottom_con1 center-block"><!-- フォローアイコン  -->
-            <% @following_users.first(16).each do |user| %>
-             <%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '30x30'), user %>
-            <% end %>
-          </div>
-          
-          <div class="us_sh_left_bottom_line center-block"></div><!--  線   -->
-          
-          <div class="us_sh_left_bottom_title1 center-block">
-              <strong id="following" class="stat">
-                フォロワー　<%= @user.followers.count %>
-              </strong>
-          </div>
-          
-          <div class="us_sh_left_bottom_con1 center-block"><!-- フォロワーアイコン  -->
-            <% @followers_users.first(16).each do |user| %>
-             <%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '30x30'), user %>
-            <% end %>
-          </div>
-          <div class="us_sh_left_bottom_follow_bu center-block"><%= render 'follow_form' %></div>
-        </div>
-        
-    </div>
+      <%= render 'users/left', user: @user, following_users: @following_users, followers_users: @followers_users %>
   </div>
 
 <div class="di_inline_t">
   <div class="us_sh_right"><!--   右サイド   -->
-   <div class="us_sh_right_top center-block"><!--   右サイド上部   -->
-     <ul class="nav nav-tabs">
-       <li><a href="#home2" data-toggle="tab">プロフィール</a></li>
-       <li><a href="#prof2" data-toggle="tab">グラフ</a></li>
-       <li><a href="#msgs2" data-toggle="tab">タグ</a></li>
-     </ul><!-- nav-tabs -->
-      
-     <div class="tab-content">
-       <div class="tab-pane fade in active" id="home2"><!--      プロフィール      -->
-        <div class="u_sh_tag center-block">
-        <%= @user.name %>
-        <%= @user.job %>
-        <%= @user.prefecture %>
-        <%= @user.profile %>
-        <%= @user.blog %>
-        </div>
-       </div>
-       
-       <div class="tab-pane fade" id="prof2"><!--      グラフ      -->
-       </div>
-       
-       <div class="tab-pane fade" id="msgs2"><!--      タグ      -->
-        <div class="u_sh_tag center-block">
-          <% tag_num = 0 %>
-
-         <% @user.microposts.first(60).each do |micropost| %>
-           <% micropost.skill_list.each do |tag| %>
-              <div class="u_sh_tag_per di_inline_t"><span class="label label-primary"><%= tag %></span></div>
-              <% tag_num += 1 %>
-           <% end %>
-         <% end %><br>
-          <% if tag_num > 60 %>
-           <%= link_to "もっとみる", tags_user_path %>
-          <% end %>
-        </div>
-       </div>
-     </div><!-- tab-content -->
-   </div>
+   <%= render 'users/profile', user: @user %>
    
    <div class="us_sh_right_middle center-block"><!--   右サイド中部   -->
    </div>
    
    <div class="us_sh_right_bottom center-block"><!--   右サイド下部   -->
      <ul class="nav nav-tabs"><!--   複数タブ下部   -->
-       <li><a href="#home3" data-toggle="tab">投稿</a></li>
-       <li><a href="#prof3" data-toggle="tab">クリップ</a></li>
-       <li><a href="#msgs3" data-toggle="tab">評価</a></li>
-       <li><a href="#abc3" data-toggle="tab">フォロー</a></li>
-       <li><a href="#def3" data-toggle="tab">フォロワー</a></li>
+       <li><%= link_to "#{@user.microposts.count} 投稿", @user, { :class => "gray" } %></li>
+       <li><%= link_to "#{@user.clip_microposts.count} クリップ", clip_posts_user_path %></a></li>
+       <li><%= link_to "#{@user.like_microposts.count} 評価", like_posts_user_path %></a></li>
+       <li><%= link_to "#{@user.following.count} フォロー", following_users_user_path %></li>
+       <li><%= link_to "#{@user.followers.count} フォロワー", followed_users_user_path %></li>
      </ul><!-- nav-tabs -->
       
      <div class="tab-content">
        <div class="tab-pane fade in active" id="home3"><!--      投稿      -->
          <%= render 'pages/array', microposts: @microposts %>
+         <div class="t_a_c"><%= paginate @microposts, :param_name => 'micropost' %></div>
        </div>
-       
-       <div class="tab-pane fade" id="prof3"><!--      クリップ      -->
-         <%= render 'pages/array', microposts: @clip_mics %>
-       </div>
-       
-       <div class="tab-pane fade" id="msgs3"><!--      評価      -->
-         <%= render 'pages/array', microposts: @like_mics %>
-       </div>
-       
-       <div class="tab-pane fade" id="abc3"><!--      フォロー      -->
-         <%= render 'relationships/follow', users: @following_users %>
-       </div>
-       
-       <div class="tab-pane fade" id="def3"><!--      フォロワー      -->
-         <%= render 'relationships/follow', users: @followers_users %>
-       </div>
+
      </div><!-- tab-content -->
    </div>
   </div>

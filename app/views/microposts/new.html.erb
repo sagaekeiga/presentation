@@ -1,29 +1,24 @@
     <%= simple_form_for(@micropost, html: { multipart: true }) do |f| %>
     
-        <div class="error center-block">
-          <% if f.object.errors.any? %>
-            <div id="error_explanation">
-              <div class="alert alert-danger">
-                The form contains <%= pluralize(f.object.errors.count, "error") %>.
-              </div>
-              <ul>
-              <% f.object.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-        </div>
-        
+    <%= render 'shares/error', object: @micropost %>
+    <%= @caution %>
         <div class="form-group">
         <%= f.select :purpose, {"プロトタイプ" => 1, "プレゼンテーション" => 2}, class: :"form-control"%><br>
-        <%= f.label :skill_list, "スキル・特技（カンマ区切り）" %><br>
-        <%= text_field_tag 'micropost[skill_list]', @micropost.skill_list.join(','), :id => "article-tags" %>
+        <p class="mic_nw_open">ボタン</p>
+        <div id="slideBox">
+        <%= collection_check_boxes(:micropost, :tag_ids, Tag.all, :id, :name ) do |t|  %>
+          <%= t.label { t.check_box + t.text } %>
+        <% end %><br>
+        </div>
+        
+
+        <p id="countUp">0</p>
+        
         <%= f.text_area :title, placeholder: "タイトルは30文字までです。", style: :"resize: none;", class: :"center-block form-control"%>
         <div class="form-group">
           <div id='editor'>
                 <div class="di_inline_t" style="width: 690px;">
-                  <textarea name="micropost[content]" class="form-control" rows="20" v-model='input' debounce='50' placeholder="内容は140文字までです。" style: :"resize: none;"></textarea>
+                  <textarea name="micropost[content]" id="n" class="form-control" rows="20" v-model='input' debounce='50' placeholder="内容は140文字までです。" style: :"resize: none;"></textarea>
                 </div>
                 <div class="di_inline_t preview">
                   <div v-html='input | marked' style: :"width: 650px;"></div>
@@ -51,4 +46,39 @@
       },
     });
   };
+  
+$(function(){
+    $(".mic_nw_open").click(function(){
+      $("#slideBox").slideToggle("slow");
+    });
+});
+
+$(function () {
+  $("#n").keyup(function(){
+    var counter = $(this).val().length;
+    $("#countUp").text(counter);
+    
+    if(counter == 0){
+      $("#countUp").text("0");
+    } 
+    if(counter >= 10){
+      $("#countUp").css("color","red");
+    } else {
+      $("#countUp").css("color","#666");
+    }
+  });
+});
+
+$("input[type=checkbox]").click(function(){
+    var $count = $("input[type=checkbox]:checked").length;
+    var $not = $('input[type=checkbox]').not(':checked')
+        //チェックが3つ付いたら、チェックされてないチェックボックスにdisabledを加える
+    if($count >= 3) {
+        $not.attr("disabled",true);
+    }else{
+        //3つ以下ならisabledを外す
+        $not.attr("disabled",false);
+    }
+});
+
 </script>

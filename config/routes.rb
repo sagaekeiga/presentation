@@ -3,11 +3,25 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'rooms/show'
+  
   get 'pages/agreement'
   get 'pages/privacy'
   get 'pages/help'
+  
+  get 'pages/prototype'
+  get 'pages/presentation'
+  get 'pages/rank'
+  get 'pages/palace'
+  
+  get 'microposts/admin_palace'
+  get 'users/user_rank'
+  
+  
 
   resource :contacts, only: [:new, :create]
+  
+  
+  resources :tags, only: [:index, :new, :create, :edit, :update]
   
 
   root 'pages#index'
@@ -24,6 +38,10 @@ Rails.application.routes.draw do
       get :likes, :like_microposts
       get :clips, :clip_microposts
       get :tags
+      get :clip_posts
+      get :like_posts
+      get :following_users
+      get :followed_users
     end
   end  
 

@@ -40,9 +40,6 @@ gem 'kaminari-bootstrap'
 gem "gravatar-ultimate"
 gem "ransack"
 
-#-------------タグ
-gem 'acts-as-taggable-on'
-gem 'gon'
 
 #-------------お知らせ機能
 gem 'redis-objects'
@@ -55,6 +52,10 @@ gem 'github-linguist'
 #-------------管理画面
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
+#--------------グラフ
+gem "chartkick"
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

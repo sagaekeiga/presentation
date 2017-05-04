@@ -1,0 +1,11 @@
+<div class="top_content">
+    <%= simple_form_for(@tag, html: { multipart: true }) do |f| %>
+        <%= render 'shares/error', object: @tag %>
+        <div class="form-group">
+            <%= f.text_area :name, style: :"resize: none;", class: :"center-block form-control"%>
+        </div>
+        <%= f.submit "投稿する", class: "btn btn-primary center-block m_new_btn" %>
+    <% end %>
+</div>
+
+<div class="b_10"></div>

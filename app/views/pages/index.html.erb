@@ -1,3 +1,4 @@
+<!--          サインアップトップページ          -->
 <% if !user_signed_in? %>
  <%= render 'pages/no_login' %>
 <% end %>
@@ -8,57 +9,32 @@
 
 <!--          ログイントップページ          -->
 <% if user_signed_in? %>
-
 <div class="top_content_in center-block">
  
     <div class="di_inline_t">
-     <div class="in_letf">
+     <div class="in_letf"><!--          左サイド          -->
+     
          <ul class="nav nav-tabs"><!--          複数タブ          -->
-           <li><a href="#home2" data-toggle="tab">新着</a></li>
-           <li><a href="#prof2" data-toggle="tab">プロトタイプ</a></li>
-           <li><a href="#msgs2" data-toggle="tab">プレゼンテーション</a></li>
-           <li><a href="#sets2" data-toggle="tab">注目</a></li>
-           <li><a href="#sets3" data-toggle="tab">クリップ</a></li>
-         </ul><!-- nav-tabs -->
+           <li><%= link_to "新着", root_path, { :class => "gray" } %></li>
+           <li><%= link_to "プロトタイプ", pages_prototype_path %></li>
+           <li><%= link_to "プレゼンテーション", pages_presentation_path %></li>
+           <li><%= link_to "注目", pages_rank_path %></li>
+           <li><%= link_to "殿堂入り", pages_palace_path %></li>
+         </ul>
           
-         <div class="tab-content width_400">
+         <div class="tab-content width_400"><!--          複数コンテンツ          -->
            <div class="tab-pane fade in active" id="home2">
               <%= render 'pages/array', microposts: @microposts %><!--      新着      -->
             <div class="t_a_c"><%= paginate @microposts %></div>
            </div>
-           
-           <div class="tab-pane fade" id="prof2">
-              <%= render 'pages/if_array', microposts: @pro_mics, type: 1 %><!--      プロトタイプ      -->
-             <div class="t_a_c"><%= paginate @pro_mics, :param_name => 'vip_page' %></div>
-           </div>
-           
-           <div class="tab-pane fade" id="msgs2">
-              <%= render 'pages/if_array', microposts: @pre_mics, type: 2 %><!--      プレゼンテーション      -->
-           </div>
-           
-           <div class="tab-pane fade" id="sets2">
-              <%= render 'pages/array', microposts: @rank_mics %><!--      注目      -->
-           </div>
-           
-           <div class="tab-pane fade" id="sets3">
-               <%= render 'pages/clip', microposts: @clip_mics %>
-           </div>
-         </div><!-- tab-content -->
+
+         </div>
      </div>
     </div>
 
 
-    <div class="di_inline_t">
-     <div class="in_right"><!--          右サイド          -->
-      <div class="in_right_con1 center-block">
-        <% ActsAsTaggableOn::Tag.most_used(3).each do |tag| %>
-              <span class="label label-primary"><%= tag %></span>
-        <% end %>
-      </div><br /><!--          コンテンツ1          -->
-      <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
-      <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
-      <div class="in_right_con1 center-block"></div><br /><!--          コンテンツ1          -->
-     </div>
+    <div class="di_inline_t"><!--          右サイド          -->
+     <%= render 'pages/right', tag_pops: @tag_pops, tag_microposts: @tag_microposts %>
     </div>
     
  </div>

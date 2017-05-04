@@ -1,0 +1,33 @@
+<div class="in_right"><!--          右サイド          -->
+
+<div class="in_right_con1 center-block"><!--          スコア          -->
+LIKE<%= @like_score %>
+CLIP<%= @clip_score %>
+PV<%= @pv_score %>
+TAG<%= @tag_score %>
+MICROPOST<%= @post_score %>
+FOLLOWING<%= @following_score %>
+FOLLOWER<%= @follower_score %>
+ALL_SCORE<%= @all_score %>
+ALL_SCORE<%= current_user.score %>
+</div><br />
+
+<div class="in_right_con1 center-block"><!--          人気のタグ          -->
+人気のタグ
+<% @tag_pops.each do |tag| %>
+<span class="label label-primary"><%= tag.name %></span>
+<% end %>
+</div><br />
+
+<div class="in_right_con1 center-block"><!--          Myタグ          -->
+Myタグ
+<%= render 'tags/tags', microposts: @tag_microposts %>
+</div><br />
+
+<div class="in_right_con1 center-block"><!--          ランキング          -->
+    <% @user_rank.each do |user| %>
+     <%= user.name %>
+     <%= user.score %><br>
+    <% end %>
+</div><br />
+</div>

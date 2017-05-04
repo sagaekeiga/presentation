@@ -1,0 +1,52 @@
+
+<div class="us_sh_top center-block">
+  <div class="di_inline_t">
+      <%= render 'users/left', user: @user, following_users: @following_users, followers_users: @followers_users %>
+  </div>
+
+<div class="di_inline_t">
+  <div class="us_sh_right"><!--   右サイド   -->
+   <%= render 'users/profile', user: @user %>
+
+   
+   <div class="us_sh_right_middle center-block"><!--   右サイド中部   -->
+   </div>
+   
+   <div class="us_sh_right_bottom center-block"><!--   右サイド下部   -->
+     <ul class="nav nav-tabs"><!--   複数タブ下部   -->
+       <li><%= link_to "#{@user.microposts.count} 投稿", @user %></li>
+       <li><%= link_to "#{@user.clip_microposts.count} クリップ", clip_posts_user_path, { :class => "gray" } %></li>
+       <li><%= link_to "#{@user.like_microposts.count} 評価", like_posts_user_path %></li>
+       <li><%= link_to "#{@user.following.count} フォロー", following_users_user_path %></li>
+       <li><%= link_to "#{@user.followers.count} フォロワー", followed_users_user_path %></li>
+     </ul><!-- nav-tabs -->
+      
+     <div class="tab-content">
+       
+       <div class="tab-pane fade in active" id="prof3"><!--      クリップ      -->
+         <%= render 'pages/array', microposts: @clips %>
+         <div class="t_a_c"><%= paginate @clips, :param_name => 'clip' %></div>
+       </div>
+
+     </div><!-- tab-content -->
+   </div>
+  </div>
+</div>
+
+</div>
+
+<div class="b_100"></div>
+
+
+<script>
+var nav    = $('#nav'),
+    offset = nav.offset();
+
+$(window).scroll(function () {
+  if($(window).scrollTop() > offset.top - 20) {
+    nav.addClass('fixed');
+  } else {
+    nav.removeClass('fixed');
+  }
+});
+</script>

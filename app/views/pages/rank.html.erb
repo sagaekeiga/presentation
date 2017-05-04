@@ -1,0 +1,43 @@
+<!--          サインアップトップページ          -->
+<% if !user_signed_in? %>
+ <%= render 'pages/no_login' %>
+<% end %>
+
+
+
+
+
+<!--          ログイントップページ          -->
+<% if user_signed_in? %>
+ <div class="top_content_in center-block">
+  
+     <div class="di_inline_t">
+      <div class="in_letf"><!--          左サイド          -->
+      
+          <ul class="nav nav-tabs"><!--          複数タブ          -->
+            <li><%= link_to "新着", root_path %></li>
+            <li><%= link_to "プロトタイプ", pages_prototype_path %></li>
+            <li><%= link_to "プレゼンテーション", pages_presentation_path %></li>
+            <li><%= link_to "注目", pages_rank_path, { :class => "gray" } %></li>
+            <li><%= link_to "殿堂入り", pages_palace_path %></li>
+          </ul>
+           
+          <div class="tab-content width_400"><!--          複数コンテンツ          -->
+            <div class="tab-pane fade in active" id="sets2">
+               <%= render 'pages/array', microposts: @ranks %><!--      注目      -->
+               <div class="t_a_c"><%= paginate @ranks, :param_name => 'rank' %></div>
+            </div>
+          </div>
+          
+      </div>
+     </div>
+ 
+ 
+     <div class="di_inline_t"><!--          右サイド          -->
+      <%= render 'pages/right', tag_pops: @tag_pops, tag_microposts: @tag_microposts %>
+     </div>
+     
+  </div>
+<% end %>
+
+<div class="b_100"></div>

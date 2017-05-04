@@ -13,9 +13,9 @@
       <div class="di_inline page_pv"><b><%= mic.rank %> PV</b></div>
 
      <div class="mic_tag di_inline_t">
-       <% mic.skill_list.each do |tag| %>
-        <span class="label label-primary"><%= tag %></span>
-       <% end %>
+         <% mic.tags.each do |tag| %>
+          <span class="label label-primary"><%= tag.name %></span>
+         <% end %>
      </div>
        <div class="di_inline mic_date">
         <%= date_format(mic.created_at) %>

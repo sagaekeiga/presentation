@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
     def index
       @users = User.all
       @contact = Contact.new
@@ -8,31 +9,100 @@ class UsersController < ApplicationController
     
     def show
       @user = User.find(params[:id])
+      
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
       @q = Micropost.search(params[:q])
-      @microposts = @user.microposts.all
-      @clip_mics = @user.clip_microposts
-      @like_mics = @user.like_microposts
       
-      @following_users = @user.following
-      @followers_users = @user.followers
+      @microposts = @user.microposts.order("created_at DESC").page(params[:micropost])
+      @following_users = @user.following.order("created_at DESC").page(params[:following])
+      @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
 
+      calculate(@user)
     end
     
-    def f_index
+    def clip_posts
+      @user = User.find(params[:id])
+      
+      @contact = Contact.new
+      @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
+      
+      @clips = @user.clip_microposts.order("created_at DESC").page(params[:clip])
+      @following_users = @user.following.order("created_at DESC").page(params[:following])
+      @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
+      
+      calculate(@user)
     end
+    
+    def like_posts
+      @user = User.find(params[:id])
+      
+      @contact = Contact.new
+      @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
+      
+      @likes = @user.like_microposts.order("created_at DESC").page(params[:like])
+      @following_users = @user.following.order("created_at DESC").page(params[:following])
+      @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
+
+      calculate(@user)
+    end
+    
+    def following_users
+      @user = User.find(params[:id])
+      
+      @contact = Contact.new
+      @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
+      
+      @following_users = @user.following.order("created_at DESC").page(params[:following])
+      @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
+      
+      calculate(@user)
+    end
+    
+    def followed_users
+      @user = User.find(params[:id])
+      
+      @contact = Contact.new
+      @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
+      
+      @following_users = @user.following.order("created_at DESC").page(params[:following])
+      @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
+      
+      calculate(@user)
+    end
+    
+    
     
     def tags
       @user = User.find(params[:id])
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
       @q = Micropost.search(params[:q])
-      @microposts = @user.microposts.all
-
-      @following_users = @user.following
-      @followers_users = @user.followers
+      
+      @microposts = @user.microposts.order("created_at DESC").page(params[:micropost])
+      @following_users = @user.following.order("created_at DESC").page(params[:following])
+      @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
+      
+      calculate(@user)
     end
+    
+    def user_rank
+      @contact = Contact.new
+      @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
+      @users = User.all.order("score desc")
+      @rank = 1
+      @users.each do |user|
+        user.rank = @rank
+        @rank += 1
+        user.save
+      end
+    end
+    
     
     def update
       p user_params

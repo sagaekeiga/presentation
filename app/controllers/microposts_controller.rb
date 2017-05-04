@@ -1,6 +1,5 @@
 class MicropostsController < ApplicationController
     before_action :user_signed_in?, only: [:create, :destroy, :new]
-    before_action :set_available_tags_to_gon, only: [:new, :edit, :create, :update]
 
     def new
         @micropost = Micropost.new
@@ -10,16 +9,38 @@ class MicropostsController < ApplicationController
     end
     
     def create
+          @contact = Contact.new
+          @q = Micropost.search(params[:q])
+          @activities = PublicActivity::Activity.all
+          
           @micropost = current_user.microposts.build(micropost_params)
           @micropost.purpose = params[:micropost][:purpose]
-          @activities = PublicActivity::Activity.all
-          @q = Micropost.search(params[:q])
-          @contact = Contact.new
-        if @micropost.save
-            redirect_to root_url
-        else
-            render 'microposts/new'
-        end
+          
+          @ids = params[:micropost][:tag_ids]
+          @ids.delete_at(0)
+          
+          if @ids.empty?
+              @caution = "タグを選択してください"
+              render 'microposts/new'
+          end
+          
+          if !@ids.empty?
+            @tags = []
+            @ids.each do |id|
+              tag = Tag.find_by(id: id)
+              @tags.push("#{tag.name}")
+              tag.frequency = 1 + tag.frequency
+              tag.save!
+            end
+            
+  
+            
+            if @micropost.save
+                redirect_to root_url
+            else
+                render 'microposts/new'
+            end
+          end
     end
     
     def show
@@ -33,6 +54,7 @@ class MicropostsController < ApplicationController
         @micropost.rank = @rank
         @micropost.save!
         @activities = PublicActivity::Activity.all
+        @pop_mics = @micropost.user.microposts.all.sort_by{|ms|ms.rank}.reverse.first(5)
     end
     
     def edit
@@ -58,15 +80,28 @@ class MicropostsController < ApplicationController
       @all_q_mics = @q.result(distinct: true)
       @activities = PublicActivity::Activity.all
     end
-
-    def set_available_tags_to_gon
-      gon.available_tags = Micropost.tags_on(:tags).pluck(:name)
+    
+    def like_users
+      @contact = Contact.new
+      @q = Micropost.search(params[:q])
+      @q_mics = @q.result(distinct: true).page(params[:page])
+      @all_q_mics = @q.result(distinct: true)
+      @activities = PublicActivity::Activity.all
+    end
+    
+    def admit_palace
+      @microposts = Micropost.all
+      @microposts.each do |micropost|
+        if micropost.rank > 100000 && micropost.likes.count > 1000
+          micropost.palace = true
+        end
+      end
     end
     
     
     private
     
      def micropost_params
-         params.require(:micropost).permit(:content, :title, :rank, :purpose, :skill_list)
+         params.require(:micropost).permit(:content, :title, :rank, :purpose, { :tag_ids=> [] })
      end
 end

@@ -1,54 +1,7 @@
 
 <div class="us_sh_top center-block">
   <div class="di_inline_t">
-    <div class="us_sh_left"><!--   左サイド   -->
-        <div id="container">
-          <div id="main">　</div>
-            <div id="sidebar"><!-- サイドバー -->
-              <div id="nav">
-                <div class="b_10"></div>
-                <div class="us_sh_image center-block"><!-- ログインユーザーアイコン -->
-                  <%= image_tag(gravatar_for(@user), alt: @user.email, class:"gravatar center-block bo_rad_3") %>
-                </div>
-                <div class="user_name center-block"><%= @user.name %></div><!-- ログインユーザー名 -->
-                <div class="user_created center-block"><%= date_format(@user.created_at) %></div><!-- ログインユーザー登録日 -->
-                <div class="user_option center-block">オプション</div><!-- ログインユーザー登録日 -->
-                <div class="user_edit center-block"><%= link_to "プロフィールを編集する", edit_user_registration_path %></div><!-- ログインユーザー登録日 -->
-              </div>
-            </div>
-        </div>
-        
-        <div class="us_sh_left_bottom center-block"><!-- 左サイド下部  -->
-        
-          <div class="us_sh_left_bottom_title1 center-block">
-              <strong id="following" class="stat">
-                フォロー　<%= @user.following.count %>
-              </strong>
-          </div>
-          
-          <div class="us_sh_left_bottom_con1 center-block"><!-- フォローアイコン  -->
-            <% @following_users.first(16).each do |user| %>
-             <%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '30x30'), user %>
-            <% end %>
-          </div>
-          
-          <div class="us_sh_left_bottom_line center-block"></div><!--  線   -->
-          
-          <div class="us_sh_left_bottom_title1 center-block">
-              <strong id="following" class="stat">
-                フォロワー　<%= @user.followers.count %>
-              </strong>
-          </div>
-          
-          <div class="us_sh_left_bottom_con1 center-block"><!-- フォロワーアイコン  -->
-            <% @followers_users.first(16).each do |user| %>
-             <%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '30x30'), user %>
-            <% end %>
-          </div>
-          <div class="us_sh_left_bottom_follow_bu center-block"><%= render 'follow_form' %></div>
-        </div>
-        
-    </div>
+      <%= render 'users/left', user: @user, following_users: @following_users, followers_users: @followers_users %>
   </div>
 
 <div class="di_inline_t">
@@ -56,8 +9,8 @@
       <h2 style="text-align: center;width: 95%;">タグ一覧</h2>
         <div class="u_sh_tag_index center-block o_border bo_rad_3">
          <% @user.microposts.first(60).each do |micropost| %>
-           <% micropost.skill_list.each do |tag| %>
-              <div class="u_sh_tag_per di_inline_t"><span class="label label-primary"><%= tag %></span></div>
+            <% micropost.tags.each do |tag| %>
+            <span class="label label-primary"><%= tag.name %></span>
            <% end %>
          <% end %>
         </div>

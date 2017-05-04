@@ -7,11 +7,11 @@
              <div class="sh_h_mic_co_top_top_con">
                  <%= link_to "トップ", root_path %>
                  　＞　
-                 <% @micropost.skill_list.first(1).each do |tag| %>
-                  <%= link_to "#{tag}に関する投稿", "#" %>
-                 <% end %>　
-                 <% @micropost.skill_list.each do |tag| %>
-                  <span class="label label-primary"><%= tag %></span>
+                 <% @micropost.tags.first(1).each do |tag| %>
+                  <%= link_to "#{tag.name}に関する投稿", "#" %>
+                 <% end %>　＞　
+                 <% @micropost.tags.each do |tag| %>
+                  <span class="label label-primary"><%= tag.name %></span>
                  <% end %>
              </div>
             </div>
@@ -24,8 +24,8 @@
                       <div class="sh_h_mic_co_bottom_left_title left-block"><!--   ヘッダー下部の左サイドのタイトル   -->
                             <div class="sh_h_mic_co_bottom_left_title_box"><b><%= @micropost.title %></b></div>
                             <div class="sh_h_mic_co_bottom_left_tag_box">
-                             <% @micropost.skill_list.each do |tag| %>
-                              <span class="label label-primary"><%= tag %></span>
+                             <% @micropost.tags.each do |tag| %>
+                              <span class="label label-primary"><%= tag.name %></span>
                              <% end %>
                             </div>
                             <div class="sh_h_mic_co_bottom_left_tag_box">
@@ -74,21 +74,19 @@
  <div class="di_inline_t">
     <div class="right_co_mic_sh">
         
-        <div id="container"><!-- 固定サイドバー -->
-          <div id="main">　</div>
-              <div id="sidebar">
-                <div id="nav1">ここを固定する</div>
-              </div>
-        </div> 
-        
         <div class="sh_mic_like">
             <div class="sh_mic_like_title">
              <b>評価している人　<%= @micropost.likes.count %></b>
             </div>
             
-            <div class="sh_mic_like_icon">
+            <div class="sh_mic_like_icon"><!-- 評価しているユーザー一覧 -->
+                <% fo_user = 0 %>
                 <% @micropost.like_users.first(16).each do |user| %>
-                 <%= image_tag(gravatar_for(user), alt: user.email, class:"gravatar", :size => '30x30') %>
+                     <div class="sh_mic_like_icon_per"><%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '30x30'), user %></div>
+                 <% fo_user += 1 %>
+                <% end %>
+                <% if fo_user > 16 %>
+                  <%= link_to "もっとみる", like_users_micropost_path %>
                 <% end %>
             </div>
             
@@ -96,14 +94,22 @@
              <b>人気の投稿</b>
             </div>
             
-            <div class="sh_mic_pop">
-                <% @micropost.like_users.first(16).each do |user| %>
-                 <%= image_tag(gravatar_for(user), alt: user.email, class:"gravatar", :size => '30x30') %>
+            <div class="sh_mic_like_icon"><!-- 人気の投稿タイトルリンク -->
+                <% @pop_mics.first(16).each do |mic| %>
+                     <div class="sh_mic_like_pop_mic">・ <%= link_to "#{mic.title}", mic %></div>
                 <% end %>
+            </div>
+            
+            <div id="container"><!-- 固定サイドバー -->
+              <div id="main">　</div>
+                  <div id="sidebar">
+                    <div id="nav1">目次</div>
+                  </div>
             </div>
             
         </div>
 
+</div>
 </div>
 </div>
 <div class="b_50"></div>
@@ -120,6 +126,5 @@ $(window).scroll(function () {
     nav.removeClass('fixed');
   }
 });
-
 
 </script>

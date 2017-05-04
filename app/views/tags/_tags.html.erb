@@ -1,0 +1,5 @@
+<% microposts.each do |micropost| %>
+<% micropost.tags.each do |tag| %>
+<span class="label label-primary"><%= tag.name %></span>
+<% end %>
+<% end %>

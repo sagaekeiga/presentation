@@ -28,6 +28,53 @@ User.create!(name:  "kkk",
              password:              "s19930528",
              password_confirmation: "s19930528")
              
+Tag.create!(name:  "Ruby on Rails")
+Tag.create!(name:  "Javascript")
+Tag.create!(name:  "PHP")
+Tag.create!(name:  "Java")
+Tag.create!(name:  "Python")
+Tag.create!(name:  "C++")
+Tag.create!(name:  "C")
+Tag.create!(name:  "jQuery")
+Tag.create!(name:  "VR")
+Tag.create!(name:  "VPS")
+Tag.create!(name:  "AWS")
+Tag.create!(name:  "アルゴリズム")
+Tag.create!(name:  "Cloud9")
+Tag.create!(name:  "Atom")
+Tag.create!(name:  "IDLE")
+Tag.create!(name:  "Mac")
+Tag.create!(name:  "Windows")
+Tag.create!(name:  "コマンドプロンプト")
+Tag.create!(name:  "ターミナル")
+Tag.create!(name:  "API")
+Tag.create!(name:  "Django")
+Tag.create!(name:  "CakePHP")
+Tag.create!(name:  "Nginx")
+Tag.create!(name:  "apache")
+Tag.create!(name:  "unicorn")
+Tag.create!(name:  "サーバ")
+Tag.create!(name:  "Node.js")
+Tag.create!(name:  "機械学習")
+Tag.create!(name:  "深層学習")
+Tag.create!(name:  "自然言語処理")
+Tag.create!(name:  "スクレイピング")
+Tag.create!(name:  "アジャイル")
+Tag.create!(name:  "ウォーターフロント")
+Tag.create!(name:  "OS")
+Tag.create!(name:  "Linux")
+Tag.create!(name:  "Android")
+Tag.create!(name:  "iOS")
+Tag.create!(name:  "Webアプリケーション")
+Tag.create!(name:  "脆弱性")
+Tag.create!(name:  "セキュリティ")
+Tag.create!(name:  "HTML5")
+Tag.create!(name:  "CSS3")
+Tag.create!(name:  "CSS")
+Tag.create!(name:  "ネットワーク")
+Tag.create!(name:  "プロトコル")
+Tag.create!(name:  "TCP")
+             
 10.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
@@ -62,6 +109,14 @@ end
   content = Faker::Lorem.sentence(10)
   purpose = 2
   users.each { |user| user.microposts.create!(title: title, content: content, purpose: purpose) }
+end
+
+2.times do
+  title = "もうすぐ完成するよ！もうすぐ完成するよ！"
+  content = Faker::Lorem.sentence(10)
+  purpose = 2
+  palace = true
+  users.each { |user| user.microposts.create!(title: title, content: content, purpose: purpose, palace: palace) }
 end
 
 # リレーションシップ

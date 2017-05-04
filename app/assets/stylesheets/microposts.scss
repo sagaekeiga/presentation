@@ -143,7 +143,7 @@
 //--------------------showページのボディの中の右サイド
 .right_co_mic_sh {
   width: 400px;
-  min-height: 1500px;
+  min-height: 300px;
   height: auto !important;
   height: 50px;
 }
@@ -364,7 +364,6 @@
   width: 400px;
   height: 700px;
   background-color: red;
-  margin-top: 350px;
 }
 
 
@@ -386,6 +385,16 @@
   height: 50px;
 }
 
+//---------------------評価している人一覧画像
+.sh_mic_like_icon_per {
+  display:block;
+	border: 1px solid #ccc;
+	height: 40px;
+	width: 40px;
+  background-color: #f2f2f2;
+  text-align: center;
+  line-height: 35px;
+}
 //---------------------人気の投稿
 .sh_mic_pop {
   width: 400px;
@@ -393,6 +402,16 @@
   background-color: purple;
   color: #cccccc;
 }
+
+//---------------------人気の投稿
+.sh_mic_like_pop_mic {
+  width: 400px;
+  min-height: 0px;
+  height: auto !important;
+  height: 50px;
+  margin-top: 10px;
+}
+
 
 //---------------------コメントの削除ボタン
 .sh_mi_del {
@@ -492,3 +511,20 @@
     width: 300px;
 }
 
+
+
+//---------------------チェックボックス
+
+
+.mic_nw_open {
+  background: #fa2;
+  color: #fff;
+  cursor: pointer;
+  width: 50px;
+  padding: 10px;
+}
+#slideBox{
+  padding: 10px; 
+  border: 1px #ccc solid;
+  display: none;
+}

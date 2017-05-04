@@ -5,6 +5,7 @@ class CreateMicroposts < ActiveRecord::Migration[5.0]
       t.text :content
       t.integer :rank,              null: false, default: 0
       t.integer :purpose,              null: false, default: 1
+      t.boolean :palace,              null: false, default: false
       t.references :user, foreign_key: true
 
       t.timestamps

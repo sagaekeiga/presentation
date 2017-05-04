@@ -1,14 +1,19 @@
 class Micropost < ApplicationRecord
   belongs_to :user
+
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 10000 }
   validates :title, presence: true, length: { maximum: 70 }
   validates :purpose, presence: true
-  default_scope -> { order(created_at: :desc) }
   paginates_per 20
 
-  acts_as_taggable_on :skills # post.label_list が追加される
 
+  #--------------------タグ
+  has_many :tags, dependent: :destroy, through: :taggings
+  has_many :taggings
+  accepts_nested_attributes_for :taggings, allow_destroy: true
+
+  
   #--------------------いいね！
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user 
