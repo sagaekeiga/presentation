@@ -1,0 +1,11 @@
+<div class="tab-pane fade in active" id='<%= a %>'><!--      A      -->
+    <div class="u_sh_tag center-block">
+     <div class="u_sh_profile bo_rad_3 center-block">
+       <%= collection_check_boxes(:micropost, :tag_ids, Tag.all, :id, :name,  html: {id: 'item_form', class: 'form-control check-color'}) do |t|  %>
+         <% if t.text[0] == "#{a}" || t.text[0] == "#{b}" || t.text[0] == "#{c}"  %>
+              <span class="label label-primary"><%= t.label { t.check_box + "  " + t.text }  %></span>
+         <% end %>
+        <% end %>
+     </div>
+    </div>
+</div>

@@ -3,18 +3,28 @@
     <%= render 'shares/error', object: @micropost %>
     <%= @caution %>
         <div class="form-group">
-        <%= f.select :purpose, {"プロトタイプ" => 1, "プレゼンテーション" => 2}, class: :"form-control"%><br>
-        <p class="mic_nw_open">ボタン</p>
-        <div id="slideBox">
-        <%= collection_check_boxes(:micropost, :tag_ids, Tag.all, :id, :name ) do |t|  %>
-          <%= t.label { t.check_box + t.text } %>
-        <% end %><br>
+        
+        <!--  タイプセレクト  -->
+        <div class="select_m_new">
+          <%= f.select :purpose, {"プロトタイプ" => 1, "プレゼンテーション" => 2}, style: :"color: red;", class: :"center-block form-control" %><br>
+        </div>
+    
+        <!--  タグスライドボタン  -->
+        <p class="mic_nw_open">タグ</p>
+        
+        
+        <div id="slideBox"><!--  タグスライド  -->
+         <%= render 'tag_slide' %>
         </div>
         
-
-        <p id="countUp">0</p>
         
+        <!--  タイトルフォーム  -->
         <%= f.text_area :title, placeholder: "タイトルは30文字までです。", style: :"resize: none;", class: :"center-block form-control"%>
+        
+        <!--  カウントアップ  -->
+        残り<span id="countUp">10000</span>文字まで記入できます
+        
+        <!--  コンテンツフォーム  -->
         <div class="form-group">
           <div id='editor'>
                 <div class="di_inline_t" style="width: 690px;">
@@ -34,6 +44,8 @@
 <div class="b_10"></div>
 
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js'></script>
 <script type="text/javascript">
   window.onload = function() {
     new Vue({
@@ -56,12 +68,12 @@ $(function(){
 $(function () {
   $("#n").keyup(function(){
     var counter = $(this).val().length;
-    $("#countUp").text(counter);
+    $("#countUp").text(10000 - counter);
     
     if(counter == 0){
       $("#countUp").text("0");
     } 
-    if(counter >= 10){
+    if(counter >= 10000){
       $("#countUp").css("color","red");
     } else {
       $("#countUp").css("color","#666");

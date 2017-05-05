@@ -55,6 +55,12 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 #--------------グラフ
 gem "chartkick"
+gem 'groupdate'
+gem 'dateslices' # 日付ごとにデータをグルーピングするメソッドを追加
+
+gem "gon"
+
+
 
 
 # Use ActiveModel has_secure_password

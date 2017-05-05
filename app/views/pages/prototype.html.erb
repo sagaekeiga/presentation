@@ -22,7 +22,7 @@
            <li><%= link_to "殿堂入り", pages_palace_path %></li>
          </ul>
           
-         <div class="tab-content width_400"><!--          複数コンテンツ          -->
+         <div class="tab-content"><!--          複数コンテンツ          -->
             <div class="tab-pane fade in active" id="prof2">
                <%= render 'pages/if_array', microposts: @prototypes, type: 1 %><!--      プロトタイプ      -->
               <div class="t_a_c"><%= paginate @prototypes, :param_name => 'prototype' %></div>

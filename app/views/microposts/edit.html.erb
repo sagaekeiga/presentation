@@ -17,8 +17,6 @@
         
         <div class="form-group">
         <%= f.select :purpose, {"プロトタイプ" => 1, "プレゼンテーション" => 2}, class: :"form-control"%><br>
-        <%= f.label :skill_list, "スキル・特技（カンマ区切り）" %><br>
-        <%= text_field_tag 'micropost[skill_list]', @micropost.skill_list.join(','), :id => "article-tags" %>
         <%= f.text_area :title, placeholder: "タイトルは30文字までです。", style: :"resize: none;", class: :"center-block form-control"%>
         <div class="form-group">
           <div id='editor'>
@@ -38,7 +36,8 @@
 
 <div class="b_10"></div>
 
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js'></script>
 <script type="text/javascript">
   window.onload = function() {
     new Vue({

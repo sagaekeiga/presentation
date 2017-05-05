@@ -5,6 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
 
+  validates :profile, length: { maximum: 110 }
+  validates :prefecture, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :job, length: { maximum: 10 }
+  validates :blog, length: { maximum: 30 }
+  
   has_many :microposts, dependent: :destroy
 
   #---------------------------フォロー

@@ -84,7 +84,6 @@
   width: 95%;
   height: 300px;
   font-size: 10px;
-  color: #c6c6c6;
   margin-top: 20px;
 }
 
@@ -167,9 +166,8 @@
 
 .u_sh_tag {
   width: 95%;
-  margin-top: 10px;
+  margin-top: 3px;
   height: 250px;
-  background-color: red;
 }
 
 
@@ -191,4 +189,93 @@
   min-height: 30px;
   height: auto !important;
   height: 30px;
+}
+
+
+//------------------------一覧ページのタグ
+
+.u_sh_l_chart {
+ height: 300px;
+}
+
+//------------------------スコアとランキング
+
+.u_in_right_con1_t {
+   width: 100%;
+   background-color: white;
+	 padding: .5em;
+	 border: 1px solid #ccc;
+   height: 60px;
+   line-height: 50px;
+}
+
+
+//------------------------プロフィール大枠
+
+.u_sh_profile {
+   width: 100%;
+   background-color: white;
+	 padding: .5em;
+	 border: 1px solid #ccc;
+   line-height: 50px;
+   min-height: 60px;
+   height: auto !important;
+   height: 30px;
+}
+
+//------------------------プロフィールth
+
+th {
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  color: black;
+}
+
+td {
+  width: 550px;
+  text-align: center;
+  min-height: 0px;
+  height: auto !important;
+  height: 0px;
+  font-size: 5px;
+  color: black;
+}
+
+
+.highchart_over {
+  width: 1000px;
+  min-height: 800px;
+  height: auto !important;
+  height: 0px;
+  background-color: #bddee9;
+}
+
+
+.chart_table {
+  width: 800px;
+  text-align: center;
+  background-color: #f2f2f2;
+  height: 350px;
+}
+//---------------------チャートテーブル
+
+table.type01 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+}
+table.type01 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid #ccc;
+}
+table.type01 td {
+    width: 649px;
+    padding: 10px;
+    vertical-align: top;
+    border: 1px solid #ccc;
+    color: #5ac859;
 }

@@ -1,4 +1,7 @@
 class Micropost < ApplicationRecord
+  ALLOWED_PARAMS = [:content, :title, :rank, :purpose, { :tag_ids=> [] }]
+  
+
   belongs_to :user
 
   validates :user_id, presence: true
@@ -13,7 +16,6 @@ class Micropost < ApplicationRecord
   has_many :taggings
   accepts_nested_attributes_for :taggings, allow_destroy: true
 
-  
   #--------------------いいね！
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user 

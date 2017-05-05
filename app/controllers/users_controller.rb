@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       @following_users = @user.following.order("created_at DESC").page(params[:following])
       @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
 
+      @chart_data = User.group(:created_at).sum(:score)
       calculate(@user)
     end
     
@@ -101,6 +102,27 @@ class UsersController < ApplicationController
         @rank += 1
         user.save
       end
+    end
+    
+    def chart
+      @user = User.find(params[:id])
+      @contact = Contact.new
+      @activities = PublicActivity::Activity.all
+      @q = Micropost.search(params[:q])
+      calculate(@user)
+
+      #------------ユーザー個人値
+      gon.user_name = @user.name
+      gon.clip = @clip_score
+      gon.pv = @pv_score
+      gon.post_m = @post_score
+      gon.following = @following_score
+      gon.follower = @follower_score
+      gon.tag = @tag_score
+      gon.like = @like_score
+      
+      #------------ユーザー全体値
+      
     end
     
     

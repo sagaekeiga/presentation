@@ -81,12 +81,8 @@ Tag.create!(name:  "TCP")
   job = "起業家"
   prefecture = "1"
   profile = "初めまして。初心者です。
-　世界にない新しいサービスを発明したいと思います。若輩ものですが
-　ご鞭撻のほどよろしくお願いします。特に好きな分野スクレイピングです。
-　これまで速報サイトや株価チャートなどを製作してきました。これからは
-　この技術を生かし、ビッグデータの収集を行いたいです。それからデータ
-　を機械学習へと生かす事も考えてます。"
-　blog = "https://teratail.com/users/s.k"
+　世界にない新しいサービスを発明したいと思います。若輩ものですが"
+　blog = "https://terats.k"
   password = "password"
   User.create!(name:  name,
                email: email,
@@ -110,14 +106,14 @@ end
   purpose = 2
   users.each { |user| user.microposts.create!(title: title, content: content, purpose: purpose) }
 end
+user = users.first
+title = "まだ殿堂入りした投稿はありません。"
+content = Faker::Lorem.sentence(10)
+purpose = 2
+palace = true
+user.microposts.create!(title: title, content: content, purpose: purpose, palace: palace)
 
-2.times do
-  title = "もうすぐ完成するよ！もうすぐ完成するよ！"
-  content = Faker::Lorem.sentence(10)
-  purpose = 2
-  palace = true
-  users.each { |user| user.microposts.create!(title: title, content: content, purpose: purpose, palace: palace) }
-end
+
 
 # リレーションシップ
 users = User.all

@@ -22,7 +22,7 @@
            <li><%= link_to "殿堂入り", pages_palace_path %></li>
          </ul>
           
-         <div class="tab-content width_400"><!--          複数コンテンツ          -->
+         <div class="tab-content"><!--          複数コンテンツ          -->
            <div class="tab-pane fade in active" id="home2">
               <%= render 'pages/array', microposts: @microposts %><!--      新着      -->
             <div class="t_a_c"><%= paginate @microposts %></div>
@@ -41,3 +41,4 @@
 <% end %>
 
 <div class="b_100"></div>
+

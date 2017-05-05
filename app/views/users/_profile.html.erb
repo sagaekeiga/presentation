@@ -1,22 +1,51 @@
    <div class="us_sh_right_top center-block"><!--   右サイド上部   -->
      <ul class="nav nav-tabs">
        <li><a href="#home2" data-toggle="tab">プロフィール</a></li>
-       <li><a href="#prof2" data-toggle="tab">グラフ</a></li>
+       <li><a href="#prof2" data-toggle="tab">スコア内訳</a></li>
        <li><a href="#msgs2" data-toggle="tab">タグ</a></li>
      </ul><!-- nav-tabs -->
       
      <div class="tab-content">
        <div class="tab-pane fade in active" id="home2"><!--      プロフィール      -->
         <div class="u_sh_tag center-block">
-        <%= user.name %>
-        <%= user.job %>
-        <%= user.prefecture %>
-        <%= user.profile %>
-        <%= user.blog %>
+         <div class="u_sh_profile bo_rad_3 center-block">
+          <table class="type01">
+              <tr>
+                  <th >仕事</th>
+                  <td><%= user.job %></td>
+              </tr>
+              <tr>
+                  <th scope="row">居住地</th>
+                  <td><%= user.prefecture %></td>
+              </tr>
+              <tr>
+                  <th scope="row">自己紹介</th>
+                  <td>
+                   <div><%= user.profile %></div>
+                  </td>
+              </tr>
+              <tr>
+                  <th scope="row">ブログ</th>
+                  <td><%= user.blog %></td>
+              </tr>
+          </table>
+         </div>
         </div>
        </div>
        
-       <div class="tab-pane fade" id="prof2"><!--      グラフ      -->
+       <div class="tab-pane fade" id="prof2"><!--      スコア      -->
+        <div id="chart_div" style="width: 95%; height: 200px; padding: 5px;">
+          <%= pie_chart ({ "LIKE": @like_score,
+          "CLIP": @clip_score,
+          "PV": @pv_score,
+          "TAG": @tag_score,
+          "POST": @post_score,
+          "PV": @pv_score,
+          "FOLLOWING": @following_score,
+          "FOLLOWER": @follower_score,
+          }), height: "190px"%>
+        </div>
+        <%= link_to "詳細をみる", chart_user_path %>
        </div>
        
        <div class="tab-pane fade" id="msgs2"><!--      タグ      -->
@@ -34,5 +63,8 @@
           <% end %>
         </div>
        </div>
+       
      </div><!-- tab-content -->
    </div>
+   
+   

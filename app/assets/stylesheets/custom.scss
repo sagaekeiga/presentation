@@ -27,6 +27,25 @@ body > .container {
   height: 250px;
   padding: 10px;
 }
+
+
+//------------------------header
+
+.activities_page {
+  width: 300px !important;
+}
+
+.h_ac_con {
+  font-size: 10px;
+  color: black;
+  padding: 2px;
+	border-bottom: 1px solid #ccc;
+	margin-left: 5px;
+}
+
+.ac_pg_sen {
+  width: 240px;
+}
 //------------------------pages/index, mic/new, users/show, mic/show
 .top_content {
     width: 700px;
@@ -114,3 +133,27 @@ text-decoration: none;
 .gray {
   background-color: #e6e6e6;
 }
+
+.fs_20 {
+  font-size: 20px;
+  margin-top: 30px;
+  color: #9fcb63;
+}
+
+.gold {
+  background-color: 	#ffd700;
+  width: 100%;
+  height: 100%;
+}
+
+.silver {
+  background-color: 	#c0c0c0;
+  width: 100%;
+  height: 100%;
+}
+
+.darkgold {
+  background-color: 	#b8860b;
+  width: 100%;
+  height: 100%;
+}	

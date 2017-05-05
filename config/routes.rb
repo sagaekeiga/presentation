@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get :likes, :like_microposts
       get :clips, :clip_microposts
       get :tags
+      get :chart
       get :clip_posts
       get :like_posts
       get :following_users

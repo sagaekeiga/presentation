@@ -1,0 +1,100 @@
+<%= include_gon %>
+<div class="highchart_over center-block">
+  <div id="container" class="highchart center-block"></div>
+  <div class="chart_table center-block">
+    <table class="type01">
+        <tr>
+            <th scope="row">評価数</th>
+            <td><%= @like_score %></td>
+        </tr>
+        <tr>
+            <th scope="row">クリップ数</th>
+            <td><%= @clip_score %></td>
+        </tr>
+        <tr>
+            <th scope="row">フォロワー数</th>
+            <td><%= @follower_score %></td>
+        </tr>
+        <tr>
+            <th scope="row">フォロー数</th>
+            <td><%= @following_score %></td>
+        </tr>
+        <tr>
+            <th scope="row">投稿数</th>
+            <td><%= @post_score %></td>
+        </tr>
+        <tr>
+            <th scope="row">PV数</th>
+            <td><%= @pv_score %></td>
+        </tr>
+        <tr>
+            <th scope="row">タグ数</th>
+            <td><%= @tag_score %></td>
+        </tr>
+    </table>
+
+  </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script>
+Highcharts.chart('container', {
+
+    chart: {
+        polar: true,
+        type: 'line'
+    },
+
+    title: {
+        text: 'Score average',
+        x: -80
+    },
+
+    pane: {
+        size: '80%'
+    },
+
+    xAxis: {
+        categories: ['評価', 'フォロー', 'フォロワー', '投稿',
+                'PV', 'クリップ'],
+        tickmarkPlacement: 'on',
+        lineWidth: 0
+    },
+
+    yAxis: {
+        gridLineInterpolation: 'polygon',
+        lineWidth: 0,
+        min: 0
+    },
+
+    tooltip: {
+        shared: true,
+        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+    },
+
+    legend: {
+        align: 'right',
+        verticalAlign: 'middle',
+        y: 70,
+        layout: 'vertical'
+    },
+
+    series: [{
+        name: gon.user_name + 'さんの数値',
+        data: [gon.like, gon.following, gon.follower, gon.post_m, gon.pv, gon.clip],
+        pointPlacement: 'on'
+    }, {
+        name: 'ユーザー平均',
+        data: [10, 19, 3, 10, 7, 4],
+        pointPlacement: 'on'
+    }]
+
+});
+</script>

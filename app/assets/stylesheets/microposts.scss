@@ -517,14 +517,41 @@
 
 
 .mic_nw_open {
-  background: #fa2;
-  color: #fff;
-  cursor: pointer;
-  width: 50px;
-  padding: 10px;
+	position: relative;
+	background-color: #1abc9c;
+	border-radius: 4px;
+	color: #fff;
+	line-height: 30px;
+	-webkit-transition: none;
+	transition: none;
+	box-shadow: 0 3px 0 #0e8c73;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	text-align: center;
+	height: 30px;
+}
+
+.mic_nw_open:hover {
+	background-color: #31c8aa;
+	box-shadow: 0 3px 0 #23a188;
+}
+.mic_nw_open:active {
+	top: 3px;
+	box-shadow: none;
 }
 #slideBox{
   padding: 10px; 
   border: 1px #ccc solid;
   display: none;
 }
+
+
+//-----------------------セレクトボックス
+.select_m_new {
+  width: 100% !important;
+}
+
+
+.check-color {
+}
+
+

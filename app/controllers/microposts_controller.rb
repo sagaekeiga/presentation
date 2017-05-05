@@ -6,6 +6,7 @@ class MicropostsController < ApplicationController
         @contact = Contact.new
         @q = Micropost.search(params[:q])
         @activities = PublicActivity::Activity.all
+        @tags = Tag.all
     end
     
     def create
@@ -15,32 +16,13 @@ class MicropostsController < ApplicationController
           
           @micropost = current_user.microposts.build(micropost_params)
           @micropost.purpose = params[:micropost][:purpose]
-          
-          @ids = params[:micropost][:tag_ids]
-          @ids.delete_at(0)
-          
-          if @ids.empty?
-              @caution = "タグを選択してください"
-              render 'microposts/new'
-          end
-          
-          if !@ids.empty?
-            @tags = []
-            @ids.each do |id|
-              tag = Tag.find_by(id: id)
-              @tags.push("#{tag.name}")
-              tag.frequency = 1 + tag.frequency
-              tag.save!
-            end
+          @params = params[:micropost][:taggings]
+
             
   
             
-            if @micropost.save
-                redirect_to root_url
-            else
-                render 'microposts/new'
-            end
-          end
+            @micropost.save
+            render 'microposts/new'
     end
     
     def show
@@ -98,10 +80,11 @@ class MicropostsController < ApplicationController
       end
     end
     
-    
     private
     
      def micropost_params
-         params.require(:micropost).permit(:content, :title, :rank, :purpose, { :tag_ids=> [] })
+         params.require(:micropost).permit(:content, :title, :rank, :purpose, { :tag_ids=> [] },
+         taggings_attributes: [:id, :tag_id, :_destroy]
+         )
      end
 end
