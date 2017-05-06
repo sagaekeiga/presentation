@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'pages/presentation'
   get 'pages/rank'
   get 'pages/palace'
+  get 'pages/notice_index'
   
   get 'microposts/admin_palace'
   get 'users/user_rank'

@@ -143,19 +143,20 @@ ActiveRecord::Schema.define(version: 20170503130210) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                   default: "", null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "job",                    default: "", null: false
-    t.string   "prefecture",             default: "", null: false
-    t.string   "profile",                default: "", null: false
-    t.string   "blog",                   default: "", null: false
-    t.integer  "score",                  default: 0,  null: false
-    t.integer  "rank",                   default: 0,  null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "name",                   default: "",                    null: false
+    t.string   "email",                  default: "",                    null: false
+    t.string   "job",                    default: "",                    null: false
+    t.string   "prefecture",             default: "",                    null: false
+    t.string   "profile",                default: "",                    null: false
+    t.string   "blog",                   default: "",                    null: false
+    t.integer  "score",                  default: 0,                     null: false
+    t.integer  "rank",                   default: 0,                     null: false
+    t.datetime "login_t",                default: '2017-05-06 13:37:22', null: false
+    t.string   "encrypted_password",     default: "",                    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,                     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -164,11 +165,11 @@ ActiveRecord::Schema.define(version: 20170503130210) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,                     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

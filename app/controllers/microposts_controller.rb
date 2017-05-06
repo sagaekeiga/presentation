@@ -58,9 +58,15 @@ class MicropostsController < ApplicationController
     def index
       @contact = Contact.new
       @q = Micropost.search(params[:q])
-      @q_mics = @q.result(distinct: true).page(params[:page])
+      @q_mics = @q.result(distinct: true).page(params[:index])
       @all_q_mics = @q.result(distinct: true)
       @activities = PublicActivity::Activity.all
+      
+      @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
+      @tag_microposts = current_user.microposts.all
+      
+      @user_rank = User.all.order("score desc").first(10)
+      calculate(current_user)
     end
     
     def like_users
@@ -83,8 +89,6 @@ class MicropostsController < ApplicationController
     private
     
      def micropost_params
-         params.require(:micropost).permit(:content, :title, :rank, :purpose, { :tag_ids=> [] },
-         taggings_attributes: [:id, :tag_id, :_destroy]
-         )
+         params.require(:micropost).permit(:content, :title, :rank, :purpose, { :tag_ids=> [] })
      end
 end

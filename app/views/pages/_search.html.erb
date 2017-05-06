@@ -1,0 +1,8 @@
+<%= search_form_for q, html: {class: 't_b_c'} do |f|%>
+
+<%# or で複数の値をorで検索（and 複数の値をand条件で検索） %>
+<%= f.search_field :title_or_content_cont, placeholder: "検索", class: :"form-control di_inline", style: :"width:864px;"%>
+
+<%# 検索ボタン %>
+<%= f.submit "検索", class: "btn btn-primary center-block di_inline"%>
+<% end %><br>

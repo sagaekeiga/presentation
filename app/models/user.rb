@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :blog, length: { maximum: 30 }
   
   has_many :microposts, dependent: :destroy
-
+  
   #---------------------------フォロー
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

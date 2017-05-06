@@ -262,8 +262,6 @@ GEM
       polyamorous (~> 1.3)
     rdoc (4.3.0)
     redis (3.3.3)
-    redis-objects (1.3.0)
-      redis (~> 3.3)
     request_store (1.3.2)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -354,7 +352,6 @@ DEPENDENCIES
   rails-i18n
   ransack
   redis
-  redis-objects
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form

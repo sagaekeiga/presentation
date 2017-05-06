@@ -42,7 +42,6 @@ gem "ransack"
 
 
 #-------------お知らせ機能
-gem 'redis-objects'
 gem 'public_activity'
 
 #-------------マークダウン

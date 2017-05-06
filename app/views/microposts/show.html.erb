@@ -44,7 +44,7 @@
                     　  <div class="di_inline_t sh_h_right_option"><b>VIEW　<%= @micropost.rank %></b></div>  
                     　</div>
                     　<div class="sh_h_mic_co_bottom_right_image center-block">
-                         <%= image_tag(gravatar_for(@micropost.user), alt: @micropost.user.email, class:"gravatar bo_rad_3", :size => '50x50') %>
+                         <%= link_to image_tag(gravatar_for(@micropost.user), alt: @micropost.user.email, class:"gravatar bo_rad_3", :size => '50x50'), @micropost.user %>
                          　<b><%= @micropost.user.name %></b>
                       </div>
                     </div>

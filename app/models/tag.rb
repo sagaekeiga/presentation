@@ -1,5 +1,4 @@
 class Tag < ApplicationRecord
-  ALLOWED_PARAMS = [:id, :name]
   has_many :microposts, dependent: :destroy, through: :taggings
   
   #---------------------------タグ

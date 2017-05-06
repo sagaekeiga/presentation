@@ -10,6 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :blog,              null: false, default: ""
       t.integer :score,              null: false, default: 0
       t.integer :rank,              null: false, default: 0
+      t.datetime :login_t,              null: false, default: Time.now
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

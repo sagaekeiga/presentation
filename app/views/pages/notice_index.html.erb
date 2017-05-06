@@ -1,0 +1,26 @@
+                <% @activities.first(6).each do |activity| %>
+                  <!--  自分が投稿した記事か？  -->
+                  <% current_user.microposts.each do |mic| %><!--  1  -->
+                    <% if mic.id == activity.trackable.micropost_id %>
+                      <!--  自分がフォローしているユーザーか？  -->
+                      <% current_user.following.each do |user| %><!--  2  -->
+                        <% if user.id == activity.owner.id %>
+                          <div class="h_ac_con">
+
+                            <div class="di_inline_t">
+                              <%= link_to image_tag(gravatar_for(activity.owner), alt: mic.user.email, class:"gravatar bo_rad_3", :size => '30x30'), activity.owner if activity.owner if activity.trackable -%>
+                            </div>
+                            
+                            <div class="di_inline_t">
+                              <div class="ac_pg_sen">
+                                <%= link_to "#{activity.owner.name}", activity.owner if activity.owner if activity.trackable -%>さんが
+                                <%= link_to Micropost.find(activity.trackable.micropost_id).title.truncate(25), Micropost.find(activity.trackable.micropost_id) if activity.trackable -%>にいいね！しました
+                              </div>
+                            </div><br>
+                            <%= date_format(activity.trackable.created_at) if activity.trackable %>
+                          </div>
+                        <% end %>
+                      <% end %><!--  2  -->
+                  <% end %><!--  1  -->
+                <% end %>
+              <% end %>

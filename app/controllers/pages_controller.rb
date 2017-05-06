@@ -10,6 +10,7 @@ class PagesController < ApplicationController
       
       @user_rank = User.all.order("score desc").first(10)
       calculate(current_user)
+      
     end
   end
   
@@ -64,6 +65,12 @@ class PagesController < ApplicationController
     
     @user_rank = User.all.order("score desc").first(10)
     calculate(current_user)
+  end
+  
+  def notice_index
+    @contact = Contact.new
+    @q = Micropost.search(params[:q])
+    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
   end
   
   

@@ -1,6 +1,35 @@
-<div class="top_content center-block">
-<h1>検索結果</h1>
-<%= @all_q_mics.count %>件<br />
-<%= render 'pages/array', microposts: @q_mics %><!--      検索結果      -->
-</div>
+<!--          ログイントップページ          -->
+<% if user_signed_in? %>
+<div class="top_content_in center-block">
+    <%= render 'pages/search', q: @q %><!--          検索欄          -->
+    <div><b>検索結果 <%= @all_q_mics.count %> 件</b></div><br>
+    <div class="di_inline_t">
+     <div class="in_letf"><!--          左サイド          -->
+         
+         <ul class="nav nav-tabs"><!--          複数タブ          -->
+           <li><%= link_to "新着", root_path %></li>
+           <li><%= link_to "プロトタイプ", pages_prototype_path %></li>
+           <li><%= link_to "プレゼンテーション", pages_presentation_path %></li>
+           <li><%= link_to "注目", pages_rank_path %></li>
+           <li><%= link_to "殿堂入り", pages_palace_path, { :class => "gray" } %></li>
+         </ul>
+          
+         <div class="tab-content"><!--          複数コンテンツ          -->
+            <div class="tab-pane fade in active" id="prof2">
+               <%= render 'pages/array', microposts: @q_mics %><!--      検索結果      -->
+              <div class="t_a_c"><%= paginate @q_mics, :param_name => 'index' %></div>
+            </div>
+         </div>
+         
+     </div>
+    </div>
+
+
+    <div class="di_inline_t"><!--          右サイド          -->
+     <%= render 'pages/right', tag_pops: @tag_pops, tag_microposts: @tag_microposts %>
+    </div>
+    
+ </div>
+<% end %>
+
 <div class="b_100"></div>

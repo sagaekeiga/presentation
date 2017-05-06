@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Prototype</a>
+      <a class="navbar-brand" href="#">Ruppish</a>
     </div>
     
     <div id="navbar" class="collapse navbar-collapse">
@@ -16,9 +16,8 @@
         <li><%= link_to "投稿する", new_micropost_path, :style=>"color:white;" %></li>
         <li><%= link_to "チャットルーム", rooms_show_path, :style=>"color:white;" %></li>
         <li><%= link_to "#{current_user.name}", current_user, :style=>"color:white;" if user_signed_in?%></li>
-        
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white;">お知らせ<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white; background-color: #110f2c;">お知らせ<span class="caret"></span></a>
           <ul class="dropdown-menu activities_page" role="menu">
             <% if user_signed_in? %>
                 <% @activities.first(6).each do |activity| %>
@@ -37,8 +36,7 @@
                             <div class="di_inline_t">
                               <div class="ac_pg_sen">
                                 <%= link_to "#{activity.owner.name}", activity.owner if activity.owner if activity.trackable -%>さんが
-                                <%= link_to Micropost.find(activity.trackable.micropost_id).title.truncate(25), Micropost.find(activity.trackable.micropost_id) if activity.trackable -%>に
-                                いいね！しました
+                                <%= link_to Micropost.find(activity.trackable.micropost_id).title.truncate(25), Micropost.find(activity.trackable.micropost_id) if activity.trackable -%>にいいね！しました
                               </div>
                             </div><br>
                             <%= date_format(activity.trackable.created_at) if activity.trackable %>
@@ -48,37 +46,20 @@
                   <% end %><!--  1  -->
                 <% end %>
               <% end %>
-            <% else %>
-            <li><%= link_to 'サインアップ', new_user_registration_path %></li>
-            <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <%= link_to "もっとみる", pages_notice_index_path, :class => "acti_more" %>
+
             <% end %>
           </ul>
         </li>
         
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white;">設定<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white;background-color: #110f2c;">設定<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <% if user_signed_in? %>
-            <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
+            <li><%= link_to '設定', edit_user_registration_path %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to "ユーザー一覧", users_path %></li>
-            <% else %>
-            <li><%= link_to 'サインアップ', new_user_registration_path %></li>
-            <li><%= link_to 'ログイン', new_user_session_path %></li>
-            <% end %>
           </ul>
         </li>
       </ul>
-      <div style="margin-top: 10px">
-          <%= search_form_for @q, html: {class: 't_b_c'} do |f|%>
-          
-            <%# or で複数の値をorで検索（and 複数の値をand条件で検索） %>
-            <%= f.search_field :title_or_content_cont, placeholder: "検索", class: :"form-control di_inline", style: :"width:150px;"%>
-
-            <%# 検索ボタン %>
-            <%= f.submit "検索", class: "btn btn-primary center-block di_inline"%>
-          <% end %>
-      </div>
     </div><!--/.nav-collapse -->
   </div>
 </nav>
