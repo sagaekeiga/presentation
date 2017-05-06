@@ -60,6 +60,7 @@ gem 'dateslices' # 日付ごとにデータをグルーピングするメソッ�
 gem "gon"
 
 
+gem "mysql2"
 
 
 # Use ActiveModel has_secure_password

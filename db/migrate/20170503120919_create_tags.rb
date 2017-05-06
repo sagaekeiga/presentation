@@ -3,10 +3,9 @@ class CreateTags < ActiveRecord::Migration[5.0]
     create_table :tags do |t|
       t.text :name
       t.integer :frequency,              null: false, default: 0
-      t.text :description,              null: false, default: ""
+      t.text :description
 
       t.timestamps
     end
-    add_index :tags, [:name, :frequency]
   end
 end
