@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ruppish</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
@@ -10,24 +9,20 @@
 </head>
 <body>
     <header>
-    <% if user_signed_in? %>
       <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts' &&  controller.controller_name != 'confirmations' %>
             <%= render 'layouts/header' %>
       <% end %>
-    <% end %>
     </header>
     
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <%= yield %>
 
-    <% if user_signed_in? %>
       <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts' &&  controller.controller_name != 'confirmations'%>
         <% if controller.action_name != 'new'%>
               <%= render 'layouts/footer' %>
         <% end %>
       <% end %>
-    <% end %>
 
 </body>
 </html>

@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 20170503130210) do
     t.string   "blog",                   default: "",                    null: false
     t.integer  "score",                  default: 0,                     null: false
     t.integer  "rank",                   default: 0,                     null: false
-    t.datetime "login_t",                default: '2017-05-06 15:45:30', null: false
+    t.datetime "login_t",                default: '2017-05-07 04:59:23', null: false
     t.string   "encrypted_password",     default: "",                    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

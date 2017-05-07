@@ -1,4 +1,5 @@
 
+<title><%= @micropost.title %></title>
 
 <div class="sh_h_mic"><!--   ヘッダー   -->
     
@@ -11,7 +12,7 @@
                   <%= link_to "#{tag.name}に関する投稿", "#" %>
                  <% end %>　＞　
                  <% @micropost.tags.each do |tag| %>
-                  <span class="label label-primary"><%= tag.name %></span>
+                  <span class="label label_red"><%= tag.name %></span>
                  <% end %>
              </div>
             </div>
@@ -25,7 +26,7 @@
                             <div class="sh_h_mic_co_bottom_left_title_box"><b><%= @micropost.title %></b></div>
                             <div class="sh_h_mic_co_bottom_left_tag_box">
                              <% @micropost.tags.each do |tag| %>
-                              <span class="label label-primary"><%= tag.name %></span>
+                              <span class="label label_red"><%= tag.name %></span>
                              <% end %>
                             </div>
                             <div class="sh_h_mic_co_bottom_left_tag_box">
@@ -66,7 +67,39 @@
                  <div class="di_inline_t"><%= user_clip(@micropost.user, @micropost) %> </div>
            </div>
            <div class="mic_com_sh"><!--   コメント一覧   -->
-            <%= render 'microposts/comment', comments: @comments %>
+            <%= render 'microposts/comment', comments: @comments if user_signed_in? %>
+           </div>
+           
+           
+           <div class="re_m_show bo_rad_3"><!--   関連記事   -->
+            <div class="re_m_show_title">関連記事</div>
+             <div class="re_m_show_in"><!--   関連記事の中枠   -->
+                <% @tags_name = "" %>
+                <% @micropost.tags.joins(:microposts).references(:microposts).each do |tag| %>
+                    <% if @tag_name != tag.name %>
+                    <div class="m_sh_tag_name">
+                        <% tag.microposts.order("rank desc").first(3).each do |micropost| %>
+                            <% if micropost!=@micropost %>
+                                <div class="m_sh_tag_cont">
+                                    <div class="di_inline_t">
+                                        <%= link_to image_tag(gravatar_for(micropost.user), alt: @micropost.user.email, class:"gravatar bo_rad_3", :size => '30x30'), micropost  %>
+                                    </div>
+                                    <div class="di_inline_t">
+                                        <div class="m_sh_tag_cont_title">
+                                            <%= link_to micropost.title , micropost %>
+                                        </div>
+                                        <div class="m_sh_tag_cont_cont">
+                                            <%= micropost.content.truncate(139) %>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    <% end %>
+                    <% @tag_name = tag.name %>
+                <% end %>
+             </div>
            </div>
         </div>
     </div>
@@ -75,7 +108,7 @@
     <div class="right_co_mic_sh">
         
         <div class="sh_mic_like">
-            <div class="sh_mic_like_title">
+            <div class="sh_mic_like_title bo_rad_3">
              <b>評価している人　<%= @micropost.likes.count %></b>
             </div>
             
@@ -90,11 +123,11 @@
                 <% end %>
             </div>
             
+            
+            <div class="sh_mic_like_icon bo_rad_3"><!-- 人気の投稿タイトルリンク -->
             <div class="sh_mic_like_title">
              <b>人気の投稿</b>
             </div>
-            
-            <div class="sh_mic_like_icon"><!-- 人気の投稿タイトルリンク -->
                 <% @pop_mics.first(16).each do |mic| %>
                      <div class="sh_mic_like_pop_mic">・ <%= link_to "#{mic.title}", mic %></div>
                 <% end %>
@@ -103,7 +136,9 @@
             <div id="container"><!-- 固定サイドバー -->
               <div id="main">　</div>
                   <div id="sidebar">
-                    <div id="nav1">目次</div>
+                    <div id="nav1">
+                          <div class="mokuji"></div>
+                    </div>
                   </div>
             </div>
             

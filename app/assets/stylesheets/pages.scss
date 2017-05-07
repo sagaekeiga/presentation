@@ -27,9 +27,8 @@
 
 .in_right_con1 {
    width: 250px;
-   background-color: #f2f2f2;
+   background-color: #ff9966;
   	padding: .5em;
-  	border: 1px solid #ccc;
   	margin-top: 10px;
    min-height: 120px;
    height: auto !important;
@@ -272,4 +271,36 @@
  -webkit-transform: translateY(-50%); /* Safari用 */
  transform: translateY(-50%);
  font-size: 30px;
+}
+
+
+
+
+//------------------------------お知らせ---notice_index
+
+.activities_page {
+  width: 300px !important;
+}
+
+
+.n_over {
+ width: 658px;
+ min-height: 100px;
+ height: auto !important;
+ height: 50px;
+ margin-top: 10px;
+}
+//-------------------------------お知らせ大枠
+
+.n_ac_con {
+  font-size: 15px;
+  color: black;
+  padding: 2px;
+ 	border-bottom: 1px solid #ccc;
+ 	margin-left: 5px;
+ 	background-color: #f2f2f2;
+}
+
+.ac_no_sen {
+  width: 550px;
 }

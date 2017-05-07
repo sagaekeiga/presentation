@@ -363,7 +363,6 @@
 .sh_mic_like {
   width: 400px;
   height: 700px;
-  background-color: red;
 }
 
 
@@ -371,14 +370,15 @@
 .sh_mic_like_title {
   width: 400px;
   height: 20px;
-  background-color: blue;
+  background-color: #f6ece3;
   color: #cccccc;
+  padding: 5px;
 }
 
 //---------------------評価している人一覧画像
 .sh_mic_like_icon {
   width: 400px;
-  background-color: blue;
+  background-color: #f6ece3;
   color: #cccccc;
   min-height: 0px;
   height: auto !important;
@@ -466,6 +466,69 @@
 
 
 
+//---------------------関連記事
+
+.re_m_show {
+  width: 747px;
+  background-color: #ffa500;
+  min-height: 0px;
+  height: auto !important;
+  height: 50px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+
+.re_m_show_title {
+  width: 747px;
+  background-color: #ffa500;
+  height: 30px;
+  margin-left: -10px;
+  padding: 10px 10px 10px 10px;
+}
+
+//---------------------関連記事の中枠
+
+.re_m_show_in {
+  width: 747px;
+  background-color: blue;
+  min-height: 0px;
+  height: auto !important;
+  height: 50px;
+  margin-left: -10px;
+}
+
+//---------------------関連記事のタグタイトル
+.m_sh_tag_name {
+  width: 747px;
+  background-color: white;
+  min-height: 0px;
+  height: auto !important;
+  height: 50px;
+}
+
+//---------------------関連記事のタグタイトル
+.m_sh_tag_cont {
+  width: 747px;
+  min-height: 0px;
+  height: auto !important;
+  height: 50px;
+  padding: 5px;
+  border-bottom:1px solid #EEE;
+}
+
+
+
+//---------------------関連記事の内容
+
+.m_sh_tag_cont_title {
+  font-size: 13px;
+}
+//---------------------関連記事の内容
+.m_sh_tag_cont_cont {
+  font-size: 10px;
+  color: #d7d7d7;
+}
 
 //--------------------new----------------------
 //--------------------new----------------------
@@ -550,8 +613,5 @@
   width: 100% !important;
 }
 
-
-.check-color {
-}
 
 

@@ -54,7 +54,7 @@
 
          <% user.microposts.first(60).each do |micropost| %>
              <% micropost.tags.each do |tag| %>
-              <div class="u_sh_tag_per di_inline_t"><span class="label label-primary"><%= tag.name %></span></div>
+              <div class="u_sh_tag_per di_inline_t"><span class="label label_red"><%= tag.name %></span></div>
                   <% tag_num += 1 %>
              <% end %>
          <% end %><br>

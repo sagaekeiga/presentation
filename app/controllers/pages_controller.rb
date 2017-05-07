@@ -73,6 +73,12 @@ class PagesController < ApplicationController
     @contact = Contact.new
     @q = Micropost.search(params[:q])
     @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+    
+    @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
+    @tag_microposts = current_user.microposts.all
+    
+    @user_rank = User.all.order("score desc").first(10)
+    calculate(current_user)
   end
   
   

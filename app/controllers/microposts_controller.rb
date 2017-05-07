@@ -18,11 +18,11 @@ class MicropostsController < ApplicationController
           @micropost.purpose = params[:micropost][:purpose]
           @params = params[:micropost][:taggings]
 
-            
-  
-            
-            @micropost.save
+          if @micropost.save
+            redirect_to @micropost
+          else
             render 'microposts/new'
+          end
     end
     
     def show
@@ -37,6 +37,11 @@ class MicropostsController < ApplicationController
         @micropost.save!
         @activities = PublicActivity::Activity.all
         @pop_mics = @micropost.user.microposts.all.sort_by{|ms|ms.rank}.reverse.first(5)
+        
+        @microposts = Micropost.all
+        @relations = []
+        
+        
     end
     
     def edit

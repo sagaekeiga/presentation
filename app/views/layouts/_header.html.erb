@@ -12,14 +12,22 @@
     
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "ホーム", root_path, :style=>"color:white;" %></li>
-        <li><%= link_to "投稿する", new_micropost_path, :style=>"color:white;" %></li>
-        <li><%= link_to "チャットルーム", rooms_show_path, :style=>"color:white;" %></li>
-        <li><%= link_to "#{current_user.name}", current_user, :style=>"color:white;" if user_signed_in?%></li>
+        
+        <% if user_signed_in? %>
+          <li><%= link_to "ホーム", root_path, :style=>"color:white;" %></li>
+          <li><%= link_to "投稿する", new_micropost_path, :style=>"color:white;" %></li>
+          <li><%= link_to "チャットルーム", rooms_show_path, :style=>"color:white;" %></li>
+          <li><%= link_to "#{current_user.name}", current_user, :style=>"color:white;" %></li>
+        <% else %>
+          <li><%= link_to "ログイン・サインアップ", root_path, :style=>"color:white;" %></li>
+        <% end %>
+        
+        
+        
+        <% if user_signed_in? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white; background-color: #110f2c;">お知らせ<span class="caret"></span></a>
           <ul class="dropdown-menu activities_page" role="menu">
-            <% if user_signed_in? %>
                 <% @activities.first(6).each do |activity| %>
                   <!--  自分が投稿した記事か？  -->
                   <% current_user.microposts.each do |mic| %><!--  1  -->
@@ -48,7 +56,6 @@
               <% end %>
             <%= link_to "もっとみる", pages_notice_index_path, :class => "acti_more" %>
 
-            <% end %>
           </ul>
         </li>
         
@@ -59,7 +66,10 @@
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
+        
+        <% end %>
       </ul>
     </div><!--/.nav-collapse -->
+    
   </div>
 </nav>
