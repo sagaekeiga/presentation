@@ -72,10 +72,10 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-  config.action_cable.allowed_request_origins = [ 'http://candii.tk/' ]
+  config.action_cable.allowed_request_origins = [ 'http://ruppish.com/' ]
   ActionCable.server.config.disable_request_forgery_protection = true
   
-  config.action_mailer.default_url_options = { host: 'candii.tk', port: 80 }
+  config.action_mailer.default_url_options = { host: 'ruppish.com', port: 80 }
   config.action_mailer.smtp_settings = {
   	address:               'smtp.gmail.com',
   	port:      	           587,
