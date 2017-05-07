@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-    
+    before_action :logged_in_user
+
     
     def create
       @comment = current_user.comments.build(comment_params)

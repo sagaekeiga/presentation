@@ -142,6 +142,7 @@ GEM
       json
       multi_json
       request_store (>= 1.0)
+    google-analytics-rails (1.1.0)
     gravatar-ultimate (2.0.0)
       activesupport (>= 2.3.14)
       rack
@@ -337,6 +338,7 @@ DEPENDENCIES
   faker
   github-linguist
   gon
+  google-analytics-rails
   gravatar-ultimate
   groupdate
   inherited_resources!

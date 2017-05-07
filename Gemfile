@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -54,13 +53,12 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 #--------------グラフ
 gem "chartkick"
-gem 'groupdate'
-gem 'dateslices' # 日付ごとにデータをグルーピングするメソッドを追加
 
 gem "gon"
 
 
 gem "mysql2"
+gem 'google-analytics-rails'
 
 
 # Use ActiveModel has_secure_password

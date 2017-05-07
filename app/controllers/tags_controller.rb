@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
-    
+    before_action :logged_in_user
+
     def new
         @tag = Tag.new
         @contact = Contact.new

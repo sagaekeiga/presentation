@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-    before_action :user_signed_in?, only: [:create, :destroy, :new]
+    before_action :user_signed_in?, :except => ['show']
 
     def new
         @micropost = Micropost.new
