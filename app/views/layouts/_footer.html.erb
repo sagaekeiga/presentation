@@ -7,6 +7,9 @@
       <li><%= link_to "ヘルプ", pages_help_path, :style=>"color:white;" %></li>
       <li><%= link_to "お問い合わせ", new_contacts_path, :style=>"color:white;" %></li>
       <li><%= link_to "ブログ", "http://mlearning.ga/", :style=>"color:white;", :target =>"_blank" %></li>
+      <li><%= link_to "Ruppishとは", pages_about_path, :style=>"color:white;" %></li>
+      <li><%= link_to "ユーザー", users_path, :style=>"color:white;" %></li>
+      <li><%= link_to "タグ", tags_path, :style=>"color:white;" %></li>
     </ul>
       <%= form_for @contact do |f| %>
           <%= f.text_area :message, placeholder: "ご意見をお聞かせください", :class => "form-control" , :style => "height: 180px; width: 400px; resize: none;" %>

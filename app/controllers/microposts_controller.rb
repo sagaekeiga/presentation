@@ -64,7 +64,6 @@ class MicropostsController < ApplicationController
       @contact = Contact.new
       @q = Micropost.search(params[:q])
       @q_mics = @q.result(distinct: true).page(params[:index])
-      @all_q_mics = @q.result(distinct: true)
       @activities = PublicActivity::Activity.all
       
       @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)

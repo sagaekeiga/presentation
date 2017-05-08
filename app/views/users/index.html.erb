@@ -1,3 +1,62 @@
-<% @users.each do |user| %>
- <%= link_to "#{user.name}", user %><br />
-<% end %>
+<title>ユーザー一覧 Ruppish【ラピッシュ】| P&Fプラットフォーム</title>
+
+
+
+<div class="top_content_in center-block">
+    
+    <%= search_form_for @q, html: {class: 't_b_c'} do |f|%><!--          検索欄          -->
+    
+    <%# or で複数の値をorで検索（and 複数の値をand条件で検索） %>
+    <%= f.search_field :name_or_profile_cont, placeholder: "検索", class: :"form-control di_inline", style: :"width:864px;"%>
+    <%= f.hidden_field :search, :value => 1 %>
+    
+    <%# 検索ボタン %>
+    <%= f.submit "検索", class: "btn btn-primary center-block di_inline"%>
+    <% end %><br>
+    
+    <div class="di_inline_t">
+     <div class="in_letf"><!--          左サイド          -->
+     
+        <% if !@search.nil? %>
+            <% @users.each do |user| %>
+                <div class="mic_array">
+                    
+                 <div class="di_inline_t">
+                  <%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '50x50'), user %>
+                  <div class="mi_u_nm"><%= link_to"#{user.name}", user %></div>
+                 </div>
+                 
+                 <div class="di_inline_t">
+                  <div class="user-name"><%= link_to "#{user.profile.truncate(139)}", user %></div>
+                 </div>
+                 
+                </div>
+            <% end %>
+        <% else %>
+            <% @q_users.each do |user| %>
+                <div class="mic_array">
+                    
+                 <div class="di_inline_t">
+                  <%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '50x50'), user %>
+                  <div class="mi_u_nm"><%= link_to"#{user.name}", user %></div>
+                 </div>
+                 
+                 <div class="di_inline_t">
+                  <div class="user-name"><%= link_to "#{user.profile.truncate(139)}", user %></div>
+                 </div>
+                 
+                </div>
+              <div class="t_a_c"><%= paginate @q_users, :param_name => 'index' %></div>
+            <% end %>
+        <% end %>
+
+     </div>
+    </div>
+
+
+    <div class="di_inline_t"><!--          右サイド          -->
+    </div>
+    
+ </div>
+
+<div class="b_100"></div>

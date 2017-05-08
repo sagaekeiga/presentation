@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'pages/agreement'
   get 'pages/privacy'
   get 'pages/help'
+  get 'pages/about'
   
   get 'pages/prototype'
   get 'pages/presentation'

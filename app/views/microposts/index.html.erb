@@ -1,5 +1,4 @@
 <!--          ログイントップページ          -->
-<% if user_signed_in? %>
 <div class="top_content_in center-block">
     <%= render 'pages/search', q: @q %><!--          検索欄          -->
     <div><b>検索結果 <%= @all_q_mics.count %> 件</b></div><br>
@@ -30,6 +29,5 @@
     </div>
     
  </div>
-<% end %>
 
 <div class="b_100"></div>

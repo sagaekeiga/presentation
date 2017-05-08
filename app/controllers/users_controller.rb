@@ -5,7 +5,9 @@ class UsersController < ApplicationController
       @users = User.all
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
+      @q = User.search(params[:q])
+      @search = params[:q][:search]
+      @q_users = @q.result(distinct: true).page(params[:index])
     end
     
     def show

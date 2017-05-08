@@ -6,6 +6,7 @@
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
   <%= analytics_init if Rails.env.production? %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'usagi_black.png' %>
 </head>
 <body>
     <header>

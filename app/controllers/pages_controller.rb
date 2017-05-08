@@ -102,4 +102,10 @@ class PagesController < ApplicationController
     @q = Micropost.search(params[:q])
     @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
   end
+  
+  def about
+    @contact = Contact.new
+    @q = Micropost.search(params[:q])
+    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+  end
 end
