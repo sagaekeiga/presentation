@@ -114,13 +114,13 @@
             
             <div class="sh_mic_like_icon"><!-- 評価しているユーザー一覧 -->
                 <% fo_user = 0 %>
-                <% @micropost.like_users.first(16).each do |user| %>
-                     <div class="sh_mic_like_icon_per"><%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '30x30'), user %></div>
-                 <% fo_user += 1 %>
-                <% end %>
-                <% if fo_user > 16 %>
-                  <%= link_to "もっとみる", like_users_micropost_path %>
-                <% end %>
+                    <% @micropost.like_users.first(16).each do |user| %>
+                         <div class="sh_mic_like_icon_per"><%= link_to image_tag(gravatar_for(user), alt: user.email, class:"gravatar bo_rad_3", :size => '30x30'), user %></div>
+                     <% fo_user += 1 %>
+                    <% end %>
+                    <% if fo_user > 16 %>
+                      <%= link_to "もっとみる", like_users_micropost_path %>
+                    <% end %>
             </div>
             
             
@@ -128,18 +128,16 @@
             <div class="sh_mic_like_title">
              <b>人気の投稿</b>
             </div>
+                
+            <div class="sh_mic_like_title_cont">
                 <% @pop_mics.first(16).each do |mic| %>
-                     <div class="sh_mic_like_pop_mic">・ <%= link_to "#{mic.title}", mic %></div>
+                     <div class="sh_mic_like_pop_mic">・ <%= link_to "#{mic.title.truncate(23)}", mic %></div>
                 <% end %>
+            </div>
             </div>
             
             <div id="container"><!-- 固定サイドバー -->
-              <div id="main">　</div>
-                  <div id="sidebar">
-                    <div id="nav1">
-                          <div class="mokuji"></div>
-                    </div>
-                  </div>
+                  <div class="mokuji"></div>
             </div>
             
         </div>
@@ -149,17 +147,3 @@
 </div>
 <div class="b_50"></div>
 
-
-<script>
-var nav    = $('#nav1'),
-    offset = nav.offset();
-
-$(window).scroll(function () {
-  if($(window).scrollTop() > offset.top - 20) {
-    nav.addClass('fixed');
-  } else {
-    nav.removeClass('fixed');
-  }
-});
-
-</script>

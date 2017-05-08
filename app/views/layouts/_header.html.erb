@@ -7,15 +7,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Ruppish</a>
+      <a class="navbar-brand" href="/">Ruppish</a>
     </div>
     
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         
         <% if user_signed_in? %>
-          <li><%= link_to "ホーム", root_path, :style=>"color:white;" %></li>
-          <li><%= link_to "投稿する", new_micropost_path, :style=>"color:white;" %></li>
+          <li><%= link_to "投稿する", new_micropost_path, :style=>"color:white;", :class=>"post_pink" %></li>
           <li><%= link_to "チャットルーム", rooms_show_path, :style=>"color:white;" %></li>
           <li><%= link_to "#{current_user.name}", current_user, :style=>"color:white;" %></li>
         <% else %>

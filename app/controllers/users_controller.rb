@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
       @q = User.search(params[:q])
-      @search = params[:q][:search]
+      @search = params[:q][:search] if !params[:q].nil?
       @q_users = @q.result(distinct: true).page(params[:index])
     end
     
