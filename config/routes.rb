@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   
+
   #コメント
   resources :comments, only:[:create, :destroy]
   mount ActionCable.server => '/cable'

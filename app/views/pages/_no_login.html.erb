@@ -1,21 +1,75 @@
-<div class="no_in_all center-block"><!--   ログアウト画面大枠    -->
-  <div class="di_inline">
-    <div class="no_in_left"><!--   ログアウト画面大枠の左サイド   -->
-        <div class="no_in_m_tt"><b>Ruppish</b></div><!--   メインタイトル   -->
-        <div class="no_in_con_tt"><b>あなたの価値を測る</b></div><!--   メインタイトル   -->
-        <div class="no_in_dis_tt">
-            <b>
-                Ruppishには精鋭のエンジニアが製作した社会的価値のあるモノが集まっています。
-                あなたも自分のお宝を発信しましょう。
-            </b>
-        </div><!--   メインコンセプト   -->
+<title>Ruppishとは？ Ruppish【ラピッシュ】| P&Fプラットフォーム</title>
+<div class="ab_he"><!--   タイトル   -->
+    <div class="sb_he_tt"><b>Ruppish</b>
+        <div class="sb_he_sub_tt">Ruppishは、プログラミングで製作した作品をプレゼンテーションするためのサービスです。</div>
+        <div class="sb_he_sub_tt">
+             <div class="di_inline_t"><%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn-primary no_in_btn" %></div>
+             <div class="di_inline_t"><%= button_to "Sign in", new_user_session_path, method: :get, :class => "btn-success no_in_btn" %></div>
+        </div>
     </div>
-  </div>
+</div>
 
-  <div class="di_inline">
-    <div class="no_in_right"><!--   ログアウト画面大枠の右サイド   -->
-     <div class="no_in_sign_up"><%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn-primary no_in_btn" %></div>
-     <div class="no_in_sign_in"><%= button_to "Sign in", new_user_session_path, method: :get, :class => "btn-success no_in_btn" %></div>
-    </div>
-  </div>
+<div class="ab_he_strength"><!--   ストレングス1  -->
+    <div class="ab_he_strength_over center-block">
+        <div class="di_inline_t">
+            <div class="ab_he_strength_image"><!--   画像  -->
+                <%= image_tag 'about1.png', :size => '600x350' %>
+            </div>
+        </div>
+        <div class="di_inline_t">
+            <div class="ab_he_strength_sentence"><!--   文章  -->
+                <div class="ab_he_strength_sentence_con">
+                    <div class="ab_he_strength_sentence_tt"><b>制作物の発信PlatForm</b></div>
+                    <b>プログラミングやITに関する専門技術で作り上げた作品・商品をプレゼンテーションすることができます。<br>
+                    開発後の集客の負担を減らすことができます。</b>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+
+<div class="ab_he_strength_2"><!--   ストレングス2  -->
+    <div class="ab_he_strength_over center-block">
+        <div class="di_inline_t">
+            <div class="ab_he_strength_sentence"><!--   文章  -->
+                <div class="ab_he_strength_sentence_con_2">
+                    <div class="ab_he_strength_sentence_tt_2"><b>付加価値の創出</b></div>
+                    <b>ユーザーの投稿はRuppishのTwitterアカウントにより発信されます。第三者の発信によって
+                    作品のブランド構築をサポートします。<br>より多くの注目を集めることができます。</b>
+                </div>
+            </div>
+        </div>
+        <div class="di_inline_t">
+            <div class="ab_he_strength_image"><!--   画像  -->
+                <%= image_tag 'about2.png', :size => '600x350' %>
+            </div>
+        </div>
+     </div>
+</div>
+
+<div class="ab_he_strength"><!--   ストレングス3  -->
+    <div class="ab_he_strength_over center-block">
+        <div class="di_inline_t">
+            <div class="ab_he_strength_image"><!--   画像  -->
+                <%= image_tag 'about3.png', :size => '600x350' %>
+            </div>
+        </div>
+        <div class="di_inline_t">
+            <div class="ab_he_strength_sentence"><!--   文章  -->
+                <div class="ab_he_strength_sentence_con">
+                    <div class="ab_he_strength_sentence_tt"><b>プロトタイプのBrush Up</b></div>
+                    <b>完成品だけでなく構想段階の企画を投稿できます。Ruppishユーザーが相互に
+                    意見を交わすことで、<br>プロトタイプの質の改善を図ることができます。</b>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+
+<div class="ab_he_strength_bottom"><!--   ストレングス3  -->
+    <div class="ab_he_strength_over center-block">
+         <div class="b_100"></div>
+         <div class="di_inline_t bottom_under"><%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn-primary no_in_btn", :style => "float: right;" %></div>
+         <div class="di_inline_t bottom_under"><%= button_to "Sign in", new_user_session_path, method: :get, :class => "btn-success no_in_btn", :style => "float: left;" %></div>
+     </div>
 </div>

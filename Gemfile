@@ -63,6 +63,8 @@ gem 'google-analytics-rails'
 
 #---------------ソーシャルプラグイン
 gem 'social-share-button'
+gem 'twitter'
+
 
 
 # Use ActiveModel has_secure_password

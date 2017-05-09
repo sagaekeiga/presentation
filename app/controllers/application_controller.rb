@@ -60,6 +60,21 @@ class ApplicationController < ActionController::Base
     user.score = @all_score
     user.save
   end
+  
+  def twitter_client
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key = "63bS01JjSI9ZGP7fnBC41FwCa"
+      config.consumer_secret = "Dt1Lm51AA641UwML7W7QvIsJobJI2oxxQckierzATl6gFdetzf"
+      config.access_token = "861829757855551488-VixsONxjkhiZickZ8cfs2fr50Q8GBgz"
+      config.access_token_secret = "KwJwqIzNrX89ENWbGsVhUWY2o1W9z8pQiqClFika5OS0S"
+    end
+  end
+  
+  def tweet_post
+      tweet = Micropost.last
+      status = "http://ruppish.com/microposts/microposts/" + tweet.id.to_s
+      @client.update(status)
+  end
     
     
   protected

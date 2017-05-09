@@ -19,6 +19,8 @@ class MicropostsController < ApplicationController
           @params = params[:micropost][:taggings]
 
           if @micropost.save
+            twitter_client
+            tweet_post
             redirect_to @micropost
           else
             render 'microposts/new'
