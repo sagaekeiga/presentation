@@ -10,7 +10,9 @@ class PagesController < ApplicationController
       @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
       @tag_microposts = current_user.microposts.all
       
+      @rank_title = Micropost.order("rank DESC").first
       @user_rank = User.all.order("score desc").first(10)
+      @top_user = @user_rank.first
       calculate(current_user)
       
     end

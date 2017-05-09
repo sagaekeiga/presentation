@@ -98,6 +98,7 @@ class UsersController < ApplicationController
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
       @q = Micropost.search(params[:q])
+      
       @users = User.all.order("score desc")
       @rank = 1
       @users.each do |user|

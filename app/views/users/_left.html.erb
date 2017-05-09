@@ -11,7 +11,7 @@
                 <div class="user_created center-block"><%= date_format(user.created_at) %></div><!-- ログインユーザー登録日 -->
                 <div class="user_option center-block">
                   <div class="u_in_right_con1_t center-block"><b>スコア <span class="fs_20"><%= @all_score %></span></b></div>
-                  <div class="u_in_right_con1_t center-block"><b>ランク <span class="fs_20"><%= current_user.rank %></span> 位</b></div>
+                  <div class="u_in_right_con1_t center-block"><b>ランク <span class="fs_20"><%= @user.rank %></span> 位</b></div>
                 </div><!-- ログインユーザー登録日 -->
                 <div class="user_edit center-block bo_rad_3"><%= link_to "プロフィールを編集する", edit_user_registration_path %></div><!-- ログインユーザー登録日 -->
               </div>

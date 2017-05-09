@@ -4,11 +4,10 @@
 
 
 .top_content_contact {
-    width: 700px;
+    width: 800px;
     height: 500px;
-    box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-    -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-    -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+	border-bottom: 3px solid #ccc;
+	border-top: 3px solid #ccc;
 }
 
 .contact_tt {
