@@ -35,4 +35,5 @@ class Micropost < ApplicationRecord
   def cliped_by? user
      clips.where(user_id: user.id).exists?
   end
+  
 end

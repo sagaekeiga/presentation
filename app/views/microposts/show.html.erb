@@ -66,6 +66,10 @@
                  <div class="di_inline_t"><%= user_like(@micropost.user, @micropost) %></div>
                  <div class="di_inline_t"><%= user_clip(@micropost.user, @micropost) %> </div>
            </div>
+           <div class="mic_com_social"><!--   ソーシャル   -->
+             <%= render 'shares/social', micropost: @micropost %>
+           </div>
+
            <div class="mic_com_sh"><!--   コメント一覧   -->
             <%= render 'microposts/comment', comments: @comments if user_signed_in? %>
            </div>
@@ -103,9 +107,12 @@
            </div>
         </div>
     </div>
+    
+     <div class="di_inline_t">
+        <div class="sh_m_social">
+         <%= render 'shares/social', micropost: @micropost %>
+        </div>
 
- <div class="di_inline_t">
-    <div class="right_co_mic_sh">
         
         <div class="sh_mic_like">
             <div class="sh_mic_like_title bo_rad_3">
@@ -124,7 +131,7 @@
             </div>
             
             
-            <div class="sh_mic_like_icon bo_rad_3"><!-- 人気の投稿タイトルリンク -->
+            <div class="sh_mic_like_icon_i bo_rad_3"><!-- 人気の投稿タイトルリンク -->
             <div class="sh_mic_like_title">
              <b>人気の投稿</b>
             </div>
@@ -147,3 +154,29 @@
 </div>
 <div class="b_50"></div>
 
+<script
+  type="text/javascript"
+  src="//platform.twitter.com/widgets.js"
+></script>
+
+<script
+  type="text/javascript"
+  src="http://b.st-hatena.com/js/bookmark_button.js"
+  charset="utf-8"
+  async="async"
+></script>
+
+<script
+  type="text/javascript"
+  src="https://apis.google.com/js/plusone.js"
+></script>
+
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.9&appId=1729629457300765";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

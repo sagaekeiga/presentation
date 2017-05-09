@@ -6,6 +6,7 @@
 <ul class="nav nav-tabs">
        <li><a href="#home2" data-toggle="tab">基礎情報</a></li>
        <li><a href="#prof2" data-toggle="tab">パスワード</a></li>
+       <li><a href="#prof3" data-toggle="tab">画像変更</a></li>
 
      </ul><!-- nav-tabs -->
       
@@ -72,6 +73,22 @@
               <%= f.submit "更新", class: :"btn" %>
             </div>
           <% end %>
+        </div>
+       </div>
+      </div>
+      
+       <div class="tab-pane fade" id="prof3"><!--      画像変更      -->
+        <div class="u_sh_tag center-block">
+         <div class="u_sh_profile bo_rad_3 center-block">
+             <div class="u_edit_icon_icon">
+                  <div class="di_inline_t">
+                      <%= image_tag(gravatar_for(@user), alt: @user.email, class:"gravatar center-block bo_rad_3", :size => '100x100') %>
+                  </div>
+                  <div class="di_inline_t">
+                      　画像変更は<%= link_to "こちら", "https://ja.gravatar.com/", target: :"_blank"%>から行ってください。<br>
+                      　画像保管、表示にはGravatarサービスを利用しています。メールアドレスを元に画像の認識、利用が行われます。
+                  </div>
+             </div>
         </div>
        </div>
       </div>
