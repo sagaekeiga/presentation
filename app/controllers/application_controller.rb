@@ -108,6 +108,10 @@ class ApplicationController < ActionController::Base
       user.save
     end
   end
+  
+  def mail_method(opponent, type, url)
+    NoticeMailMailer.post_email(current_user, opponent, type, url).deliver
+  end
     
     
   protected

@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
     def create
       @comment = current_user.comments.build(comment_params)
       @user = User.find_by(id: params[:comment][:user_id])
+      @micropost = Micropost.find_by(id: params[:comment][:micropost_id])
+      mail_method(@micropost.user, "comment", @micropost)
       if @comment.save
         flash[:success] = "コメントを投稿しました。"
         redirect_to request.referrer

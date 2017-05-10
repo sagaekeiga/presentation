@@ -4,6 +4,7 @@ class ClipsController < ApplicationController
     def create
         @micropost = Micropost.find(params[:micropost_id])
         @clip = current_user.clips.build(micropost_id: @micropost.id)
+        mail_method(@micropost.user, "clip", @micropost)
         @clip.save
     end
     

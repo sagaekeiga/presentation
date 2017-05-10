@@ -1,5 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from:     "Ruppish【ラピッシュ】",
+          bcc:      "sagae5.28rujeae@gmail.com",
+          reply_to: "sagae5.28rujeae@gmail.com"
   layout 'mailer'
 end
 

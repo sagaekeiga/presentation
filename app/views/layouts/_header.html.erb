@@ -30,7 +30,7 @@
                 <% @activities.first(6).each do |activity| %>
                   <!--  自分が投稿した記事か？  -->
                   <% current_user.microposts.each do |mic| %><!--  1  -->
-                    <% if mic.id == activity.trackable.micropost_id %>
+                    <% if !activity.trackable.nil? && mic.id == activity.trackable.micropost_id %>
                       <!--  自分がフォローしているユーザーか？  -->
                       <% current_user.following.each do |user| %><!--  2  -->
                         <% if user.id == activity.owner.id %>

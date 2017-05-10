@@ -4,6 +4,7 @@ class LikesController < ApplicationController
     def create
         @micropost = Micropost.find(params[:micropost_id])
         @like = current_user.likes.build(micropost_id: @micropost.id)
+        mail_method(@micropost.user, "like", @micropost)
         @like.save
         @like.create_activity :create, owner: current_user
     end
