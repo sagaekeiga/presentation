@@ -12,51 +12,9 @@
 <% if user_signed_in? %>
 <div class="top_content_in center-block">
     <%= render 'pages/search', q: @q %><!--          検索欄          -->
-    <div class="no_1">
-     <div class="no_1_title center-block">HotTopTitle</div>
-     <div class="di_inline_t"><!--          内容          -->
-      <div class="no_1_left">
-       <div class="no_1_left_title">
-       <%= link_to "#{@rank_title.title.truncate(64)}", @rank_title %>
-       </div>
-       <div class="no_1_left_content">
-        <%= @rank_title.content.truncate(449) %>
-       </div>
-       <div class="di_inline_t wi_100"><b>評価 <%= @rank_title.likes.count %></b></div><!--          評価          -->
-       <div class="di_inline_t wi_100"><b>PV <%= @rank_title.rank %></b></div><!--          PV          -->
-       　　　　　　
-       <div class="di_inline_t wi_200">
-         <% @rank_title.tags.each do |tag| %>
-          <span class="label label_red"><%= tag.name %></span>
-         <% end %>
-       </div><!--          タグ          -->
-       　　
-       <div class="di_inline_t wi_100">
-        <%= date_format(@rank_title.created_at) %>
-       </div><!--          時間          -->
-      </div>
-     </div>
-     
-     
-     <div class="di_inline_t"><!--          ユーザー情報          -->
-      <div class="no_1_right">
-       
-       <div class="di_inline_t"><div class="no_1_image">
-        <%= link_to image_tag(gravatar_for(@rank_title.user), alt: @rank_title.user.email, class:"gravatar bo_rad_3", :size => '110×110'), @rank_title.user %>
-       </div></div><!--          ユーザー画像          -->
-       
-       <div class="di_inline_t"><div class="no_1_name">
-        <%= link_to "#{@top_user.name}", @top_user %>
-       </div></div><!--          ユーザー名          -->
-       
-       <div class="h_10"></div>
-       <div class="no_1_score bo_rad_3 center-block"><b>スコア <span class="fs_20"><%= @all_score %></span></b></div>
-       <div class="no_1_score bo_rad_3 center-block"><b>ランク <span class="fs_20"><%= current_user.rank %></span> 位</b></div>
-      </div>
-     </div>
-     
-     
-    </div><br>
+    
+    <%= render 'pages/hot_title',micropost: @rank_title %><!--          HotTopTitle          -->
+    
     <div class="di_inline_t">
      <div class="in_letf"><!--          左サイド          -->
      

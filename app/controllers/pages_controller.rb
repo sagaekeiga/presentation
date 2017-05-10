@@ -2,118 +2,59 @@ class PagesController < ApplicationController
   before_action :logged_in_user, :except => ['index']
 
   def index
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+    bar_option
     if user_signed_in?
+      page_index
       @microposts = Micropost.order("created_at DESC").page(params[:page])
-      @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
-      @tag_microposts = current_user.microposts.all
-      
-      @rank_title = Micropost.order("rank DESC").first
-      @user_rank = User.all.order("score desc").first(10)
-      @top_user = @user_rank.first
-      calculate(current_user)
-      
     end
   end
   
   
   def prototype
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
-    
+    page_index
     @prototypes = Micropost.where(purpose: 1).order("created_at DESC").page(params[:prototype])
-    @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
-    @tag_microposts = current_user.microposts.all
-    
-    @user_rank = User.all.order("score desc").first(10)
-    calculate(current_user)
   end
   
   def presentation
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
-    
+    page_index
     @presentations = Micropost.where(purpose: 2).order("created_at DESC").page(params[:presentation])
-    @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
-    @tag_microposts = current_user.microposts.all
-    
-    @user_rank = User.all.order("score desc").first(10)
-    calculate(current_user)
   end
   
   def rank
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
-    
+    page_index
     @ranks = Micropost.order("rank DESC").page(params[:rank])
-    @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
-    @tag_microposts = current_user.microposts.all
-    
-    @user_rank = User.all.order("score desc").first(10)
-    calculate(current_user)
   end
   
   def palace
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
-    
+    page_index
     @palaces = Micropost.where(palace: true).order("created_at DESC").page(params[:palace])
-    @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
-    @tag_microposts = current_user.microposts.all
-    
-    @user_rank = User.all.order("score desc").first(10)
-    calculate(current_user)
   end
   
   def notice_index
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
-    
-    @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
-    @tag_microposts = current_user.microposts.all
-    
-    @user_rank = User.all.order("score desc").first(10)
-    calculate(current_user)
+    page_index
   end
   
   
   # ----------------- 利用規約
   def agreement
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+    bar_option
   end
   
   # ----------------- プライバシー
   def privacy
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+    bar_option
   end
   
   # ----------------- ヘルプ
   def help
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+    bar_option
   end
   
   def about
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+    bar_option
   end
   
   def secret
-    @contact = Contact.new
-    @q = Micropost.search(params[:q])
-    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+    bar_option
   end
 end

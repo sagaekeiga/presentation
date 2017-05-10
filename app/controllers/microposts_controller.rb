@@ -3,21 +3,19 @@ class MicropostsController < ApplicationController
 
     def new
         @micropost = Micropost.new
-        @contact = Contact.new
-        @q = Micropost.search(params[:q])
-        @activities = PublicActivity::Activity.all
+        bar_option
         @tags = Tag.all
     end
     
     def create
-          @contact = Contact.new
-          @q = Micropost.search(params[:q])
-          @activities = PublicActivity::Activity.all
+          bar_option
           
           @micropost = current_user.microposts.build(micropost_params)
           @micropost.purpose = params[:micropost][:purpose]
           @params = params[:micropost][:taggings]
 
+          user_rank
+          
           if @micropost.save
             twitter_client
             tweet_post
@@ -29,28 +27,24 @@ class MicropostsController < ApplicationController
     
     def show
         @comment = params[:object]
-        @q = Micropost.search(params[:q])
         @micropost = Micropost.find(params[:id])
-        @contact = Contact.new if @comment.nil?
+        bar_option
+        
         @comment = Comment.new
         @comments = @micropost.comments.includes(:user).all.sort_by{|ms|ms.created_at}
+        
         @rank = REDIS.zincrby "microposts/all/#{Date.today.to_s}", 1, @micropost.id
         @micropost.rank = @rank
         @micropost.save!
-        @activities = PublicActivity::Activity.all
+        
         @pop_mics = @micropost.user.microposts.all.sort_by{|ms|ms.rank}.reverse.first(5)
         
         @microposts = Micropost.all
-        @relations = []
-        
-        
     end
     
     def edit
-        @q = Micropost.search(params[:q])
         @micropost = Micropost.find(params[:id])
-        @contact = Contact.new
-        @activities = PublicActivity::Activity.all
+        bar_option
     end
     
     def update
@@ -63,24 +57,15 @@ class MicropostsController < ApplicationController
     end
     
     def index
-      @contact = Contact.new
-      @q = Micropost.search(params[:q])
+      page_index
       @q_mics = @q.result(distinct: true).page(params[:index])
-      @activities = PublicActivity::Activity.all
-      
-      @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
-      @tag_microposts = current_user.microposts.all
-      
-      @user_rank = User.all.order("score desc").first(10)
-      calculate(current_user)
+      @all_q_mics = @q.result(distinct: true)
     end
     
     def like_users
-      @contact = Contact.new
-      @q = Micropost.search(params[:q])
+      bar_option
       @q_mics = @q.result(distinct: true).page(params[:page])
       @all_q_mics = @q.result(distinct: true)
-      @activities = PublicActivity::Activity.all
     end
     
     def admit_palace

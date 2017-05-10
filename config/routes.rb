@@ -17,8 +17,7 @@ Rails.application.routes.draw do
   get 'pages/notice_index'
   
   get 'microposts/admin_palace'
-  get 'users/user_rank'
-  
+
   
 
   resource :contacts, only: [:new, :create]

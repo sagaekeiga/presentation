@@ -11,7 +11,9 @@
 <body>
     <header>
       <% if controller.controller_name != 'registrations' &&  controller.controller_name != 'sessions' &&  controller.controller_name != 'contacts' &&  controller.controller_name != 'confirmations' %>
+        <% if controller.action_name != 'new'%>
             <%= render 'layouts/header' %>
+        <% end %>
       <% end %>
     </header>
     

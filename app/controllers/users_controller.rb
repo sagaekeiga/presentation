@@ -15,8 +15,7 @@ class UsersController < ApplicationController
       
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
-      
+
       @microposts = @user.microposts.order("created_at DESC").page(params[:micropost])
       @following_users = @user.following.order("created_at DESC").page(params[:following])
       @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
@@ -30,8 +29,7 @@ class UsersController < ApplicationController
       
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
-      
+
       @clips = @user.clip_microposts.order("created_at DESC").page(params[:clip])
       @following_users = @user.following.order("created_at DESC").page(params[:following])
       @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
@@ -44,8 +42,7 @@ class UsersController < ApplicationController
       
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
-      
+
       @likes = @user.like_microposts.order("created_at DESC").page(params[:like])
       @following_users = @user.following.order("created_at DESC").page(params[:following])
       @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
@@ -58,8 +55,7 @@ class UsersController < ApplicationController
       
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
-      
+
       @following_users = @user.following.order("created_at DESC").page(params[:following])
       @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
       
@@ -71,8 +67,7 @@ class UsersController < ApplicationController
       
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
-      
+
       @following_users = @user.following.order("created_at DESC").page(params[:following])
       @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
       
@@ -85,8 +80,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
-      
+
       @microposts = @user.microposts.order("created_at DESC").page(params[:micropost])
       @following_users = @user.following.order("created_at DESC").page(params[:following])
       @followers_users = @user.followers.order("created_at DESC").page(params[:followed])
@@ -94,25 +88,10 @@ class UsersController < ApplicationController
       calculate(@user)
     end
     
-    def user_rank
-      @contact = Contact.new
-      @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
-      
-      @users = User.all.order("score desc")
-      @rank = 1
-      @users.each do |user|
-        user.rank = @rank
-        @rank += 1
-        user.save
-      end
-    end
-    
     def chart
       @user = User.find(params[:id])
       @contact = Contact.new
       @activities = PublicActivity::Activity.all
-      @q = Micropost.search(params[:q])
       calculate(@user)
 
       #------------ユーザー個人値

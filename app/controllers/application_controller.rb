@@ -75,6 +75,39 @@ class ApplicationController < ActionController::Base
       status = "http://ruppish.com/microposts/microposts/" + tweet.id.to_s
       @client.update(status)
   end
+  
+  def page_index
+      @contact = Contact.new
+      @q = Micropost.search(params[:q])
+      @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+    
+      @tag_pops = Tag.all.sort_by{|ms|ms.frequency}.reverse.first(5)
+      @tag_microposts = current_user.microposts.all
+      
+      @rank_title = Micropost.order("rank DESC").first
+      @user_rank = User.all.order("score desc").first(10)
+      calculate(current_user)
+  end
+  
+  def bar_option
+    @contact = Contact.new
+    @q = Micropost.search(params[:q])
+    @activities = PublicActivity::Activity.all.sort_by{|ms|ms.created_at}.reverse
+  end
+  
+  def user_rank
+    @contact = Contact.new
+    @activities = PublicActivity::Activity.all
+    @q = Micropost.search(params[:q])
+    
+    @users = User.all.order("score desc")
+    @rank = 1
+    @users.each do |user|
+      user.rank = @rank
+      @rank += 1
+      user.save
+    end
+  end
     
     
   protected
