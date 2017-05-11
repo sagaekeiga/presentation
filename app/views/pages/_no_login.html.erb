@@ -1,75 +1,116 @@
 <title>Ruppishとは？ Ruppish【ラピッシュ】| P&Fプラットフォーム</title>
-<div class="ab_he"><!--   タイトル   -->
+<div class="ab_he">
     <div class="sb_he_tt"><b>Ruppish</b>
-        <div class="sb_he_sub_tt">Ruppishは、プログラミングで製作した作品をプレゼンテーションするためのサービスです。</div>
-        <div class="sb_he_sub_tt">
-             <div class="di_inline_t"><%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn-primary no_in_btn" %></div>
-             <div class="di_inline_t"><%= button_to "Sign in", new_user_session_path, method: :get, :class => "btn-success no_in_btn" %></div>
+        <span class="sb_he_sub_tt">Ruppishは、プログラミングで製作した作品をプレゼンテーションするためのサービスです。</span>
+    </div>
+</div>
+<div id="img-box">
+    <%= image_tag 'top.jpg', :size => '1450x775' %>
+    <div id="img-box-mini"><p  id="img-box-text"></p></div>
+    <div id="img-box-mini2">
+        <p  id="img-box-text2">
+        <div class="di_inline_t top_disc_box">
+            <div class="top_disc_image">
+                <i class="fa fa-twitter fa-5x" aria-hidden="true"></i>
+            </div>
+            <div class="top_disc_title"><b>サービスのブランド化</b></div>
+            <div class="top_disc_sentence">
+                あなたの投稿はRuppishのTwitterアカウントにより発信されます。
+                フォロワー1000人以上に投稿一つであなたのサービスが発信されます。
+                当サービスが第三者としてサービスを広めることでブランド化をはかります。
+            </div>
         </div>
+        <div class="di_inline_t top_disc_box">
+            <div class="top_disc_image">
+                <i class="fa fa-laptop fa-5x" aria-hidden="true"></i>
+            </div>
+            <div class="top_disc_title"><b>技術者のステップアップ</b></div>
+            <div class="top_disc_sentence">
+            プログラミングであなたが作り上げた作品をプレゼンテーションすることができます。<br/>
+            企業・個人として技術レベルの開示をすることで次のステージへのステップを踏める可能性が広がります。
+            </div>
+        </div>
+        <div class="di_inline_t top_disc_box">
+            <div class="top_disc_image">
+                <i class="fa fa-folder fa-5x" aria-hidden="true"></i>
+            </div>
+            <div class="top_disc_title"><b>作品のストレージ</b></div>
+            <div class="top_disc_sentence">
+                構想段階の企画・作品を投稿できます。Ruppishユーザーが相互に意見を交わすことで、
+                プロトタイプの質の改善を図ることができます。また、
+                ポートフォリオとしても活用いただけます。
+            </div>
+        </div>
+        </p>
     </div>
 </div>
 
-<div class="ab_he_strength"><!--   ストレングス1  -->
-    <div class="ab_he_strength_over center-block">
-        <div class="di_inline_t">
-            <div class="ab_he_strength_image"><!--   画像  -->
-                <%= image_tag 'about1.png', :size => '600x350' %>
-            </div>
+
+<div class="ab_he_follow_count"><!--   ストレングス3  -->
+    <div class="ab_he_follow_count_over center-block">
+        <div class="di_inline_t ab_he_follow_count_sent1">
+            あなたのサービスは
         </div>
-        <div class="di_inline_t">
-            <div class="ab_he_strength_sentence"><!--   文章  -->
-                <div class="ab_he_strength_sentence_con">
-                    <div class="ab_he_strength_sentence_tt"><b>制作物の発信PlatForm</b></div>
-                    <b>プログラミングやITに関する専門技術で作り上げた作品・商品をプレゼンテーションすることができます。<br>
-                    開発後の集客の負担を減らすことができます。</b>
-                </div>
-            </div>
+        <div class="di_inline_t ab_he_follow_count_sent1">
+            <p class="count" data-num="1000">0</p>
+        </div>
+        <div class="di_inline_t ab_he_follow_count_sent1">
+            人に届きます。
         </div>
      </div>
 </div>
 
-<div class="ab_he_strength_2"><!--   ストレングス2  -->
-    <div class="ab_he_strength_over center-block">
-        <div class="di_inline_t">
-            <div class="ab_he_strength_sentence"><!--   文章  -->
-                <div class="ab_he_strength_sentence_con_2">
-                    <div class="ab_he_strength_sentence_tt_2"><b>付加価値の創出</b></div>
-                    <b>ユーザーの投稿はRuppishのTwitterアカウントにより発信されます。第三者の発信によって
-                    作品のブランド構築をサポートします。<br>より多くの注目を集めることができます。</b>
-                </div>
-            </div>
-        </div>
-        <div class="di_inline_t">
-            <div class="ab_he_strength_image"><!--   画像  -->
-                <%= image_tag 'about2.png', :size => '600x350' %>
-            </div>
-        </div>
-     </div>
-</div>
 
 <div class="ab_he_strength"><!--   ストレングス3  -->
     <div class="ab_he_strength_over center-block">
-        <div class="di_inline_t">
-            <div class="ab_he_strength_image"><!--   画像  -->
-                <%= image_tag 'about3.png', :size => '600x350' %>
-            </div>
-        </div>
-        <div class="di_inline_t">
-            <div class="ab_he_strength_sentence"><!--   文章  -->
-                <div class="ab_he_strength_sentence_con">
-                    <div class="ab_he_strength_sentence_tt"><b>プロトタイプのBrush Up</b></div>
-                    <b>完成品だけでなく構想段階の企画を投稿できます。Ruppishユーザーが相互に
-                    意見を交わすことで、<br>プロトタイプの質の改善を図ることができます。</b>
-                </div>
-            </div>
-        </div>
+        <div class="center-block top_chart"><%= line_chart User.all.group_by_day(:created_at).count %></div>
      </div>
 </div>
 
+
+
+<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400"/>
 <div class="ab_he_strength_bottom"><!--   ストレングス3  -->
     <div class="ab_he_strength_over center-block">
          <div class="b_100"></div>
-         <div class="di_inline_t bottom_under"><%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn-primary no_in_btn", :style => "float: right;" %></div>
-         <div class="di_inline_t bottom_under"><%= button_to "Sign in", new_user_session_path, method: :get, :class => "btn-success no_in_btn", :style => "float: left;" %></div>
+         <div class="di_inline_t bottom_under"><%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn-primary button", :style => "float: right;" %></div>
+         <div class="di_inline_t bottom_under"><%= button_to "Sign in", new_user_session_path, method: :get, :class => "btn-success button2", :style => "float: left;" %></div>
      </div>
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+$(function(){
+    var countElm = $('.count'),
+    countSpeed = 1;
+ 
+    countElm.each(function(){
+        var self = $(this),
+        countMax = self.attr('data-num'),
+        thisCount = self.text(),
+        countTimer;
+ 
+        function timer(){
+            countTimer = setInterval(function(){
+                var countNext = thisCount++;
+                self.text(countNext);
+ 
+                if(countNext == countMax){
+                    clearInterval(countTimer);
+                }
+            },countSpeed);
+        }
+        timer();
+    });
+ 
+});
+
+var $button = document.querySelector('.button');
+$button.addEventListener('click', function() {
+  var duration = 0.3,
+      delay = 0.08;
+  TweenMax.to($button, duration, {scaleY: 1.6, ease: Expo.easeOut});
+  TweenMax.to($button, duration, {scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay});
+  TweenMax.to($button, duration * 1.25, {scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
+});
+</script>

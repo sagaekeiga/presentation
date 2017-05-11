@@ -65,6 +65,10 @@ gem 'google-analytics-rails'
 gem 'social-share-button'
 gem 'twitter'
 
+#---------------Webフォント
+gem 'font-awesome-rails'
+gem 'groupdate'
+gem 'dateslices' # 日付ごとにデータをグルーピングするメソッドを追加
 
 
 # Use ActiveModel has_secure_password

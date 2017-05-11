@@ -397,9 +397,98 @@
 //----------------------headerの枠
 .ab_he {
  width: 1450px;
- background-color: #FF00FF;
- height: 775px;
+ background-color: #51c561;
+ height: 400px;
  margin-top: -30px;
+}
+#img-box{
+  position: relative;
+  top: -10px;
+ 	height: 300px;
+  color: #fff;
+ 	overflow: hidden;
+}
+#img-box-mini{
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  width:100%;
+	height: 60px;
+   color: #fff;
+	overflow: hidden;
+ }
+#img-box-text{
+  text-align: center;
+  width: 100%;
+}
+
+#img-box-mini2{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80%;
+  height: 300px;
+ 	padding: 5px;
+ 	text-align: center;
+ }
+#img-box-text2{
+  text-align: center;
+  width: 100%;
+}
+
+
+.top_disc_box {
+ width: 375px;
+ background-color: red;
+ height: 100%;
+ margin-top: -10px;
+	border: 1px solid #CCC;
+	box-shadow: 0px 0px 10px white inset;
+	border-radius: 3px;
+ background-color: rgba(20,20,20,0.8);
+}
+
+.top_disc_image {
+ width: 150px;
+ height: 100px;
+ background-color: rgba(255,0,0,0.5);
+ text-align: center;
+ margin-left : auto ;
+ margin-right : auto ;
+ margin-top: 10px;
+ border-radius: 3px;
+}
+
+.top_disc_title {
+ width: 90%;
+ height: 40px;
+ text-align: center;
+ margin-left : auto ;
+ margin-right : auto ;
+ margin-top: 5px;
+ font-size: 25px;
+}
+.top_disc_sentence {
+ width: 90%;
+ height: 110px;
+ text-align: center;
+ background:rgba(255,255,255,0.1);
+ margin-left : auto ;
+ margin-right : auto ;
+ margin-top: 5px;
+ letter-spacing: 2px;
+ border-radius: 3px;
+ padding: 3px;
+}
+
+//----------------------タイトル
+.fa-twitter {
+ width: 150px;
+ height: 150px;
 }
 
 //----------------------タイトル
@@ -407,28 +496,48 @@
  color: white;
  font-size: 100px;
  text-align: center;
- line-height: 700px;
+ line-height: 400px;
 }
 
 
 //----------------------サブタイトル
 .sb_he_sub_tt {
  font-size: 20px;
- margin-top: -600px;
 }
 
 //----------------------ストレングス1
-.ab_he_strength {
+.ab_he_follow_count {
  width: 1450px;
- height: 400px;
+ height: 200px;
+ border-top: 5px solid #ccc;
+	border-bottom: 5px solid #ccc;
+	margin-top: -10px;
+}
+
+.top_chart {
+ margin-top: 40px;
 }
 
 //----------------------ストレングス1-大枠
 .ab_he_strength_over {
  width: 1000px;
- height: 400px;
+ height: 320px;
 }
 
+//----------------------ストレングス1-大枠
+.ab_he_follow_count_over {
+ width: 1000px;
+ height: 200px;
+}
+
+.count {
+ font-size: 40px;
+}
+.ab_he_follow_count_sent1 {
+ font-size: 30px;
+ line-height: 200px;
+ margin-left: 100px;
+}
 //----------------------ストレングス1-画像
 .ab_he_strength_image {
  width: 600px;
@@ -531,3 +640,77 @@
 }
 
 
+
+.button{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+
+.button2{
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.button2:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.button2:before,.button2:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.button2:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.button2:hover:before,.button2:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
