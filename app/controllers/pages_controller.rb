@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   def index
     bar_option
+    twitter_client
+    @chart_data = [["7日前" , 60], ["6日前", 65], ["5日前", 64], ["4日前" , 60], ["3日前", 65], ["2日前", 64], ["1日前", 64]]
     if user_signed_in?
       page_index
       @microposts = Micropost.order("created_at DESC").page(params[:page])

@@ -1,7 +1,7 @@
 <title>Ruppishとは？ Ruppish【ラピッシュ】| P&Fプラットフォーム</title>
 <div class="ab_he">
     <div class="sb_he_tt"><b>Ruppish</b>
-        <span class="sb_he_sub_tt">Ruppishは、プログラミングで製作した作品をプレゼンテーションするためのサービスです。</span>
+        <span class="sb_he_sub_tt">Ruppishは、プログラミングサービスを発信できるマーケティングサービスです。</span>
     </div>
 </div>
 <div id="img-box">
@@ -36,9 +36,10 @@
             </div>
             <div class="top_disc_title"><b>作品のストレージ</b></div>
             <div class="top_disc_sentence">
-                構想段階の企画・作品を投稿できます。Ruppishユーザーが相互に意見を交わすことで、
-                プロトタイプの質の改善を図ることができます。また、
-                ポートフォリオとしても活用いただけます。
+                構想段階の企画・作品を投稿できます。
+                Ruppishユーザーが相互に意見を交わすことで、 
+                プロトタイプの質の改善を図ることができます。
+                また、 ポートフォリオとしても活用いただけます。
             </div>
         </div>
         </p>
@@ -49,10 +50,10 @@
 <div class="ab_he_follow_count"><!--   ストレングス3  -->
     <div class="ab_he_follow_count_over center-block">
         <div class="di_inline_t ab_he_follow_count_sent1">
-            あなたのサービスは
+            あなたの言葉は
         </div>
         <div class="di_inline_t ab_he_follow_count_sent1">
-            <p class="count" data-num="1000">0</p>
+            <p class="count" data-num="10000">0</p>
         </div>
         <div class="di_inline_t ab_he_follow_count_sent1">
             人に届きます。
@@ -63,7 +64,7 @@
 
 <div class="ab_he_strength"><!--   ストレングス3  -->
     <div class="ab_he_strength_over center-block">
-        <div class="center-block top_chart"><%= line_chart User.all.group_by_day(:created_at).count %></div>
+        <div class="center-block top_chart"><%= line_chart @chart_data %></div>
      </div>
 </div>
 
@@ -82,7 +83,7 @@
 <script>
 $(function(){
     var countElm = $('.count'),
-    countSpeed = 1;
+    countSpeed = 0.001;
  
     countElm.each(function(){
         var self = $(this),

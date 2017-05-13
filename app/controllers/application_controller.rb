@@ -76,6 +76,11 @@ class ApplicationController < ActionController::Base
       @client.update(status)
   end
   
+  def tweet_followers_chart
+    user = @client.user("ruppish")
+    @followers_count = user.followers_count
+  end
+  
   def page_index
       @contact = Contact.new
       @q = Micropost.search(params[:q])
